@@ -1,24 +1,17 @@
 class Solution:
-    def romanToInt(self, s: str) -> int:
-        num_dict = {   'I' : 1,
-                       'V' : 5,
-                       'X' : 10,
-                       'L' : 50,
-                       'C' : 100,
-                       'D' : 500,
-                       'M' : 1000 }
-        res=0
-        i = 0
-        
-        while i < len(s)-1:
-            if num_dict[s[i]] >= num_dict[s[i+1]]: # just add number to res
-                res += num_dict[s[i]]
-                i+=1
+    
+    def romanToInt(self, s):
+        roman = {'M': 1000,'D': 500 ,'C': 100,'L': 50,'X': 10,'V': 5,'I': 1}
+        z = 0
+        for i in range(0, len(s) - 1):
+            if roman[s[i]] < roman[s[i+1]]:
+                z -= roman[s[i]]
             else:
-                res += num_dict[s[i+1]]-num_dict[s[i]] # if s[i]<s[i+1]: subtract from next number
-                i+=2
-                
-        if i < len(s): # if last digit left
-            res += num_dict[s[i]]
+                z += roman[s[i]]
             
-        return res
+        return z + roman[s[-1]]
+
+
+'''
+*Note: The trick is that the last letter is always added. Except the last one, if one letter is less than its latter one, this letter is subtracted.
+'''
