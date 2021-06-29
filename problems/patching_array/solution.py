@@ -26,3 +26,4 @@ class Solution:
             else:
                 s += s + 1
                 ret += 1
+                
