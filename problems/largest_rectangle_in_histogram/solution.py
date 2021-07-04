@@ -11,7 +11,7 @@ class Solution:
         ans = 0
         for i in range(len(heights)):
             while heights[i] < heights[stack[-1]]:  #decreasing height..so we need to remove..until we have again increasing heights in order again
-                p= stack.pop()
+                p= stack.pop()  #stack array have indexes
                 print(p)
                 height = heights[p]
                 width = i - stack[-1] - 1 #i i s right point  , stack[-1] is left pointer
