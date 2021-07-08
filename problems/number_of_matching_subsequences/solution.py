@@ -1,4 +1,6 @@
 class Solution:
+#begineer friendly but slow
+#make dictionary for repeated strings...do briute force, checking all subsequence for match
 
     def numMatchingSubseq(self, s: str, words: List[str]) -> int:
         def isubseq(s,p):
