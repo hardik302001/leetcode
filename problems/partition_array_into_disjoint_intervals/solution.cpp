@@ -2,6 +2,9 @@
 //Simple logic calculate max from left and min from right
 //if(l[i]<=r[i+1])return i+1;
 
+//TC O(N)
+//SC O(N)
+//can we do better? ofc we will try to optimise space complexity
 
 class Solution {
 public:
