@@ -14,4 +14,4 @@ class Solution:
                     hi -= 1
             if diff == 0:
                 break
-        return target - diff
+        return target - diff   #target - (target - sum ) = SUM
