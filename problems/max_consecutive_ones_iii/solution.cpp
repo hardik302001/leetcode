@@ -1,26 +1,18 @@
+//also visit https://leetcode.com/problems/longest-repeating-character-replacement/
+
 class Solution {
 public:
-    int longestOnes(vector<int>& nums, int k) {
-        int maxi = 0;
-        int l = 0;
-        int r = 0;
-        int zero = 0;
-        int n = nums.size();
-        for(r = 0;r<n;r++){
-            if(nums[r]==0){
-                zero++;
+    int longestOnes(vector<int>& A, int K) {
+        int zeroCount = 0, l = 0;
+        int maxLen = 0;
+        for( int r = 0 ; r < A.size() ; ++r ) {
+            if( A[ r ] == 0 ) ++zeroCount;
+            if( zeroCount > K ) {
+                if( A[ l ] == 0 ) --zeroCount;
+                ++l;
             }
-            while(zero>k){
-                if(nums[l]==0){
-                    zero--;
-                }
-                l++;
-            }
-            
-            maxi = max(maxi,r-l+1);
+            maxLen = max( maxLen, r - l + 1 );
         }
-        return maxi;
-        
-        
+        return maxLen;
     }
 };
