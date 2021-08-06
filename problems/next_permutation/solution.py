@@ -15,19 +15,23 @@ class Solution:
                 i=x-1
                 break
         if i==-1:
-            n.sort()
+            n.sort()    #or n = n[::-1] bcz its already sorted in reverse direction
             return n
         
-        swap=i+1
-        pos=i
-        
-        for x in range(swap,N):
-            if n[pos]<n[x]<=n[swap]:   #corner case handling
+        swap=i  #current index
+        pos=i   
+        p = n[swap]  #currebt element
+         
+        for x in range(swap+1,N):
+            if n[x]>p:              #start from next element of swap(cur index) and check for *next possible strictly greater element* bcz now array is in dec order 
                 swap=x
-      #  print(pos, swap)
+            else:
+                break
+                
+        print(pos, swap)
         n[pos],n[swap]=n[swap],n[pos]
-    #    print(n)
-        l, r = pos+1, N-1  # reverse the second part
+        
+        l, r = pos+1, N-1  # reverse the second part(or sort same thing bcz it already in decreasing)
         while l < r:
             n[l], n[r] = n[r], n[l]
            # print(n)
