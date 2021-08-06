@@ -19,6 +19,11 @@ In last step we should check weather the result is a 32-bit number or not.
 
 Code:
 '''
+
+
+
+
+
 class Solution:
     def nextGreaterElement(self, n):
         
@@ -32,15 +37,18 @@ class Solution:
         if i==-1:  #if it is of form 987654321...i mean deecreaing..so it will never have next sameller permutuation..
             return -1
         
-        swap=i+1
-        pos=i
-        
-        for x in range(swap,N):  #search the right side of above found digit ‘d’ for the smallest digit greater than ‘d’.
-            if n[pos]<n[x]<=n[swap]:  #this is must for corner case
+        swap=i  #current index
+        pos=i   
+        p = n[swap]  #current element
+         
+        for x in range(swap+1,N):
+            if n[x]>p:              #start from next element of swap(cur index) and check for *next possible strictly greater element* bcz now array is in dec order 
                 swap=x
+            else:
+                break
                 
+        
         n[pos],n[swap]=n[swap],n[pos]
-                 
         ans=int(''.join(n[:pos+1])+''.join(sorted(n[pos+1:])))
         
         return ans if len(bin(ans)[2:])<32 else -1
