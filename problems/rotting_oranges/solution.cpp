@@ -1,54 +1,84 @@
-
-        
+/*
+    VISIT PREV BRUTE FROCE SOLUTION:FOR EVERY LEVEL WE TARVERSE THE WHOLE MATRIX AGAIN!
+    O(m*n*n*n) = O(m2n2)
+    WE optimise it by BFS, level by level..
+    simple code : ans++ when puhed else ignore
     
+    
+*/
+
+
+
+
+
 class Solution {
 public:
-    int dx[4]={-1,1,0,0,};
-    int dy[4]={0,0,-1,1};
-    
-    vector<vector<int>> grd;
-    int ans=0,n,m;
-    
-    void bfs(){
-        queue<pair<int,int>> qu;
+    int orangesRotting(vector<vector<int>>& mat) {
         
-        //pushing every rotten orange in queue
-        for(int i=0;i<n;i++)
-            for(int j=0;j<m;j++)
-                if(grd[i][j]==2) qu.push({i,j});
+        int M = mat.size();
+        int N = mat[0].size();
+        int ans = 0;
+        queue<pair<int, int>> todo;
+        vector<int> dx = {-1, 0,1, 0};
+        vector<int>dy = {0,1,0,-1};
         
-        while(!qu.empty()){
-            int sz=qu.size();
-            //pushed is used to know whether next level of fresh oranges (next layer of bfs) are there
-            bool pushed=false;
-            
-            //loop used to traverse all rotten oranges which are in queue
-            for(int i=0;i<sz;i++){
-                int x=qu.front().first,y=qu.front().second;
-                qu.pop();
-                for(int k=0;k<4;k++){
-                    //if coordinates are invalid then skip
-                    if(x+dx[k]<0 or y+dy[k]<0 or x+dx[k]>=grd.size() or y+dy[k]>=grd[0].size()) continue;
-                    //if they are and valid and we encounter fresh orange then push that into queue
-                    if(grd[x+dx[k]][y+dy[k]]==1){
-                        //pushed is also made true confirming there is another layer also
-                        qu.push({x+dx[k],y+dy[k]}),pushed=true;
-                        //fresh orange converted into rotten orange 
-                        grd[x+dx[k]][y+dy[k]]=2;    
-                    } 
+        for(int i=0;i<M;i++){
+            for(int j=0;j<N;j++)
+            {
+                if(mat[i][j]==2)
+                { 
+                    todo.push({i,j});
                 }
             }
-            //confirming that this is not last layer and increamenting ans
-            if(pushed) ans++;
         }
+        
+        while (!todo.empty()) {
+            int sz = todo.size();
+            bool pushed = false;  //this is very impo
+            while(sz--){         //for level order we need it
+                int curx = todo.front().first;
+                int cury = todo.front().second;
+
+                todo.pop();
+
+                for(int i = 0;i<4;i++){
+                    int newx = curx + dx[i];
+                    int newy = cury + dy[i];
+
+                    if(inside(newx , newy , M , N , mat) and mat[newx][newy]==1){
+                        mat[newx][newy] = 2;
+                        todo.push({newx, newy});
+                        pushed = true;
+                    }
+
+                }   
+            }
+            if(pushed){
+                ans++;
+            }
+        }
+        
+        
+        
+        for (int i = 0; i < M; i++) {
+            for (int j = 0; j < N; j++) {
+                if (mat[i][j] == 1)
+                    return -1;
+            }
+        }
+
+
+        return ans;
+        
     }
     
-    int orangesRotting(vector<vector<int>>& grid) {
-        grd=grid,n=grd.size(),m=grd[0].size();
-        //breadth first search over the grid
-        bfs();
-        //if there is still some fresh oranges return -1 else return the ans
-        for(auto it:grd) for(auto jt:it) if(jt==1) return -1;
-        return ans;
+    
+     bool inside(int x, int y, int &M, int &N, vector<vector<int> > &mat) {
+        if ((x < 0 || x >= M || y < 0 || y >= N )) {
+            return false;
+        }
+        return true;
     }
+    
+    
 };
