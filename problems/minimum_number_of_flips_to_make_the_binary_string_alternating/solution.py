@@ -1,9 +1,12 @@
+#SLIDING WINDOW
+#FIND KIN FOR SIZE N, WINDOW
+
 #courtesy NEETCODE CHANNEL YT!!
 #search prob name there
 class Solution:
     def minFlips(self, s: str) -> int:
         n = len(s)
-        s = s+ s
+        s = s+ s                 #for first opertaion!
         alt1 = ""               #1010101....
         alt2 = ""               #0101010.....
         for i in range(2*n):
