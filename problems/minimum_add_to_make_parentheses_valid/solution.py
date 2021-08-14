@@ -1,21 +1,13 @@
 class Solution:
-
-    def minAddToMakeValid(self, S):
-
-        r, l = 0, []
-
-        for s in S:
-
-            if s == "(":
-
-                l.append(s)
-
-            elif l:
-
-                l.pop()
-
+    def minAddToMakeValid(self, s: str) -> int:
+           
+        missing =left  =0        
+        for i in s:
+            if i == '(':
+                left+=1
             else:
-
-                r += 1 
-
-        return r + len(l)
+                if left> 0:
+                    left -=1
+                else:
+                    missing+=1
+        return missing+left
