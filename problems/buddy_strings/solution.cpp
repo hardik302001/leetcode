@@ -26,6 +26,7 @@ public:
         if(diff_pos.size() == 2) {
             swap(A[diff_pos[0]], A[diff_pos[1]]);
             return A==B;
+            
         }
         else{
             return false;
