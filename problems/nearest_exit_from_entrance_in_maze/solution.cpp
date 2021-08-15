@@ -26,7 +26,7 @@ public:
                     int newy = cury + dy[i];
                     cout<<newx<<" "<<newy<<endl;
                     dist[newx][newy] = dist[curx][cury] + 1;
-                    maze[newx][newy] = '+';
+                    maze[newx][newy] = '+';                  //to mark as visited
                     todo.push({newx, newy});
                     
                     if(border(newx,newy,M,N)){
