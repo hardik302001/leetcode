@@ -3,16 +3,6 @@
 
 
 class Solution {
-private:
-    bool isMatchingHashCode(map<char,int>& smap,map<char,int>& tmap){
-        for(auto it = tmap.begin(); it != tmap.end(); ++it){
-            char c= it->first; int freq = it->second;
-            if(smap[c] <freq)
-                return false;
-        }
-        return true;
-    }
-    
 public:
     string minWindow(string s, string t) {
         
@@ -30,7 +20,7 @@ public:
             
             //by this time, if we have reached the matching substring, we will start resizing. If not, then the window has been expanded on the right size and its proceeding
             while(isMatchingHashCode(smap,tmap)){
-                if(end-start<minLen){
+                if(end-start-1<minLen){
                     minStart=start;
                     minLen = end-start;
                 } //update the head and tail and length if needed, else, continue resizing
@@ -46,6 +36,17 @@ public:
         return "";
         
     }
+    
+    
+    bool isMatchingHashCode(map<char,int>& smap,map<char,int>& tmap){
+        for(auto it = tmap.begin(); it != tmap.end(); ++it){
+            char c= it->first; int freq = it->second;
+            if(smap[c] <freq)
+                return false;
+        }
+        return true;
+    }
+    
 };
 
 //one optimization that can be done is that we are again and again cross checking both hashmap, it is time consuming..wecan use only single hashmap to verify the same
