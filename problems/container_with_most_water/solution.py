@@ -10,8 +10,8 @@ class Solution:
             if height[l]==height[r]:
                 l = l+1
                 r = r -1
-            elif height[l]>height[r]:
+            elif height[l]>height[r]:  #bcz dec l id not efficient , bcz its already higher
                 r = r -1
-            elif height[l]<height[r]:
+            elif height[l]<height[r]:      #bcz decreasing r is not efficient, bcz its already higher
                 l = l+1
         return m
