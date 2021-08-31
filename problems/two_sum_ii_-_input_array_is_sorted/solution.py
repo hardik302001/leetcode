@@ -9,9 +9,10 @@ class Solution:
         for i in range(len(nums)):
             if (target - nums[i]) in h:
                 s,ss = i,h[target - nums[i]]
+                return [ss+1,s+1]
             else:
                 h[nums[i]] = i
             #print(h)
-        return [ss+1,s+1]
+        
                 
         
