@@ -1,3 +1,5 @@
+#see editorial ., gand faad explaiantion
+
 class Solution(object):
     def findMin(self, nums):
         """
