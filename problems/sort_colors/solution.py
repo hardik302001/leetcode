@@ -7,8 +7,10 @@ class Solution:
         while l <= r:
             if nums[l] == 0:
                 nums[l], nums[zero] = nums[zero], nums[l]
-                l += 1; zero += 1
-            elif nums[l] == 2:
+                zero += 1
+                l = l + 1   #if we get 0, 0 then endless loop.
+                
+            elif nums[l] == 2:                #we dont need l = l +1 in nums[l]==2, bcz after swapping suppose we get 0 , then that zero woulld be ignored if we do l = l+1          [1,2,0]
                 nums[l], nums[r] = nums[r], nums[l]
                 r -= 1
             else:
