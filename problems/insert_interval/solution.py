@@ -1,8 +1,3 @@
-#very impo ques
-
-
-
-
 class Solution:
     def insert(self, intervals: List[List[int]], new: List[int]) -> List[List[int]]:
         res = []
