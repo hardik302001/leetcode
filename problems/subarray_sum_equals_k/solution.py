@@ -7,6 +7,8 @@ Single scan. Given the current sum and the k, we check if (sum-k) existsed befor
 
 '''
 
+#for more context search subarray sum equals k on yputube and watch pepcoding videos
+#also see : https://leetcode.com/problems/subarray-sums-divisible-by-k/
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
         d = {}
