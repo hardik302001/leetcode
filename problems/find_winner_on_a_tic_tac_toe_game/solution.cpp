@@ -18,7 +18,7 @@ public:
         int anti_diag = 0;
         
         // Two players having value of 1 and -1, player_1 with value = 1 places first.
-        int player = 1;
+        int player = 1;         // next turn -1
         
         for (vector<int> move : moves) {
 
