@@ -20,7 +20,7 @@ rob(i) = Math.max( rob(i - 2) + currentHouseValue, rob(i - 1) )
 // public:
 //     int rob(vector<int>& nums) {
 //         int n = nums.size();
-//         if (n==1){
+//         if (n==1){     ,           //bcz we are initialising dp[1],means n = 2  .......if n == 1, we cant decalare dp[1], bcz size of vector is 1, we cant initialise second eleemnt..
 //             return nums[0];
 //         }
         
