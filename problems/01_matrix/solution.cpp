@@ -33,7 +33,7 @@ public:
                 int newx = curx + dx[i];
                 int newy = cury + dy[i];
                 
-                if(inside(newx , newy , M , N , dis) and dis[newx][newy]==-1){
+                if(inside(newx , newy , M , N) and dis[newx][newy]==-1){
                     dis[newx][newy] = dis[curx][cury] + 1;
                     todo.push({newx, newy});
                     
@@ -53,7 +53,7 @@ public:
 
 
 
-     bool inside(int x, int y, int &M, int &N, vector<vector<int> > &dis) {
+     bool inside(int x, int y, int &M, int &N) {
         if ((x < 0 || x >= M || y < 0 || y >= N )) {
             return false;
         }
