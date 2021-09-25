@@ -13,8 +13,10 @@ public:
         }
         
         
-        if(str[i]=='+'||str[i]=='-')
-            sign= str[i++]=='-' ?-1:1;
+        if(str[i]=='+'||str[i]=='-'){
+            sign= str[i]=='-' ?-1:1;
+            i = i +1;  //move to next position after sign only if we are given iwth sign, else we dont need to move one posi ahead
+        }
         
         
         while(i<s && isdigit(str[i]))
