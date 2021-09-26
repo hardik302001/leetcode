@@ -1,4 +1,4 @@
-//courtesy cidencode
+//courtesy codencode
 
 
 class Solution {
