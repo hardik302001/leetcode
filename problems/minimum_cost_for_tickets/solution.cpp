@@ -6,8 +6,7 @@ dp[i] = min cost for ticket on day i
     Complexity
 Time: O(n)
 Space: O(n)
-where n is the last day.
-    
+where n is the last day.   
 
 */
 
