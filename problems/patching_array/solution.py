@@ -1,3 +1,6 @@
+# see cpp.soln for this ques
+
+
 '''Let's see a situation, for example the n is 10 and nums is empty, the optimal solution to "reach" 10 is 0 1 2 4 7 15, we can find the pattern that we start from stack = [0], the next number should be sum of stack plus 1 equal to 1, and put 1 into stack, it become [0, 1], then the next number should be 2, the stack should be [0, 1, 2]...
 Then what about if we have a 3 in nums?
 
