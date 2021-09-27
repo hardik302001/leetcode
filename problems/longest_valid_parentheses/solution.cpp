@@ -1,22 +1,31 @@
+// cf 5c
+// https://leetcode.com/problems/longest-valid-parentheses/discuss/14355/My-solution-using-one-stack-in-one-pass
+
 
 class Solution {
 public:
+     // Using a stack. One pass
     int longestValidParentheses(string s) {
-        stack<int> stk;
-        stk.push(-1);
-        int maxL=0;
-        for(int i=0;i<s.size();i++)
+        vector<int> stack;
+        int maxLen = 0;
+        for (int i = 0; i < s.size(); ++i)
         {
-            int t=stk.top();
-            if(t!=-1&&s[i]==')'&&s[t]=='(')
-            {
-                stk.pop();
-                maxL=max(maxL,i-stk.top());
+            if (s[i] == '(')
+                stack.push_back(i);
+            else {
+                if (!stack.empty() && s[stack.back()] == '(') {
+                    stack.pop_back();
+                    int lastPos = -1;
+                    if (!stack.empty())
+                        lastPos = stack.back();
+                    int curLen = i - lastPos;
+                    maxLen = (maxLen < curLen) ? curLen : maxLen;
+                } else
+                    stack.push_back(i);
             }
-            else
-                stk.push(i);
         }
-        return maxL;
+        return maxLen;
     }
+        
 
 };
