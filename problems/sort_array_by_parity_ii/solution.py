@@ -1,17 +1,24 @@
+#coding decoded yt !
+
+
+
 class Solution:
-    def sortArrayByParityII(self, A):
-        """
-        :type A: List[int]
-        :rtype: List[int]
-        """
-        odd = 1
-        even = 0
-        result = [0]*len(A)
-        for num in A:
-            if num%2==0:
-                result[even] = num
-                even += 2
-            else:
-                result[odd] = num
-                odd += 2
-        return result
+    def sortArrayByParityII(self, a):
+        i = 0 # pointer for even misplaced (odd not at even index)
+        j = 1 # pointer for odd misplaced  (even not at odd index)
+        n = len(a) 
+        
+        # invariant: for every misplaced odd there is misplaced even
+        # since there is just enough space for odds and evens
+
+        while i < n and j < n:
+            while i<n and a[i] % 2 == 0:
+                i += 2
+                
+            while j<n and a[j] % 2 == 1:
+                j += 2
+                
+            if i<n and j<n:
+                a[i],a[j] = a[j],a[i]
+
+        return a 
