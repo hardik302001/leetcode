@@ -14,7 +14,7 @@ public:
                 stack.push_back(i);
             else {
                 if (!stack.empty() && s[stack.back()] == '(') {
-                    stack.pop_back();
+                    stack.pop_back();    //most impo step
                     int lastPos = -1;
                     if (!stack.empty())
                         lastPos = stack.back();
