@@ -14,7 +14,7 @@ public:
             mp[cur]++;                          //taking freq
             max_freq = max(max_freq, mp[cur]);  //max freq of that window (window = end-start+1)
             
-            if(  ( end-start+1) - max_freq> k){   //we ahv eonly k choices to remove ..if window len with k replacement goes out of range then we remove from starting..
+            if(  ( end-start+1) - max_freq> k){   //we have only k choices to remove ..if window len with k replacement goes out of range then we remove from starting..
                 char startchar = s[start];
                 mp[startchar]--;   //dec char count for that char...bcz it will not be counted in that window
                 start++;
