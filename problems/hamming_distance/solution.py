@@ -5,7 +5,7 @@ class Solution:
             if (n == 0):
                 return 0
             else:
-                return 1 + c(n & (n - 1))
+                return 1 + c(n & (n - 1))   #count set bit
              
         #no of set bits in xor
         p = x^y
