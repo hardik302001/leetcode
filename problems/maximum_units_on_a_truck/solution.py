@@ -1,8 +1,9 @@
 class Solution:
-    def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
-        boxTypes.sort(key=lambda x:x[1],reverse=1)
+    def maximumUnits(self, box: List[List[int]], truckSize: int) -> int:
+        box.sort(key=lambda x:x[1],reverse=True)        #we want maximum noofunits only..so our priority to maximise it..
+        print(box)
         s=0
-        for i,j in boxTypes:
+        for i,j in box:
             i=min(i,truckSize)
             s+=i*j
             truckSize-=i
