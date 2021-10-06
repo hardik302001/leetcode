@@ -1,3 +1,6 @@
+//very similar to : https://leetcode.com/problems/find-all-duplicates-in-an-array/
+
+
 /*
 Since, each element in the array is in range [1,n], it means we can use array elements as index for the same array.
 
