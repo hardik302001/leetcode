@@ -32,7 +32,7 @@ bool dfs(vector<vector<char>>&board, int count, int i, int j, string& word)
     
     bool res = dfs(board, count+1, i+1, j, word) || dfs(board, count+1, i-1, j, word) || dfs(board, count+1, i, j+1, word) ||dfs(board, count+1, i, j-1, word); //DFS in all 4 directions
     
-    board[i][j] = temp; //Restore the element after checking
+    board[i][j] = temp; //Restore the element after checking   , backtracking..bcz after chenging the value(marking visited) the matrix would be changed
     
     return res;
 }
