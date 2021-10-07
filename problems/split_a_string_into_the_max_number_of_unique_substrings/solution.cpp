@@ -15,7 +15,7 @@ public:
             {
                 seen.insert(candidate);
 				//recur for the remaining substring
-                maximum = max(maximum, 1 + max_unique_substrings(s.substr(i),seen));
+                maximum = max(maximum, 1 + max_unique_substrings(s.substr(i,s.size()),seen));
                 seen.erase(candidate);//backtracking
             }
         }
