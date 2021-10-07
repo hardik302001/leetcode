@@ -1,4 +1,4 @@
-
+//O(n3)
 
 class Solution {
 public:
@@ -18,6 +18,8 @@ public:
                 if(dp[j])
                 {
                     string word = s.substr(j,i-j);
+                    cout<<word<<endl;
+                    
                     if(dict.find(word) != dict.end())
                     {
                         dp[i]=true;
@@ -31,47 +33,18 @@ public:
     }
 };
 
+// l
+// le
+// lee
+// leet
+// c
+// leetc
+// co
+// leetco
+// cod
+// leetcod
+// code
 
-// leetcode
-// -
-// leetcode
-//  -
-// --
-// leetcode
-//   -
-//  --
-// ---
-// leetcode
-//    -
-//   --
-//  ---
-// ----     !!! leet
-// leetcode
-//     -
-//    --
-//   ---
-//  ----
-// -----
-// leetcode
-//      -
-//     --
-//    ---
-//   ----
-//  -----
-// ------
-// leetcode
-//       -
-//      --
-//     ---
-//    ----
-//   -----
-//  ------
-// -------
-// leetcode
-//        -
-//       --
-//      --- 
-//     ----  !!! code
 // All the lines below won't run b/c of break;
 // Index 4 is a valid start index, and index 4 - index 7 make up the word `code`
 // We can break once we've found any connecting word because
