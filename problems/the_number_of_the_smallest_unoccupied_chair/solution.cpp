@@ -22,7 +22,7 @@ public:
             int depart  = time[1];
             //Find the first unoccupied chair
             for(int i = 0; i<n; i++) {
-                if(endTimes[i] <= arrival) {
+                if(endTimes[i] <= arrival) {     //endtimes of that chair is less than equal to arrival time of guy,it means this guy will take this chair...why ?? bacause whosever was sitting earliwe(if unempty) would depart before arrival of this guy, and endtime of chair would be updated to deprature time...
                     endTimes[i] = depart; //update with current friend depart time
                     
                     if(arrival == targetArrivalTime)
