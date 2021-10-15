@@ -5,7 +5,7 @@ public:
         int buy = prices[0], profit = 0;
         for (int i=1; i<prices.size(); i++) {
             if (prices[i] > buy) profit = max(prices[i]-buy, profit);
-            else                 buy    = prices[i];
+            else                 buy    = min(buy, prices[i]);
         }
         return profit;
     }
