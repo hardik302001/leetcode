@@ -1,3 +1,5 @@
+#very similar to buy and sell stock
+
 class Solution:
     def maximumDifference(self, nums: List[int]) -> int:
         m = -1
