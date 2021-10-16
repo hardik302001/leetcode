@@ -11,19 +11,26 @@
 
 class Solution {
 public:
-    //map<pair<int, int>,int > dp;          //unordered_map not working..giving compiler error
+    //map<pair<int, int>,int > dp;          //unordered_map not working..giving compiler error, so i used map, but it is slow
                                           //better use 2d array with size [n][2]  , 2 for 2 choices, buying is true or false
     
     
-    
+    int dp[100001][2]; //global varible
     int maxProfit(vector<int>& prices) {
         int n = prices.size();
-        vector<vector<int> > dp(n, vector<int > (2,-1));
-        return recur(prices, 0 , 1,dp);
+        for(int i = 0;i<n;i++){
+            for(int j = 0;j<2;j++){
+                dp[i][j] = -1;
+            }
+        }
+        
+        int ans = recur(prices, 0 , 1);
+        return ans;
+        
     }
     
     
-    int recur(vector<int>&prices, int i, int buying, vector<vector<int> > &dp){
+    int recur(vector<int>&prices, int i, int buying){
         int buy, sell, cooldown;
         if(i>=prices.size()){
             return 0;
@@ -32,13 +39,17 @@ public:
             return dp[i][buying];
         }
         
-        cooldown = recur(prices, i+1, buying,dp);        
+             
         if (buying){           //if in buying state
-            buy = recur(prices, i+1, buying^1,dp) - prices[i];   //if buy , then relative profit would be curr profit + (-price[i]) 
+            buy = recur(prices, i+1, buying^1) - prices[i];   //if buy , then relative profit would be curr profit + (-price[i]) 
+            cooldown = recur(prices, i+1, buying);   
             dp[i][buying] = max(cooldown, buy);  //either you will buy or cooldown, 
+            
         }
         else{
-            sell = recur(prices, i+2, buying^1,dp) + prices[i]; //if sell , then relative profit would be curr profit + (+price[i]) 
+            sell = recur(prices, i+2, buying^1) + prices[i]; //if sell , then relative profit would be curr profit + (+price[i]) 
+            //i+2 for cooldown , mentioned in ques
+            cooldown = recur(prices, i+1, buying);   
             dp[i][buying] = max(cooldown, sell);
         }
             
