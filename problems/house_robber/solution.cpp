@@ -38,7 +38,6 @@ rob(i) = Math.max( rob(i - 2) + currentHouseValue, rob(i - 1) )
 
 
 
-
 //  o(n) , space O(1), bcz only 2 variable are changing so we need not create a full array of size n
 
 class Solution {
