@@ -56,7 +56,7 @@
 //         if (nums.size() == 1) return nums[0];
 //         if (nums.size() == 2) return max(nums[0], nums[1]);
         
-//         // either use first house and can't use last or last and not first:
+//         // either use first house and can't use last      OR    last and not first:
 //         vector<int> v1(nums.begin(), nums.end()-1);
 //         vector<int> v2(nums.begin()+1, nums.end());
 //         return max(houseRobber(v1), houseRobber(v2));
