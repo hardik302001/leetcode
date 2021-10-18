@@ -23,7 +23,7 @@ public:
         {
             int size = q.size(); 
             vector<int> currlevel;
-            for(int i=0;i<size;i++){
+            for(int i=0;i<size;i++){          //same level
                 TreeNode* tmp=q.front();
                 q.pop();
                 currlevel.push_back(tmp->val);
