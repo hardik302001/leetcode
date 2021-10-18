@@ -9,7 +9,7 @@ public:
         for(int subsetmask=0;subsetmask<maxsize;subsetmask++){
             vector<int> temp;
             for(int j=0;j<n;j++){
-               if((subsetmask&(1<<j))){
+               if((subsetmask>>j)&1){
                    temp.push_back(nums[j]);
                }
             }
