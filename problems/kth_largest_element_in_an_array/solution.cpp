@@ -1,17 +1,55 @@
-//for better method see previous code
-//Method 2: Using priority queue of size k  (max heap)
-// https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/
+//also see: https://leetcode.com/problems/find-the-kth-largest-integer-in-the-array/
+
+
+//COURTESY: CODINGMINUTES..
+//QUICKSELECT :KTH SMALLEST
+//BUT HERE kth largest..so n-k smallest in reversed!!
+//thats all we did
+
+
+//other method is priority queue also..see prev code for minhesp and max heap implementation!
+
 class Solution {
 public:
-    int findKthLargest(vector<int>& nums, int k) {
-        priority_queue<int> pq(nums.begin(), nums.end());
-        for (int i = 0; i < k - 1; i++) {
-            pq.pop();
+    int partition(vector<int>& a,int s,int e){
+        int pivot = a[e];
+        int i = s-1;
+        for (int j = s;j<e;j++){
+            if(a[j]<=pivot){
+                i++;
+                swap(a[i],a[j]);
+            }
         }
-        return pq.top();
+        
+        swap(a[i+1],a[e]);
+        return i+1;
+    }  //standard partition functio 
+    
+    int findKthLargest(vector<int>& nums, int k) {
+        reverse(nums.begin(),nums.end());
+        int s = 0;
+        int e = nums.size()-1;
+        int c = (e + 1) - k;              //kth smallest here in n-k in reversed
+        while(1){
+            //rather than going recursive we went for while 1 ..bcz we did not had s and e as parameters in actual function findKthLargest
+            
+            //and only thing varying was also s and e
+            
+            int p = partition(nums,s,e);
+            cout<<p<<endl;
+            if(p==c){
+                return nums[p];
+            }
+            else if(c<p){
+                e = p - 1;
+            }
+            else{
+                s = p + 1;
+            }
+            
+            
+            //rest all is standard and same
+            
+        }
     }
 };
-
-
-//Time: In worst case, O(nlogk).
-
