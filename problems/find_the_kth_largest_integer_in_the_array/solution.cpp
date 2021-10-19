@@ -23,24 +23,33 @@ see syntax of writing compaarter for PQ. decalre a new class and write className
 
 http://neutrofoton.github.io/blog/2016/12/29/c-plus-plus-priority-queue-with-comparator/ 
 
-in MAX HEAP , if (a,b) is passed , return true when a is smaller than b, elsereturn false
 
-in mEAN HEAP, if (a,b) is passed, return true when b is smaller than a, else return false.
+
+in MAX HEAP , if (a,b) is passed , return true when a is smaller than b, else return false
+
+in miN HEAP, if (a,b) is passed, return true when b is smaller than a, else return false.
 
 ignore cases when a==b
 
+// WHY ARE W DONING IT THIS WAY! I DONT KNOW..   //
+
+I thought it is analoguos to stack..first we put all elements to pq..according to making it maxheap or minheap..
+then we pop..  (i assumed we always pop last element in pq, similar to stack\U0001f612)
+so all decisions depend upon how we arrange elements while inserting them in pq, bcz its fixed that we will pop from end.
+
+
+So lets see MAXHEAP, whenever we pop, we should get max elements..
+it means we shud sort all elements in ascneding order(so that poping happens at end, and we get always max element)
+to arrange in ascending order, whenever we get two entities in
+custom comparators(suppose string a(first parameter) and string b(second parameter) ) , so according to condition(suppose here size), if a.size() > b.size()..it means a shud occur after b, but a is first parameter, so we shud return false, so that a can occur after b [ SAME AS WHAT WE DID IN CUSTOM SORTING , see above ]
+Similarly , if a < b, return true , bcz we want smaller entities to occur in beginning..
+Thus we get the rule..
+in MAX HEAP , if (a,b) is passed , return true when a is smaller than b, else return false
+
+Similar thing for minheap, we want bigger entities towards beginninig..
+in MIN HEAP, if (a,b) is passed, return true when b is smaller than a, else return false.
 
 */
-
-
-
-
-
-
-
-
-
-
 
 
 
