@@ -14,9 +14,12 @@ public:
                 int B = stoi(s.substr(a, b));
                 int C = stoi(s.substr(a+b, c));
                 int D = stoi(s.substr(a+b+c, d));
-                if (A<=255 && B<=255 && C<=255 && D<=255)
-                    if ( (ans=to_string(A)+"."+to_string(B)+"."+to_string(C)+"."+to_string(D)).length() == s.length()+3)
+                if (A<=255 && B<=255 && C<=255 && D<=255){
+                    ans=to_string(A)+"."+to_string(B)+"."+to_string(C)+"."+to_string(D);
+                    if(ans.length()==s.length()+3){   //bcz suppose we considered "01", but it is actually "1"..so we are checking that thing using length
                         ret.push_back(ans);
+                    }
+                }
             }    
         
         return ret;
