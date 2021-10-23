@@ -1,5 +1,15 @@
-#see editorial ., gand faad explaiantion
+'''
 
+
+
+#see editorial ... gand faad explaiantion
+O(logn)
+also see cpp code..that is small and better, all corner cases are adjusted automaticallly there!!
+
+
+
+
+'''
 class Solution(object):
     def findMin(self, nums):
         """
@@ -22,7 +32,7 @@ class Solution(object):
             return nums[0]
 
         # Binary search way
-        while right >= left:
+        while left < right:
             # Find the mid element
             mid = left + (right - left) // 2
             # if the mid element is greater than its next element then mid+1 element is the smallest
@@ -33,10 +43,11 @@ class Solution(object):
             if nums[mid - 1] > nums[mid]:
                 return nums[mid]
 
-            # if the mid elements value is greater than the 0th element this means
-            # the least value is still somewhere to the right as we are still dealing with elements greater than nums[0]
-            if nums[mid] > nums[0]:
+           
+            if nums[mid] > nums[right]:   #i did it wrt to end element to see where pivot lie, you  can do it wrt to first element also..your wish as we did in SOLUTION!
                 left = mid + 1
-            # if nums[0] is greater than the mid value then this means the smallest value is somewhere to the left
+            
             else:
-                right = mid - 1
+                right = mid
+                
+        # return nums[left]
