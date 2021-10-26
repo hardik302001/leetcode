@@ -1,3 +1,7 @@
+# see cpp soln, thats somewhat better maybe..
+#sliding window
+
+
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         i = j = max_len = 0
