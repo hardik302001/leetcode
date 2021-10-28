@@ -5,7 +5,7 @@ Then we iterate through our data and check if nums[slow - 2] == nums[fast]: what
 
 Complexity: time complexity is O(n), we move our two pointers only in one direction. Space complexity is O(1): we do it in-place as asked.
 
-Note also, that this can be easily adjacted if you asked to have not 2 duplicates, but k: in this case we just need to change all 3 occurences of 2 to k.
+Note also, that this can be easily adjusted if you asked to have not 2 duplicates, but k: in this case we just need to change all 3 occurences of 2 to k.
 '''
 class Solution:
     def removeDuplicates(self, nums):
