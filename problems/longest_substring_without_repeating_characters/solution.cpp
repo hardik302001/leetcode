@@ -3,8 +3,6 @@
 
 
 
-
-
 class Solution {
 public:
     int lengthOfLongestSubstring(string v) {
@@ -21,7 +19,7 @@ public:
                         maxx=max(currans,maxx);
 
                 }
-                else{
+                else{        //key exist in map also and map[key]=true also
                      while(v[j]!=k){
                             mymap[v[j]]=false;
                             j++;
