@@ -1,3 +1,6 @@
+//we are doing the other way .. we start from nodes not having all 4 directions surrounded, marking them visited..
+//then mark all unvisted nodes as X
+
 class Solution {
 public:
     void solve(vector<vector<char>>& mat) {
