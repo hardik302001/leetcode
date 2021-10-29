@@ -1,8 +1,8 @@
 /*
-    VISIT PREV BRUTE FROCE SOLUTION:FOR EVERY LEVEL WE TARVERSE THE WHOLE MATRIX AGAIN!
-    O(m*n*n*n) = O(m2n2)
+    VISIT PREV BRUTE FROCE SOLUTION:FOR EVERY LEVEL WE TARVERSE THE WHOLE MATRIX AGAIN!    O(m*n*n*n) = O(m2n2)
     WE optimise it by BFS, level by level..
     simple code : ans++ when puhed else ignore
+    TC = 0(m*n)
     
     
 */
@@ -35,7 +35,7 @@ public:
         while (!todo.empty()) {
             int sz = todo.size();
             bool pushed = false;  //this is very impo
-            while(sz--){         //for level order we need it
+            while(sz--){         //for level order we need it (bcz we r doing per second traversal)
                 int curx = todo.front().first;
                 int cury = todo.front().second;
 
