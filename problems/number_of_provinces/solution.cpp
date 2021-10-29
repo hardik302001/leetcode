@@ -1,32 +1,48 @@
-// Connected Components in a bidirectional Graph
-// As given in the question, we have n nodes. So we will make a visited array for n nodes. then we will start with one node, and mark all its connected nodes as visited=true. So we will count only how many times we have to start this process. that will be our answer.
-
+// see prev dfs soln also
 
 class Solution {
 public:
+    class UnionFind {
+        public:  
+            vector<int> parent;
+            int count = 0;
+            UnionFind(int n){                  //constructor
+                count = n;
+                parent = vector<int>(n,-1);
+            }
 
-    int findCircleNum(vector<vector<int>>& M) {
-        int n=M.size(),ans=0;
-        if(n==0) return 0;
+            int find(int x){
+                if(parent[x]==-1) return x;
+                return find(parent[x]);
+            }
 
-        vector<bool>vis(n,false);
+            void Union(int x,int y){
+                int X = find(x);
+                int Y = find(y);
 
-        for(int i=0;i<n;i++)
-        {
-            if(!vis[i])
-            {
-                ans++;
-                dfs(M,vis,i);
+                if(X==Y) return;
+
+                parent[X]=Y;
+                count--;
+            }
+
+            int getCount(){
+                return count;
+            }
+    };
+    
+     
+    
+    int findCircleNum(vector<vector<int>>& isConnected) {
+        int n = isConnected.size();
+        UnionFind uf(n);
+        
+        for(int i=0;i<n;i++){
+            for(int j=i;j<n;j++){
+                if(isConnected[i][j])
+                   uf.Union(i,j);
             }
         }
-        return ans;
-    }
-
-    void dfs(vector<vector<int>>& M, vector<bool>& vis, int i)
-    {
-        vis[i]=true;
-        for(int j=0;j<M.size();j++)
-            if(M[i][j]==1 && !vis[j])
-                dfs(M,vis,j);
+        return uf.getCount();
     }
 };
