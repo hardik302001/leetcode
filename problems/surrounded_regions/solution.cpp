@@ -59,8 +59,6 @@ public:
 
 
 
-
-
      bool inside(int x, int y, int &M, int &N, vector<vector<char> > &mat) {
         if ((x < 0 || x >= M || y < 0 || y >= N )) {
             return false;
