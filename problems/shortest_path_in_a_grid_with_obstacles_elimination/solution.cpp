@@ -37,6 +37,20 @@ public:
             int remk = todo.front()[3];
             
             todo.pop();
+            
+            
+            if(mat[curx][cury]==1){
+                if(remk > 0){
+                    remk--;
+                }
+                else{
+                    continue;    //you got obstacle and you dont have chance to tackle it, so stop there only(we arent adding more nodes now with this path ) 
+                }
+            }
+            
+            
+            
+            
             // If you've reached the end, great, return the currentLength!
             if(curx == (M-1) and cury == (N-1)){
                 return curd;         //return current distance
@@ -44,14 +58,7 @@ public:
             
             //if you encounter obstacle, if you have chance to tackle that obstacle, then go for it, else if you have no chance then you cant tackle this obstacle, then it of no use to continue as you cant move further
             
-            if(mat[curx][cury]==1){
-                if(remk > 0){
-                    remk--;
-                }
-                else{
-                    continue;    //you got obstacle and you dont have chance to tackle it, so stop there only
-                }
-            }
+
             
             
             // If this cell is already visited with a K value lesser than this one, we would want to save Ks for future use, so we continue
