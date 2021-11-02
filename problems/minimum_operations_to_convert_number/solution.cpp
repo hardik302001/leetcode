@@ -1,27 +1,66 @@
 class Solution {
 public:
-        int minimumOperations(vector<int>& nums, int start, int goal) {
-        vector<int>visited(1001,-1);
-        int ans=0;
-        queue<int>q;
+    int minimumOperations(vector<int>& nums, int start, int goal) {
+        
+        
+        queue<long long> q;
+        vector<bool> visited(1050,false);
+        
         q.push(start);
-        while(!q.empty()){
-            int size=q.size();
-            while(size--){
-                int node=q.front();q.pop();
-                if(node==goal)
-                    return ans;
-                if(node>1000 || node<0 || visited[node]==1)
+        visited[start]=true;
+                
+        long long len=0;
+                
+        while(q.size()>0)
+        {
+            long long qs=q.size();
+            len++;
+
+            while(qs--)
+            {
+                long long u=q.front(); q.pop();
+                
+                if(u<0 or u>1000)
                     continue;
-                visited[node]=1;
-                for(int i=0;i<nums.size();i++){
-                    int a=node+nums[i],b=node-nums[i],c=node^nums[i];
-                    for(auto j :{a,b,c})
-                            q.push(j);
+                                
+                for(auto v:nums)
+                {
+                    
+                    if((u+v)==goal)
+                            return len;
+                    
+                     if((u+v)<=1000 and (u+v)>=0 and visited[u+v]==false )
+                    {    
+                        q.push(u+v); visited[u+v]=true;           
+                    }
+                    
+                    
+                    if((u-v)==goal)
+                            return len;
+                    
+                    if((u-v)<=1000 and (u-v)>=0 and visited[u-v]==false )
+                    {    
+                        q.push(u-v); visited[u-v]=true;           
+                    }
+                    
+                    if((u^v)==goal)
+                            return len;
+                    
+                     if((u^v)<=1000 and (u^v)>=0 and visited[(u^v)]==false )
+                    {    
+                        q.push(u^v); visited[u^v]=true;           
+                    }
+                    
+                    
                 }
+                
             }
-            ans++;
+            
+            // cout<<size<<endl;
+            
         }
+        
         return -1;
+        
     }
 };
