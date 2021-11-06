@@ -5,3 +5,7 @@ class Solution(object):
         for i in nums:
             a ^= i
         return a
+    
+    
+    
+    #  can also use sum concept
