@@ -2,26 +2,32 @@ class Solution {
 public:
     string addStrings(string num1, string num2) {
         int carry = 0;
-        string ans = "";
+        string res = "";
         while(num1.size() or num2.size() or carry){
-            int temp = 0;
-            if(num1.size()){
-                temp += (num1[num1.size()-1]-'0');
+            int tot = carry;
+            if(num1.length()>0){
+                char ch = (num1[num1.length()-1]);
+                //cout<<"cha "<<ch<<" "<<endl;
+                int a = ch - '0';
+                tot = tot + a;
+               // cout<<"a "<<a<<endl;
                 num1.pop_back();
             }
-            if(num2.size()){
-                temp += (num2[num2.size()-1]-'0');
+            if(num2.length()>0){
+                char ch = (num2[num2.length()-1]);
+             //   cout<<"chb "<<ch <<" "<<endl;
+                int b = ch - '0';
+                tot = tot + b;
+           //     cout<<" b "<<b<<endl;
                 num2.pop_back();
             }
+            //cout<<tot<<" ";
+            carry = tot/10;
+            int last = tot%10;
             
-            temp += carry;
-            carry = temp/10;
-            cout<<temp<<" ";
-            ans = to_string(temp%10) + ans;
+            res = res + to_string(last);
         }
-    
-        return ans;
+        reverse(res.begin(),res.end());
+        return res;
     }
-    
-    
 };
