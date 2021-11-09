@@ -8,7 +8,7 @@ public:
         vector<vector<int>> subs(p);
         for (int i = 0; i < p; i++) {
             for (int j = 0; j < n; j++) {
-                if ((i >> j) & 1) {
+                if ((i) & (1<<j)) {
                     subs[i].push_back(nums[j]);
                 }
             }
