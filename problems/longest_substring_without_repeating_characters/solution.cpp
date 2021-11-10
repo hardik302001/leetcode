@@ -26,7 +26,7 @@ public:
                      }
                      
                     
-                     currans=(i-j);
+                     currans=(i-j); 
                      j++;
 
 
