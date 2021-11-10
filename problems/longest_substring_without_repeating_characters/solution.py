@@ -8,7 +8,7 @@ class Solution:
         ss = set()
         while j < len(s):
             if s[j] in ss:
-                ss.remove(s[i])
+                ss.remove(s[i])         #we are removing s[j], not s[i]
                 i+=1                               #we are increasing i here, not j
                 # suppose s[j] was not s[i] , for ex: "abcdb" , so i = 0, j = 4 , but "b" exist in map, so we update 
                 # remove s[i] ans i = i +1, but still "b" exists
