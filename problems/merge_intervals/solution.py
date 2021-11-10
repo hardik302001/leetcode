@@ -10,9 +10,9 @@ class Solution:
                 current_start = intervals[i][0]
                 current_end = intervals[i][1]
                 if previous_end >= current_start: # overlap
-                    merged[-1][1] = max(previous_end,current_end)
+                    merged[-1][1] = max(previous_end,current_end)     #either current end can be less / more than prev end, so we take max of both
                 else:
-                    merged.append(intervals[i])
+                    merged.append(intervals[i]) #no overlap
                     
         return merged
 
