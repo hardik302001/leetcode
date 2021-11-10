@@ -1,3 +1,11 @@
+// https://leetcode.com/problems/daily-temperatures/submissions/
+// nge
+
+
+
+// we need to return at each step, so we have to calculate at every step and keep track !
+
+
 class StockSpanner {
     stack<pair<int, int>> st; // [price, days]
 
