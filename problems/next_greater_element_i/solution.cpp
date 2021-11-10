@@ -1,3 +1,8 @@
+// https://leetcode.com/problems/daily-temperatures/submissions/
+// https://leetcode.com/problems/online-stock-span/
+
+
+
 class Solution {
 public:
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
