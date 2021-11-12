@@ -3,6 +3,9 @@
 // TC : O(n^2) 
 // SC : O(n)
 
+
+
+// TUSHAR VIDEO FOR SAME
 /*
 
  * Taking 1~n as root respectively:
