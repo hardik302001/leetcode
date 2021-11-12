@@ -1,6 +1,9 @@
 //tc = o(n)
 //sc O(n)
 
+//sliding window
+
+
 class Solution {
 public:
     int totalFruit(vector<int>& tree) {
@@ -10,11 +13,13 @@ public:
         while(r<n){
             if(m[tree[r]]==0) ct++;
             m[tree[r]]++;
+            
             while(l<r && ct>2){
                 m[tree[l]]--;
                 if(m[tree[l]]==0) ct--;
                 l++;
             }
+            
             ma=max(ma,r-l+1);
             
             r++;
