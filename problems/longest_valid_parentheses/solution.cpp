@@ -6,22 +6,24 @@ class Solution {
 public:
      // Using a stack. One pass
     int longestValidParentheses(string s) {
-        vector<int> stack;
+        stack<int> stack;
         int maxLen = 0;
         for (int i = 0; i < s.size(); ++i)
         {
             if (s[i] == '(')
-                stack.push_back(i);
+                stack.push(i);
             else {
-                if (!stack.empty() && s[stack.back()] == '(') {
-                    stack.pop_back();    //most impo step
-                    int lastPos = -1;
+                if (!stack.empty() && s[stack.top()] == '(') {
+                    stack.pop();                             //most impo step!   bcz we want beginning of subarray to find length of longest valid parantheis
+                    
+                    int lastPos = -1;           //suppose stack is empty now, we have 0 based indexing, len = i +1 [ == i - (-1) ] 
+                                                //else len = i - (start of subarray or top of stack)
                     if (!stack.empty())
-                        lastPos = stack.back();
+                        lastPos = stack.top();
                     int curLen = i - lastPos;
                     maxLen = (maxLen < curLen) ? curLen : maxLen;
                 } else
-                    stack.push_back(i);
+                    stack.push(i);
             }
         }
         return maxLen;
