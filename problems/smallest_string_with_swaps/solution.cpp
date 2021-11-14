@@ -38,8 +38,10 @@ public:
     {
         adjList.resize(s.length());
         visited.resize(s.length(),false);
-        for(vector<int> &v:pairs)                               //Create adjacency list using the indice pairs
+        for(vector<int> &v:pairs)                         //Create adjacency list using the indice pairs
             adjList[v[0]].push_back(v[1]),adjList[v[1]].push_back(v[0]);
+        
+        
         for(int i=0;i<s.length();i++)
             if(!visited[i])
             {
