@@ -35,9 +35,7 @@ public:
                 
                 if(inside(newx , newy , M , N) and dis[newx][newy]==-1){
                     dis[newx][newy] = dis[curx][cury] + 1;
-                    todo.push({newx, newy});
-                    
-                    
+                    todo.push({newx, newy});                    
                 }
                 
             }   
