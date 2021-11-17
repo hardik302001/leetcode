@@ -1,5 +1,19 @@
 //we are doing the other way .. we start from nodes not having all 4 directions surrounded, marking them visited..
 //then mark all unvisted nodes as X
+/*
+
+BETTER USE MULTI SOURCE BFS, startbfs everytime you et new node, rather than collecting all at once, and doing bfs only once...why??
+
+Bcz, suppose border column have all O, you push all of them in queue..
+you start bfs, take first node of them, mark all its negihbours as visited(including the whole column)..now you choose the next node for bfs, but it is already marked as visited
+, but still it exists in queue...The work that this node had to do , was done by its adjacent(or neighbouring nodes)..so its waste to again and again start bfs...
+
+MAYBE YOU CAN GET TLE!
+https://leetcode.com/problems/number-of-enclaves/ for more info
+
+*/
+
+
 
 class Solution {
 public:
