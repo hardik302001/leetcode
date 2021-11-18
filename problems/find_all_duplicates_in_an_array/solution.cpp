@@ -1,10 +1,14 @@
+//similar to https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/submissions/
+
+
 class Solution {
 public:
     vector<int> findDuplicates(vector<int>& nums) {
         vector<int> res;
         for(int i = 0; i < nums.size(); i++){
-            nums[abs(nums[i])-1] = -nums[abs(nums[i])-1];
-            if(nums[abs(nums[i])-1] > 0) res.push_back(abs(nums [i]));
+            int n = abs(nums[i]);
+            nums[n-1] = -nums[n-1];
+            if(nums[n-1] > 0) res.push_back(abs(nums [i]));
         }
         return res;
     }
