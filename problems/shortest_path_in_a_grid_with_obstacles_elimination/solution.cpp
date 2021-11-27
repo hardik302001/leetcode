@@ -39,7 +39,7 @@ public:
             todo.pop();
             
             
-            if(mat[curx][cury]==1){
+            if(mat[curx][cury]== 1){
                 if(remk > 0){
                     remk--;
                 }
@@ -48,9 +48,7 @@ public:
                 }
             }
             
-            
-            
-            
+
             // If you've reached the end, great, return the currentLength!
             if(curx == (M-1) and cury == (N-1)){
                 return curd;         //return current distance
@@ -59,8 +57,7 @@ public:
             //if you encounter obstacle, if you have chance to tackle that obstacle, then go for it, else if you have no chance then you cant tackle this obstacle, then it of no use to continue as you cant move further
             
 
-            
-            
+     
             // If this cell is already visited with a K value lesser than this one, we would want to save Ks for future use, so we continue
             // This is the most important condition and part of the solution!
             if(dis[curx][cury] != -1  and dis[curx][cury] >= remk){
