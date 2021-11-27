@@ -1,22 +1,28 @@
-//iterative
-
-
-
 class Solution {
 public:
     
-   vector<string> letterCombinations(string digits) {
-	if(digits == "") return {};
-	vector<string> mappings{"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"}, ans{""};
-	for(auto& digit : digits){
-		vector<string> extendCombination;
-		for(auto& currentCombination : ans)
-			for(auto& newChar : mappings[digit - '2'])
-				extendCombination.push_back(currentCombination + newChar);                            
-		swap(extendCombination, ans); // same as ans = extendCombination, just avoids copying each value. You Can also use swap(ans,extendCombination)
-	}
-	return ans;
-}
+
+vector<string> letterCombinations(string digits) {
+        vector<string> res;
+        if(digits.size() == 0) return res;
+        string local;
+        vector<vector<char>> table{{'0'}, {'1'}, {'a','b','c'}, {'d','e','f'}, {'g','h','i'}, {'j','k','l'}, {'m','n','o'}, {'p','q','r','s'}, {'t','u','v'}, {'w','x','y','z'}};
+        
+        backtracking(table, res, local, 0, digits);
+        return res;
+    }
     
+    void backtracking(vector<vector<char>>& table, vector<string>& res, string& local, int index, string& digits){
+        int digit = digits[index] - '0';
+
+        if(index == digits.size())
+            res.push_back(local);
+        else
+            for(int i = 0; i < table[digit].size(); i++){
+                local.push_back(table[digit][i]);
+                backtracking(table, res, local, index+1, digits);
+                local.pop_back();
+            }
+    }
 
 };
