@@ -13,7 +13,7 @@ public:
 
             int find(int x){
                 if(parent[x]==-1) return x;
-                return find(parent[x]);
+                return parent[x] =  find(parent[x]);
             }
 
             void Union(int x,int y){
