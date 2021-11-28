@@ -13,12 +13,14 @@ public:
         //     cout<<i<<" ";
         // }
         // cout<<endl;
+        
         for(auto node : graph[src])
             dfs(graph, result, path, node, end);
     }
 
     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
-        vector<vector<int>> paths; vector<int> path;
+        vector<vector<int>> paths; 
+        vector<int> path;
         int nodes = graph.size();
         if(nodes == 0) return paths;
         
