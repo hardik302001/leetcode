@@ -35,7 +35,6 @@ public:
                 // return false;
             }
             
-
             int getCount(){
                 return count;
             }
@@ -63,7 +62,8 @@ public:
                     uf.Union(emailToFirstAccountId[emailAddress], i);
                 }
             }
-                                                                                                    }
+        }
+        
         
 
         
@@ -72,7 +72,7 @@ public:
         unordered_map<int,vector<string>> unifiedSetIdToEmails;
 
         for (const pair<string, int>& p : emailToFirstAccountId) {
-            int unifiedSetId = uf.find(p.second);
+            int unifiedSetId = uf.find(p.second);                     //find connections
             unifiedSetIdToEmails[unifiedSetId].push_back(p.first);
         }
 
