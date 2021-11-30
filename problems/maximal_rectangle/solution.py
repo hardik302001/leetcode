@@ -6,7 +6,7 @@ class Solution:
         for i in range(len(heights)):
             while heights[i] < heights[stack[-1]]:  
                 p= stack.pop()
-                print(p)
+                # print(p)
                 height = heights[p]
                 width = i - stack[-1] - 1 #i i s right point  , stack[-1] is left pointer
                 ans = max(ans, height * width)
@@ -25,8 +25,8 @@ class Solution:
         m = [[0]*w for _ in range(h)]
         for j in range(h):
             for i in range(w):
-                if matrix[j][i] == '1':
-                    m[j][i] = m[j-1][i] + 1
+                if matrix[j][i] == '1': 
+                    m[j][i] = m[j-1][i] + 1            #m[j][i]  not m[i][j]
         for i in range(h):
             for j in range(w):
                 print(m[i][j],end = " ")
@@ -34,5 +34,8 @@ class Solution:
         ma = 0
         for row in m:
             print(row) #this row is itself a histogram
-            ma = max(ma,self.largestRectangleArea(row))
+            x = self.largestRectangleArea(row)
+            ma = max(ma,x)
+            print(x)
+            
         return ma
