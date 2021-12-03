@@ -7,7 +7,7 @@ class Solution:
         for i in range(1,n):
             if(nums[i]<0):
                 ma, mi = mi, ma      #swap ma , mi
-            
+            # print(mi,ma)
             ma = max(nums[i],nums[i]*ma)
             mi = min(nums[i],nums[i]*mi)
            
