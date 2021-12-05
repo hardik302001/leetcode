@@ -10,8 +10,10 @@ public:
             if( zeroCount > K ) {
                 if( A[ l ] == 0 ) --zeroCount;
                 ++l;
+                
             }
             maxLen = max( maxLen, r - l + 1 );
+            
         }
         return maxLen;
     }
