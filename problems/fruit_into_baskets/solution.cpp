@@ -2,7 +2,7 @@
 //sc O(n)
 
 //sliding window
-
+//code similar to : https://leetcode.com/problems/max-consecutive-ones-iii/submissions/
 
 class Solution {
 public:
@@ -14,7 +14,7 @@ public:
             if(m[tree[r]]==0) ct++;
             m[tree[r]]++;
             
-            while(l<r && ct>2){
+            while(ct>2){
                 m[tree[l]]--;
                 if(m[tree[l]]==0) ct--;
                 l++;
