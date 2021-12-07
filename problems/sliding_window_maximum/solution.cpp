@@ -1,6 +1,9 @@
 //SLIDING WINDOW + DEQUE
 //SIMILAR PROBEM : https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/ 
 
+//also do: https://leetcode.com/problems/jump-game-vi/
+//also do : https://leetcode.com/problems/constrained-subsequence-sum/
+
 class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
