@@ -1,47 +1,39 @@
-/*
-take starting 2 lists from vector..merg ethem and push at end ...
-
-do thsi until you have only on list left in the vector
 
 
+//see prev soln also
 
-*/
+
+
 class Solution {
 public:
-     ListNode* mergeTwoLists(ListNode* a, ListNode* b) {
-        //base case
-if(a==NULL){
-    return b;
-}
-if(b==NULL){
-    return a;
-}
 
-//rec vase
-ListNode* c = NULL;
-if(a->val < b->val){
-    c = a;
-    c->next = mergeTwoLists(a->next,b);
-}
-else{
-    c = b;
-    c->next = mergeTwoLists(a,b->next);
-}
-return c;
+    
+    struct compare {
+        bool operator()(const ListNode* l, const ListNode* r) {
+            return l->val > r->val;
+        }
+    };
+    
+    
+    ListNode *mergeKLists(vector<ListNode *> &lists) { //priority_queue
+        priority_queue<ListNode *, vector<ListNode *>, compare> q;
+        for(auto l : lists) {
+            if(l)  q.push(l);    //adress of head pointer
+        }
+        if(q.empty())  return NULL;
+
+        ListNode* result = q.top();
+        q.pop();
+        
+        if(result->next) q.push(result->next);   //next of head
+        
+        ListNode* tail = result;            
+        while(!q.empty()) {
+            tail->next = q.top();
+            q.pop();
+            tail = tail->next;
+            if(tail->next) q.push(tail->next);
+        }
+        return result;
     }
-    
-    
-    
-    ListNode *mergeKLists(vector<ListNode *> &lists) {
-    if(lists.empty()){
-        return nullptr;
-    }
-    while(lists.size() > 1){
-        lists.push_back(mergeTwoLists(lists[0], lists[1]));
-        lists.erase(lists.begin());
-        lists.erase(lists.begin());
-    }
-    return lists.front();
-}
-    
 };
