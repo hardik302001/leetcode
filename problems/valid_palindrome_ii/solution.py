@@ -1,3 +1,7 @@
+#we have to delete not replace, so delete them actually
+
+
+
 class Solution:
     def validPalindrome(self, s: str) -> bool:
         i = 0
