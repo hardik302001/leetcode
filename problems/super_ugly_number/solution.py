@@ -3,18 +3,23 @@
 
 
 
-class Solution:
-    def nthSuperUglyNumber(self, n: int, primes: List[int]) -> int:
-        res = [1]
-        p = [0]*len(primes)   #for index to keep track  of ith prime in primes array
-        s = len(primes)
-        while len(res)<n:
-            m = 1000000000000000
-            for i in range(s):    
-                m = min(m, primes[i]*res[p[i]])
-            res.append(m)
-            for i in range(s):
-                if primes[i]*res[p[i]]==m:
-                    p[i]+=1
-        print(res)
-        return res[n-1]
+
+    
+class Solution(object):
+    def nthSuperUglyNumber(self, n, primes):
+        size = len(primes)
+        ugly = 1
+        dp = [1]
+        index = [0]*size
+        ugly_nums = [1] * size
+        
+        for i in range(1, n):
+            # compute possibly ugly numbers and update index
+            for j in range(0, size):
+                if ugly_nums[j] == ugly:
+                    ugly_nums[j] = dp[index[j]] * primes[j]
+                    index[j] += 1
+            # get the minimum
+            ugly = min(ugly_nums)
+            dp.append(ugly)
+        return dp[-1]
