@@ -6,6 +6,13 @@ class Solution:
     def orderOfLargestPlusSign(self, N, mines):
         #up, left, down, right
         dp, res, mines = [[[0, 0, 0, 0] for j in range(N)] for i in range(N)], 0, {(i, j) for i, j in mines}
+        # 2 loop bcz 
+        
+        #top to bottom , left to right, hume peeche ka pta h! 
+        # basically (i-1) and (j-1) pr kya ho rha h
+        
+        # bottom to top, right to left ,hume i+1 aur j+1 ka pta h!
+        
         for i in range(N):
             for j in range(N):
                 if (i, j) not in mines:
