@@ -1,5 +1,5 @@
 #dp
-#dp[i][j] tells aximum possible sqaure len of sqaure that can be formed having mat[i][j] as its bottom right corner 
+#dp[i][j] tells maximum possible sqaure len of sqaure that can be formed having mat[i][j] as its bottom right corner 
 # see SOLUTION SECTION SECOND SOLUTION
 # TC, SC = O(m*n)
 
@@ -31,6 +31,8 @@ class Solution:
 #try visualising with the sample test case!
 #TC = O(mn)
 #SC = O(1)
+
+# see figure in solution section
 
 
 class Solution:
