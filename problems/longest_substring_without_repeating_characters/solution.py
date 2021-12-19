@@ -1,4 +1,3 @@
-# see cpp soln, thats somewhat better maybe..
 #sliding window
 
 
@@ -15,6 +14,7 @@ class Solution:
             else:
                 d[s[r]] = 1
             
+            #bcz we have repetition at the latest added eleemnt only, so we will check its freq only
             while d[s[r]]>1:
                 d[s[l]]-=1
                 l = l +1
