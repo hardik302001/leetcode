@@ -1,11 +1,16 @@
 class Solution:
-    def minimumAbsDifference(self, a: List[int]) -> List[List[int]]:
-        a.sort()
-        ans, diff = [], float('inf')
-        for i in range(1, len(a)):
-            if diff >= a[i] - a[i - 1]:
-                if diff > a[i] - a[i - 1]:
-                    ans = []
-                    diff = a[i] - a[i - 1]
-                ans.append([a[i - 1], a[i]])
-        return ans
+    def minimumAbsDifference(self, arr: List[int]) -> List[List[int]]:
+        d = {}
+        m = 10000000
+        n = len(arr)
+        arr.sort()
+        for i in range(1, n):
+            dif = abs(arr[i]-arr[i-1])
+            m = min(m, dif)
+            if dif in d:
+                d[dif].append([arr[i-1],arr[i]])
+            else:
+                d[dif] = [[arr[i-1],arr[i]]]
+                          
+        
+        return d[m]
