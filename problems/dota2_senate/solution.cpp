@@ -31,10 +31,12 @@ public:
             if(r<d)
             {
                 rad.push(r+n);    // +n  to tell that we will meet in next round
+                //in this iteration, the popped dir is ignored
             }
             else
             {
                 dir.push(d+n);
+                // in this iteration popped rad is ignored
             }
         }
     }
