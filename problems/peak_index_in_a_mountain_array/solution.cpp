@@ -1,3 +1,8 @@
+//SAME CODE AS LEETCODE: Find Peak Element
+
+
+
+
 class Solution {
 public:
     int peakIndexInMountainArray(vector<int> nums) {
@@ -15,3 +20,4 @@ public:
     }
     
 };
+
