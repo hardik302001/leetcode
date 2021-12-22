@@ -3,7 +3,6 @@ split in 2 parts
 reverse second part
 
 change links simulatenuosly
-
 */
 
 class Solution {
