@@ -1,5 +1,3 @@
-#very ekeegent code!
-#take all four example to understand thecode!
 
 
 class Solution(object):
