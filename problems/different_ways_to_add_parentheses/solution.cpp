@@ -18,18 +18,23 @@ public:
 			if (cur == '+' || cur == '-' || cur == '*') {
 				// Split input string into two parts and solve them recursively
 				vector<int> result1, result2;
-				string substr = input.substr(0, i);
+                
+                
+				string substr1 = input.substr(0, i);
 				// check if dpMap has the result for substr
-				if (dpMap.find(substr) != dpMap.end())
-					result1 = dpMap[substr];
+				if (dpMap.find(substr1) != dpMap.end())
+					result1 = dpMap[substr1];
 				else
-					result1 = computeWithDP(substr, dpMap);
+					result1 = computeWithDP(substr1, dpMap);
 
-				substr = input.substr(i + 1,size);
-				if (dpMap.find(substr) != dpMap.end())
-					result2 = dpMap[substr];
+                
+                
+                
+				string substr2 = input.substr(i + 1,size);
+				if (dpMap.find(substr2) != dpMap.end())
+					result2 = dpMap[substr2];
 				else
-					result2 = computeWithDP(substr, dpMap);
+					result2 = computeWithDP(substr2, dpMap);
 				
 				for (auto n1 : result1) {
 					for (auto n2 : result2) {
@@ -63,7 +68,7 @@ public:
 
 //RECURSIVE CODE!
 //DIVIDE AND CONQUER
-//see the beauty of code, we arereturning the res vector evry time, going in deep and returning back output..
+//see the beauty of code, we are returning the res vector evry time, going in deep and returning back output..
 //can be optimised using memosization!
 
 class Solution {
