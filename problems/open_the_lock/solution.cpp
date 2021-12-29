@@ -15,13 +15,21 @@ public:
         while (!wheelQueue.empty()) {
             int levelSize = wheelQueue.size();
             while (levelSize--) {
-                string up, down, currentWheel = wheelQueue.front();
+                string up;
+                string down;
+                string currentWheel = wheelQueue.front();        // 3 cases
                 wheelQueue.pop();
-                if (currentWheel == target) {
+                if (currentWheel == target) { //curr wheel
                     return result;
                 }
+                
+                //now 2 cases for up and down
+
+            
                 for (int i = 0; i < 4; i++) {
-                    down = up = currentWheel;
+                    // every time,we can change atmost one wheel, fro up and down, and get a new combination, so we always reset up and down to curr!
+                    down = currentWheel;
+                    up = currentWheel;
                     char upCh = up[i], downCh = down[i];
                     up[i] = (upCh == '9' ? '0' : upCh + 1);
                     down[i] = (downCh == '0' ? '9' : downCh - 1);
