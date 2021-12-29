@@ -16,5 +16,5 @@ class Solution:
                     
                     
                     
-                #print(i, " -> ",dp) , uncomment it to see dy run simulation
+                #print(i, " -> ",dp) , uncomment it to see dry run simulation
         return dp[n]
