@@ -14,6 +14,6 @@ class Solution:
                 
                 #in other case , if begin(1), interval(i).end se bhi jyda hai...toh begin ko hatao...else wo overlap krega iske jyda chance hai...
             else:
-                begin = intervals[i]
+                begin = intervals[i]     # no overlap , so move on
 
         return counter
