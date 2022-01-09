@@ -4,7 +4,8 @@
 #so monotonic, we can apply bs..
 
 #EXACTLY SAME AS :  https://leetcode.com/problems/koko-eating-bananas/submissions/
-
+# also see: https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
+# also see: https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/submissions/
 
 
 
