@@ -1,5 +1,15 @@
 // exactly same as: https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
 
+// do read below problem!
+// same as : https://leetcode.com/problems/minimized-maximum-of-products-distributed-to-any-store/
+// minimise maximum, 
+/*
+    # minimise maximum, so we return do hi = mid for valid case, and return low
+    # if it was maximise minimum, then we will do li = mid +1 for valid case and return li - 1
+    #                        OR
+    # keep a speerate variable ans , and equate ans to the value, whenever we get valid result for answer from function
+*/
+
 class Solution {
 public:
     
@@ -15,7 +25,8 @@ public:
         }
         if(count<=m)         // bcz m <= nums.length
             return true;
-        return false;
+        return false;  // bcz we need count subarray to manintain maximum as mid, but we can aonly have m subarrays, so we failed, so fuck off 
+        
     }
     
     int splitArray(vector<int>& nums, int m) {
