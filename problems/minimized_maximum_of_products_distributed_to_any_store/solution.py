@@ -7,8 +7,10 @@
 # also see: https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
 # also see: https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/submissions/
 
-
-
+# minimise maximum, so we return do hi = mid for valid case, and return low
+# if it was maximise minimum, then we will do li = mid +1 for valid case and return li - 1
+#                        OR
+# keep a speerate variable ans , and equate ans to the value, whenever we get valid result for answer from function
 
 class Solution:
     def minimizedMaximum(self, n: int, quan: List[int]) -> int:
@@ -16,6 +18,7 @@ class Solution:
         while lo < hi:
             mid = (lo + hi) // 2
             if self.canTakeProd(mid, quan, n):
+                print(mid)
                 hi = mid
             else:
                 lo = mid + 1
@@ -29,4 +32,58 @@ class Solution:
             store += int(math.ceil(quan[i]/int(k)))    #to conisder how many stores will quan[i] take, if we can have atmost k products in each store
             
             if store > n: return False       #k is too small, less k leads to more number of stores
-        return True
+        
+        
+        return True   #bcz some stores can be 0!
+    
+    
+    
+
+'''
+
+ver important
+also see: https://www.lintcode.com/problem/848/description
+
+
+class Solution {
+public:
+    double minmaxGasDist(vector<int> &s, int k) {
+        // Write your code here
+        double l = 0;
+        double r = s.back() - s[0];
+        double ans = r;
+        while(l + 0.000001 < r){
+            double m =  l + (r-l)/2.0;
+            //cout<<m<<endl;
+            if(check(m , s, k)){
+                r = m;
+            }
+            else{
+                l = m;
+            }
+        }
+
+        return l;
+    }
+
+    bool check(double m , vector<int>&s , int k){
+        int c = 0;  // total number of gas station needed to have max distance as m
+        for(int i = 1;i<s.size();i++){
+            double diff = s[i]-s[i-1];
+            c = c + ceil(diff/m)-1;  // ceil will give divide diff as some alpha m and 1 piece of distance less than m, so still we have our maximum distance as m
+            // we did ceil - 1, bcz we dont need count of parts of disatnce , we need actual station, so that will be ceil - 1;
+            // draw on notebook , you can see yourself!
+
+        }
+        if(c>k){
+            return false;  // bcz we need c stations to keep maximum distance as m, but we are allowed only k, so some part of stance will be more than m , thus we wont have maximum as m
+        }
+        else{
+            return true;
+        }
+        
+    }
+};
+
+
+'''
