@@ -18,7 +18,7 @@ public:
                 char startchar = s[start];
                 mp[startchar]--;   //dec char count for that char...bcz it will not be counted in that window
                 start++;
-                for(auto it: mp){
+                for(auto it: mp){        //very importt to update max freq
                     max_freq = max(max_freq, it.second);
                 }
             }
