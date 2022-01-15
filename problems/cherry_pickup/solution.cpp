@@ -9,7 +9,7 @@ i.e. (r1-0) + (c1-0) = (r2-0) + (c2-0) so the current state becomes [r1,c1,c2] a
 
 // TC: O(n3)
 // SC = O(n3)
-
+ 
 // we kept c2 in terms of r1, c1, r2 because to keep one varible less! To improve complexity
 
 class Solution {
