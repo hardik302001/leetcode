@@ -1,6 +1,5 @@
 #O(n2)
 # https://leetcode.com/problems/longest-palindromic-substring/
-#see first submission also
 
 
 class Solution:
@@ -20,5 +19,23 @@ class Solution:
             res = res + (odd + even)
         return res
 
- 
 
+    
+#  other way to do same thing
+'''
+#O(n2)
+# https://leetcode.com/problems/longest-palindromic-substring/
+
+class Solution:
+    def countSubstrings(self, S: str) -> int:
+        N = len(S)
+        ans = 0
+        for center in range(2*N - 1):
+            left = center // 2
+            right = left + center % 2
+            while left >= 0 and right < N and S[left] == S[right]:
+                ans += 1
+                left -= 1
+                right += 1
+        return ans
+'''
