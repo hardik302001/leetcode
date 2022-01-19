@@ -1,5 +1,5 @@
 /*
-see previous code ..that show use of hashmap in linklist quetsions!
+see below code ..that show use of hashmap in linklist quetsions!
 this is approach 2 that is having space compelxtiy O(1)
 
 
@@ -64,7 +64,7 @@ ListNode *detectCycle(ListNode *head) {
         slow = slow->next;
         fast = fast->next->next;
         if (slow == fast) {                      // there is a cycle
-            while(slow != entry) {               // found the entry location
+            while(slow != entry) {               // found the entry location, very impo step
                 slow  = slow->next;
                 entry = entry->next;
             }
@@ -75,3 +75,36 @@ ListNode *detectCycle(ListNode *head) {
 }
     
 };
+
+
+/*
+//HASHMAP OF { LINKLIST AND INDEX } brute approach bcz extra O(n) space
+class Solution {
+public:
+    ListNode *detectCycle(ListNode *head) {
+     
+        if(!head)
+            return NULL;
+        
+        map<ListNode*,int>m;
+        
+        ListNode* temp=head;
+        int i=0;
+        
+        while(temp!=NULL)
+        {
+            auto id=m.find(temp);
+            if(id==m.end())
+                m.insert({temp,i});
+            else
+                return id->first;  // we were having pointer to class, so we used arrow operator
+            ++i;
+            
+            temp=temp->next;
+        }
+        
+        return NULL;
+    
+    }
+};
+*/
