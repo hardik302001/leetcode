@@ -18,7 +18,7 @@ public:
         //forward traversal
         int p =  1;
         for(int i = 0;i<n;i++){
-            if(nums[i]==0){
+            if(nums[i]==0){   //we need to start again , and skip 0, bcz we need subarray and it will make product 0
                 p = 1;
                 ans = max(ans, 0);
             }
