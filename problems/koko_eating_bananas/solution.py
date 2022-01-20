@@ -10,21 +10,22 @@
 # O(NlogM) time，N = len(piles), M = max(piles)
 class Solution(object):
     def minEatingSpeed(self, piles, H):
-        
-        lo,hi = 1,max(piles)
+        ans = -1
+        lo,hi = 1,max(piles)+2
         while lo < hi:
             mid = (lo + hi) // 2
             if self.canEat(mid, piles, H):
+                ans = mid
                 hi = mid
             else:
                 lo = mid + 1
-        return lo
+        return ans
     
     
     
     def canEat(self,k, piles, H):                         #can eat all
         time = 0
         for i in range(len(piles)):
-            time += int(math.ceil(piles[i]/float(k)))
+            time += ((piles[i]+k-1)//k)
             if time > H: return False
         return True
