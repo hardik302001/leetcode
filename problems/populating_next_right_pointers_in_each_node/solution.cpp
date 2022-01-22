@@ -1,5 +1,9 @@
 // we just need to define the new pointer "next" for the given tree, so we just need to tell that for every nide x, what will be x->next !
 
+
+// read the O(1) space soln from discuss, i have not done it...
+
+
 class Solution {
 public:
     Node* connect(Node* root) {
