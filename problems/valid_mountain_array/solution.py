@@ -1,24 +1,18 @@
-class Solution:
-    def validMountainArray(self, arr: List[int]) -> bool:
-        n = len(arr)
-        if n<3:
+class Solution(object):
+    def validMountainArray(self, A):
+
+        if len(A) < 3:
             return False
-        j = 0
-        for i in range(n-1):
-            if arr[i]<arr[i+1]:
-                continue
-            elif arr[i]==arr[i+1]:
-                return False
-            else:
-                j = i
+        left = 0
+        for i in range(len(A)-1):
+            if A[i+1] <= A[i]:
+                left = i
                 break
-        if j==0:return False   #we need inc then decreasing
-        for i in range(j,n-1):
-            if arr[i]>arr[i+1]:
-                continue
-            else:
-                return False
-        if arr[-1]<arr[-2]:
+        right = 0
+        for i in range(len(A)-1, 0, -1):
+            if A[i-1] <= A[i]:
+                right = i
+                break
+        if left == right and left > 0 and right+1 < len(A):
             return True
-        else:
-            return False
+        return False
