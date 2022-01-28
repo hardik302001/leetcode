@@ -65,10 +65,12 @@ public:
         for(int i = 0; i<word.size(); i++)
         {
             int index = word[i] - 'a';
-            curr = curr->children[index];
-            if(curr == NULL)
+            if(curr->children[index] != NULL)
             {
-                return false;                      //not even reached at end of the word
+                curr = curr->children[index];
+            }
+            else{   
+                return false;                    //if not even reached till end of word, so false
             }
             
             
@@ -84,9 +86,11 @@ public:
         for(int i = 0; i<prefix.size(); i++)
         {
             int index = prefix[i] - 'a';
-            curr = curr->children[index];
-            if(curr == NULL)
+            if(curr->children[index] != NULL)
             {
+                curr = curr->children[index];
+            }
+            else{   
                 return false;                    //if not even reached till end of prefix, so false
             }
         }
@@ -117,5 +121,4 @@ public:
 private:  //GOOD PRACTICE TO KEEP ROOT NODE PRIVATE
     TrieNode* root;
     
-
 };
