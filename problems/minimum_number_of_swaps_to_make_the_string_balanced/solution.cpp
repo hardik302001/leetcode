@@ -75,7 +75,7 @@ as c<0 means, ] is before [, which is inbalanced string
 but, here in this problem ,we can be given an imbalanced string as well, so c can be negative as well.
 that's the same we are suppose to find how much imbalanced it is, i.e. what is the most negative value of c we can get
 e.g .
-_][[] ] ] [[
+ ][[] ] ] [[
 -1010-1-2-10 -> c
 here, we are getting mx = -2 as maximum negative value, which we can consider as "parts to repair" in easy words.
 so this much charactors are invalid, hence we can find the number swaps by it,
