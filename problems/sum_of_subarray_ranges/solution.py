@@ -1,3 +1,7 @@
+'''
+visit for more info : https://leetcode.com/problems/sum-of-subarray-minimums/
+'''
+
 class Solution:
     def subArrayRanges(self, arr: List[int]) -> int:
         n = len(arr)
@@ -34,7 +38,7 @@ class Solution:
                 st.pop()
             st.append(i)
         
-        minans = 0
+        minans = 0        # summation of min of all subarrays
         
         for i in range(n):
             if pse[i]== -1:
@@ -50,7 +54,7 @@ class Solution:
             # print(left_diff, right_diff)
             minans = minans + arr[i]* (left_diff +1)*( right_diff+1)
         
-        maxans = 0
+        maxans = 0    # summation of max of all subarrays!
         
         for i in range(n):
             if pge[i]== -1:
