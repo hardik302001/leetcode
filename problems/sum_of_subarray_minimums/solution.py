@@ -1,4 +1,4 @@
-#lead coding by fraz yt
+#lead coding by fraz yt: https://www.youtube.com/watch?v=9-TXIVEXX2w
 #MONOTONIC STACK
 
 # also see https://leetcode.com/problems/sum-of-subarray-ranges/
@@ -36,6 +36,9 @@ class Solution:
         # print(next_smaller_element)
         ans = 0
         
+        # arr[i]*(g1 + 1)*(g2 + 1)
+        # we need to include minimum element on both sides, thats why + 1, we are multiplying to consoder all cases from both sides!
+        
         for i in range(n):
             if prev_smaller_element[i]== -1:
                 left_diff = i - 0
@@ -54,10 +57,10 @@ class Solution:
         
         return ans
     
-#one thing o note here is that we have strict and non strict condition in NSE and PSE respectively! Why ?
+#one thing to note here is that we have strict and non strict condition in NSE and PSE respectively! Why ?
 #When we have duplicate cases, then if we have both strict then we would have answer less than the expected cases, we would miss some subarray's
 #if both non strict then some cases would be considered more than once
 
 #so we do one of NSE or PSE  as strict, and other as non strict!
-#you can do NSE - PSE as strict - non strict    or    NSE - PSE as non strict - strict, soesn't matter!
+#you can do NSE - PSE as strict - non strict    or    NSE - PSE as non strict - strict, doesn't matter!
 #we have to consider all cases only once!
