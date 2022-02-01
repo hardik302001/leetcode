@@ -1,3 +1,5 @@
+// minimise buy time
+
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
