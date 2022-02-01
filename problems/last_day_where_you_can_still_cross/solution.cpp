@@ -14,12 +14,12 @@ public:
     int latestDayToCross(int row, int col, vector<vector<int>>& cells) {
         
         int left = 1, right = cells.size(), ans = 0;
-        while (left <= right) {
+        while (left < right) {
             int mid = left + (right - left) / 2;
             if (canWalk(cells, row, col, mid)) {
                 ans = mid; // Update current answer so far
                 left = mid + 1; // Try to find a larger day
-            } else right = mid - 1; // Try to find a smaller day
+            } else right = mid; // Try to find a smaller day
         }
         return ans;
         
@@ -50,16 +50,14 @@ public:
                 int cury = todo.front().second;
 
                 todo.pop();
-
+                if(border(curx,cury,M,N)){
+                    return true;
+                }
                 for(int i = 0;i<4;i++){
                     int newx = curx + dx[i];
                     int newy = cury + dy[i];
 
                     if(inside(newx , newy , M , N , mat) and mat[newx][newy]==0){
-                        if(border(newx,newy,M,N)){
-                            return true;
-                        }
-                        
                         todo.push({newx, newy});
                         mat[newx][newy] = 1;  
                         
