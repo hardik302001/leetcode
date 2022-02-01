@@ -1,4 +1,7 @@
+// also see: https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product/
+
 /*
+
 Simplest case. Consider this array [1,2,3,-4,5,6]. We can think of -4 as dividing the array into 2 halves, [1,2,3] and [5,6]. The forward traversal yields the max as 6, while the reverse traversal yields 30.
 Say the array has even number of negative numbers eg. [1,2,-3,-4,5,6]. Both forward and reverse traversals yield the same result, so it doesnt matter.
 Say the array has multiple odd number of negative integers. eg. [1,2,-3,-4,-5, 6]. We can think of the "last" negative number in each traversal breaks the array to 2 halves. In this case , the max array in forward traversal is the maximum of ([1,2,-3,-4] and [6]) which is 24. In the reverse, the split is delimited by -3. So the max subarrray is teh maximum of ([6,-5,-4] and [2])
