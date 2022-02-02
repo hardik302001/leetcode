@@ -1,4 +1,8 @@
+#  TOWER OF HANOI
 
+# also see: https://leetcode.com/discuss/interview-question/1392284/solving-tower-of-hanoi-using-the-magic-of-recursion
+# It takes 2power n -1 steps!
+# see gfg , there ae tons of resources for it!
 
 class Solution(object):
     def decodeString(self, s):
