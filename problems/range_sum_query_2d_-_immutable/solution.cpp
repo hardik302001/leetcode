@@ -1,3 +1,7 @@
+// also see: https://leetcode.com/problems/matrix-block-sum/submissions/
+
+
+
 /*
 Construct a 2D array sums[row+1][col+1]
 
@@ -45,8 +49,7 @@ public:
         sums = vector<vector<int>>(row+1, vector<int>(col+1, 0));
         for(int i=1; i<=row; i++) {
             for(int j=1; j<=col; j++) {
-                sums[i][j] = matrix[i-1][j-1] + 
-                             sums[i-1][j] + sums[i][j-1] - sums[i-1][j-1] ;
+                sums[i][j] = matrix[i-1][j-1] + sums[i-1][j] + sums[i][j-1] - sums[i-1][j-1] ;
             }
         }
     }
