@@ -1,22 +1,49 @@
 class Solution {
+
 public:
+
     int thirdMax(vector<int>& nums) {
 
-    set<int>s;
-    for(int i=0;i<nums.size();i++){
-        s.insert(nums[i]);
+        
+
+        long one = LONG_MIN, two = LONG_MIN, three = LONG_MIN;
+
+        for (int num : nums) {
+
+            if (num == one || num == two || num == three)
+
+                continue;
+
+            
+
+            if (num > one) {
+
+                three = two;
+
+                two = one;
+
+                one = num;
+
+            } else if (num > two) {
+
+                three = two;
+
+                two = num;
+
+            } else if (num > three) {
+
+                three = num;
+
+            }
+
+        }
+
+        
+
+        return three == LONG_MIN ? one : three;
+
     }
-    vector<int>v;
-    
-    for(auto i:s){
-        v.push_back(i);
-    }
-    
-    int n=v.size();
-    if(v.size()>=3){
-        return v[n-3];
-    }
-    return v[n-1];
-}
-    
+
 };
+        
+
