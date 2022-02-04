@@ -1,4 +1,8 @@
 #for more similar ques see: https://leetcode.com/problems/subarray-sum-equals-k/
+# exactly same as: https://leetcode.com/problems/subarray-sums-divisible-by-k/
+# there we needed count , in tis question we need length
+
+
 
 class Solution:
     def checkSubarraySum(self, A: List[int], K: int) -> bool:
