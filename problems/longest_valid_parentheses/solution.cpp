@@ -1,6 +1,6 @@
 // cf 5c
 // https://leetcode.com/problems/longest-valid-parentheses/discuss/14355/My-solution-using-one-stack-in-one-pass
-
+// also see: https://leetcode.com/problems/contiguous-array/
 
 class Solution {
 public:
