@@ -1,3 +1,6 @@
+# also see: https://leetcode.com/discuss/interview-question/1744097/Google-or-Phone-Screen-or-Interval-and-queries
+
+
 #also see cpp solution , thats good maybe
 
 #INTERVAL SOLUTION
@@ -91,8 +94,9 @@ class Solution:
     
 
 
-# single array solution for strat and end
+# single array solution for start and end
 # idea same as https://leetcode.com/problems/two-best-non-overlapping-events/
+
 class Solution:
     def minMeetingRooms(self, intervals):
         # Write your code here
