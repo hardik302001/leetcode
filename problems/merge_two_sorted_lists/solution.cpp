@@ -12,23 +12,23 @@ class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* a, ListNode* b) {
         //base case
-if(a==NULL){
-    return b;
-}
-if(b==NULL){
-    return a;
-}
+        if(a==NULL){
+            return b;
+        }
+        if(b==NULL){
+            return a;
+        }
 
-//rec vase
-ListNode* c = NULL;
-if(a->val < b->val){
-    c = a;
-    c->next = mergeTwoLists(a->next,b);
-}
-else{
-    c = b;
-    c->next = mergeTwoLists(a,b->next);
-}
-return c;
+        //rec vase
+        ListNode* c = NULL;
+        if(a->val < b->val){
+            c = a;
+            c->next = mergeTwoLists(a->next,b);
+        }
+        else{
+            c = b;
+            c->next = mergeTwoLists(a,b->next);
+        }
+        return c;
     }
 };
