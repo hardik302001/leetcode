@@ -1,3 +1,30 @@
+// brute force  :::: Given an array of length n, there are n+1 ways/intervals to partition it into two parts. Each interval has two choices - split or not. In the worse case, we will have to check all possibilities, which becomes O(2^(n+1)) -> O(2^n). This analysis is similar to palindrome partitioning
+
+
+/*
+
+// DP (O(n^3)) => n for traversal , n for recursion , n for checking in dict
+
+class Solution {
+public:
+    bool wordBreak(string s, vector<string>& dict) {
+        unordered_set<string> wordDict(dict.begin(), dict.end());
+        vector<char> mem(s.size(),-1);
+        return canBrk(0,s,wordDict,mem);    
+    }
+    bool canBrk(int start, string& s, unordered_set<string>& wordDict,vector<char>& mem) {
+        int n = s.size();
+        if(start == n) return 1;
+        if(mem[start]!= -1) return mem[start];
+        string sub;
+        for(int i = start; i<n; i++) if(wordDict.count(sub+=s[i]) && canBrk(i+1,s,wordDict,mem)) return mem[start] = 1; 
+        return mem[start] = 0;
+    }
+    
+};
+
+*/
+
 //O(n3)
 
 class Solution {
@@ -54,3 +81,6 @@ public:
 //   ------
 //  -------
 // --------
+
+
+
