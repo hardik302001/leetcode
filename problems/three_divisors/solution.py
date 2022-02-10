@@ -1,6 +1,6 @@
-class Solution:
+# square of prime
 
-    
+class Solution:
     def isThree(self, n: int) -> bool:
         def prime(n):
             if n==2 or n==3: return True
