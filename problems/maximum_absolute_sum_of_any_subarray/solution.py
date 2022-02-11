@@ -1,5 +1,5 @@
 # maxsubarraysum for arr  and
-# maxsubarraysum for copy of array with dall negative elements
+# maxsubarraysum for copy of array with all negative elements
 
 class Solution:
     def maxAbsoluteSum(self, arr: List[int]) -> int:
