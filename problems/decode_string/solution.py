@@ -4,6 +4,14 @@
 # It takes 2power n -1 steps!
 # see gfg , there ae tons of resources for it!
 
+
+
+
+
+
+
+# also see: very similar : https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/submissions/
+
 class Solution(object):
     def decodeString(self, s):
         stack = []; curNum = 0; curString = ''
@@ -22,5 +30,6 @@ class Solution(object):
                 curNum = curNum*10 + int(c)
             else:
                 curString += c
-        return curString
-    
+                
+                
+        return curString   # very important to notice that we are returning curstring
