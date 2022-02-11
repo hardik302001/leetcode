@@ -1,10 +1,10 @@
 //EXACT SAME QUES: https://leetcode.com/problems/find-all-anagrams-in-a-string/
-//ust changed the return value
+// just changed the return value
 
 
 class Solution {
 public:
-    bool checkInclusion(string p, string s) {  //also cahnge the string s and string p, in this question it is interchanged
+    bool checkInclusion(string p, string s) {  //also change the string s and string p, in this question it is interchanged
         vector<int> v;
 		if(s.size()<p.size())
 		return bool(v.size());
