@@ -10,35 +10,36 @@ public:
     }
     
     queue<string> bfs;
-    int result = 0;
+    int result = 1;
     bfs.push(beginWord);
     
     while(!bfs.empty()) {
-        result++;
         int size = bfs.size();
         while(size--) {
             string temp = bfs.front();
             bfs.pop();
+            if(temp == endWord)
+                return result;
             
             //comparing is done in O(26)*size of word here!
             // see prev TLE pproachh there it was count of word of size(size of word)* size of word
             for(int i = 0; i < temp.size(); i++) {
             string current = temp;
-            for(char j = 'a'; j <= 'z'; j++) {
-                current[i] = j; 
-                if(current == endWord)
-                    return result+1;
-                    
-                if(current == temp)
-                    continue;
-                
-                if(dictionary.find(current) != dictionary.end()) {
-                    bfs.push(current);
-                    dictionary.erase(current);
+                for(char j = 'a'; j <= 'z'; j++) {
+                    current[i] = j; 
+
+                    if(current == temp)
+                        continue;
+
+                    if(dictionary.find(current) != dictionary.end()) {
+                        bfs.push(current);
+                        dictionary.erase(current);
+                    }
                 }
             }
         }
-        }
+        
+        result++;
     }
     return 0;
     }
