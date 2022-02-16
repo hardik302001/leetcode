@@ -1,14 +1,6 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
+// INORDER TRAVERSAL!
+// TC: O(n), number of node
+// SC: O(h), height , for recursive stack!
 class Solution {
 public:
     int sumRootToLeaf(TreeNode* root,int s = 0) {  //we need to consider s everytime bcz, new traversal are dependent of previous s value!
