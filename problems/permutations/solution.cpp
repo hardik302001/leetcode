@@ -1,11 +1,13 @@
 //total n! permutuations
-//see prev submission
+//see prev submission, for backtracking by copy
+
+// here it is backtracking by refernce
 
 
 class Solution {
 public:
    // method 1: standard backtracing solution
-    vector<vector<int> > permute(vector<int> &num) {
+    vector<vector<int> > permute(vector<int> &num) {  // we are passing num array only ...
         vector<vector<int> > ans;
         permutation(num, 0, ans);
         return ans;
