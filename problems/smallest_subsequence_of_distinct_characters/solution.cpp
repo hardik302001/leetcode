@@ -1,5 +1,7 @@
 //STACK
 
+// nse - monotonic stack  
+
 /*
 
 Here greedy approach is applied to solve the question.
@@ -29,7 +31,7 @@ public:
             char ch = text[i];
 
             freq[ch - 'a']--;
-            if(seen[ch - 'a'])         //if it is already considered, then move on
+            if(seen[ch - 'a'])         //if it is already considered, then move on, bcz we want to keep it lexographic small, so we conisder its first appreanace!
                 continue;
 
             while(st.size() != 0 && st.top() > ch && freq[st.top() - 'a'] > 0){  // if we get lexographically smaller char, and the freq of st.top() >0, if means we can get the char st.top(), again while traversing the string, so we will consider it that time... so we pop , until this is possible, to get as smallest possible lexograph as we can!
