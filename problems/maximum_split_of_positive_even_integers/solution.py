@@ -1,23 +1,20 @@
 class Solution:
-    def maximumEvenSplit(self, tar: int) -> List[int]:
-        if tar&1:
-            return []
-        t = tar
-        ans = []
-        ans.append(2)
-        cur = 2
-        t = t - cur
+    def maximumEvenSplit(self, target: int) -> List[int]:
+        if target&1:return []
         
-        if tar>2:
-            while t>ans[-1]:
-                ans.append(cur*2)
-                t = t - cur*2
-                cur = cur + 1
-        if t!=0:
-            ans = ans[::-1]
-            x = 0
-            while t>0:
-                ans[x]+=2
-                t -=2
-                x +=1
+        cur = 2
+        ans = []
+        s = 0
+        while s<target:
+            ans.append(cur)
+            s += cur
+            cur += 2
+        
+        if s==target: return ans
+        
+        # print(ans)
+        s = s - ans.pop()
+        extra = target - s
+        ans[-1]+=extra
         return ans
+        
