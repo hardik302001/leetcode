@@ -1,3 +1,5 @@
+#O(n^2)
+'''
 class Solution:
     def canBeIncreasing(self, nums: List[int]) -> bool:
 
@@ -13,3 +15,25 @@ class Solution:
                 return True
 
         return False
+'''
+
+
+class Solution:
+    def canBeIncreasing(self, nums: List[int]) -> bool:
+        n = len(nums)
+        c = 0
+        for i in range(1, n):
+            if nums[i]<=nums[i-1]:
+                if c>=1:
+                    return False
+                
+                if i>=2:
+                    if nums[i-2]<nums[i]:
+                        nums[i-1] = nums[i]
+                    else:
+                        nums[i] = nums[i-1]
+                elif i ==1:
+                    nums[i-1] = nums[i]
+                c = c + 1
+            # print(nums)
+        return True
