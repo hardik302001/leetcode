@@ -19,6 +19,8 @@ public:
 };
 */
 
+// BFS
+/*
 class Solution {
 public:
     Node* cloneGraph(Node* node) {
@@ -26,7 +28,7 @@ public:
             return NULL;
         }
         Node* copy = new Node(node -> val, {});
-        copies[node] = copy;
+        copies[node] = copy;                  // map ! decalred in private scope
         queue<Node*> todo;
         todo.push(node);
         while (!todo.empty()) {
@@ -43,5 +45,28 @@ public:
         return copy;
     }
 private:
-    unordered_map<Node*, Node*> copies;
+    unordered_map<Node*, Node*> copies;    // to keep track that every node have its copy 
+};
+*/
+
+// DFS
+class Solution {
+private:
+    unordered_map<Node*, Node*> visited;
+public:
+    Node* cloneGraph(Node* node) {
+        if(node == NULL)
+            return node;
+        if(visited[node])
+            return visited[node];
+        
+        Node* cloned = new Node(node->val, {});
+        visited[node] = cloned;
+        
+        for(auto nei: node->neighbors){
+            cloned->neighbors.push_back(cloneGraph(nei));
+        }
+        return cloned;
+        
+    }
 };
