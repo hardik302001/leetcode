@@ -24,7 +24,7 @@ class Solution:
         
         
         #it means we can cover all elements , so return sum
-        if s - m >= m: 
+        if (s - m +1)>= m: 
             return s
         else:
             return 2 * (s - m) + 1  
