@@ -1,5 +1,5 @@
 //SLIDING WINDOW
-
+// https://leetcode.com/problems/frequency-of-the-most-frequent-element/discuss/1179374/Python-3-Sliding-Window-Explanation-with-Code
 
 class Solution {
 public:
@@ -11,8 +11,8 @@ public:
             
             dist+=(right-left)*(nums[right]-nums[right-1]);   //bring all segment of prev elements[left, right-1] equal to cur element i.e. nums[right] 
             
-            while(dist>k){
-                dist-=(nums[right]-nums[left]);
+            while(dist>k){  // we want such dist , that we can change to current lement, so we remove the farthest elements..bcz they will ofc take large no. of moves...so we do left++;
+                dist-=(nums[right]-nums[left]);  //remove contrib of current lement, that we have to remove i.e. nums[left]
                 left++;
             }
         
