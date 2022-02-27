@@ -1,33 +1,29 @@
-class Solution {
+class Solution { // 20 ms, faster than 98.92%
 public:
-    int kthSmallest(vector<vector<int>>& a, int k) {
-        int n = a.size();
-        if (n == 0) {
-            return 0;
+    int n, m;
+    int kthSmallest(vector<vector<int>>& matrix, int k) {
+        m = matrix.size(), n = matrix[0].size(); // For general, the matrix need not be a square
+        int left = matrix[0][0], right = matrix[m-1][n-1];
+        
+        while (left < right) {
+            int mid = (left + right) >> 1;
+            if (countLessOrEqual(matrix, mid) >= k) {
+                right = mid; // try to looking for a smaller value in the left side
+            } else left = mid + 1; // try to looking for a bigger value in the right side
         }
-        int start = a[0][0];
-        int end = a[n-1][n-1];
-        int ans;
-        while(start < end) {
-            int cnt = 0,j;
-            int mid = (start+end)/2;
-            for (int row = 0; row<n; row++) {
-                 j = n-1;
-                while(j >= 0 and a[row][j] > mid) {
-                    j--;
-                }
-                
-                cnt += (j+1);
-            }
-            
-            if (cnt < k) {
-               // ans = mid;
-                start = mid+1;
-            }
-            else {
-                end = mid;
-            }
+        return left;
+    }
+    
+    
+    int countLessOrEqual(vector<vector<int>>& matrix, int x) {
+        int cnt = 0;
+        
+        for (int r = 0; r < m; ++r) {
+            int c = n - 1; // start with the rightmost column
+            while (c >= 0 && matrix[r][c] > x) c--;  // decrease column until matrix[r][c] <= x
+            cnt += (c + 1);
         }
-        return start;
+        return cnt;
     }
 };
+
