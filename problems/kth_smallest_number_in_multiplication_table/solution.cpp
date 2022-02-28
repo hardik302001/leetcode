@@ -13,7 +13,7 @@
 // If the last number in the row is larger than num, then the number of smaller numbers is num/i. Otherwise, the whole row is smaller = n.
 // So we add to c the minimum between the two.
 
-// Time Complexity: O(m * log(nm)) - we do binary search on nm numbers = log(nm), and for each search we call kSmaller which is m.
+// Time Complexity: O(m * log(nm)) - we do binary search on nm numbers = log(nm), and for each search we call kSmaller which is m.    
 // Space Complexity: O(1)
 
 class Solution {
@@ -27,7 +27,7 @@ public:
     }
     
     int findKthNumber(int m, int n, int k) {
-        int lo = 0, hi = m*n, mid, res;
+        int lo = 1, hi = m*n, mid;
         
         while (lo < hi) {
             mid = lo + (hi - lo) / 2;
