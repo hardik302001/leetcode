@@ -3,25 +3,20 @@ class Solution:
         res = []
         if len(nums)==0:
             return nums
-        
+        nums.append("#")       # for last range 
         n = len(nums)
+        prev = nums[0]
         s = nums[0]
-        for i in range(1,n):
-            if nums[i]==(nums[i-1]+1):
-                continue
+        e = nums[0]
+        for i in range(1 , n):
+            if nums[i-1]+1==nums[i]:
+                e = nums[i]
             else:
-                if s==nums[i-1]:
+                if e==s:
                     res.append(str(s))
-                    s = nums[i]
                 else:
-                    e = nums[i-1]
-                    ss = str(s) + "->" + str(e)
-                    res.append(str(ss))
-                    s = nums[i]
-        if s==nums[-1]:
-            res.append(str(s))
-        else:
-            e = nums[-1]
-            ss = str(s) + "->" + str(e)
-            res.append(str(ss))
+                    res.append(str(s) + "->" +str(e))
+                
+                s = nums[i]
+                e = nums[i]
         return res
