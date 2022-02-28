@@ -6,11 +6,19 @@
 #EXACTLY SAME AS :  https://leetcode.com/problems/koko-eating-bananas/submissions/
 # also see: https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
 # also see: https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/submissions/
+# also see: https://leetcode.com/problems/heaters/                    
+# very important \U0001f446
 
+'''
 # minimise maximum, so we return do hi = mid for valid case, and return low
+
 # if it was maximise minimum, then we will do li = mid +1 for valid case and return li - 1
+# keep something extra in r...bcz (l<r) and we are returning l-1, so we wont chcek ever on r, so keep extra
 #                        OR
 # keep a speerate variable ans , and equate ans to the value, whenever we get valid result for answer from function
+# see: https://leetcode.com/problems/maximum-running-time-of-n-computers/submissions/
+'''
+
 
 class Solution:
     def minimizedMaximum(self, n: int, quan: List[int]) -> int:
@@ -18,7 +26,6 @@ class Solution:
         while lo < hi:
             mid = (lo + hi) // 2
             if self.canTakeProd(mid, quan, n):
-                print(mid)
                 hi = mid
             else:
                 lo = mid + 1
@@ -35,13 +42,11 @@ class Solution:
         
         
         return True   #bcz some stores can be 0!
-    
-    
-    
+
 
 '''
 
-ver important
+very important ques
 also see: https://www.lintcode.com/problem/848/description
 
 
