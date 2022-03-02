@@ -1,9 +1,16 @@
 class Solution:
     def maximumPopulation(self, logs: List[List[int]]) -> int:
-        p = [0]*100
-        for i in logs:
-            for j in range(i[0],i[1]):
-                p[j-1950]+=1
-        m = max(p)
-        i = p.index(m)
-        return i+1950
+        ans = [0]*(2051)
+        for b, e in logs:
+            ans[b] +=1
+            ans[e] -=1
+        # print(ans[1950:])
+        m = 0
+        res = -1
+        for i in range(1, 2051):
+            ans[i] = ans[i-1] + ans[i]
+            if(ans[i]>m):
+                res = i
+                m = ans[i]
+        # print(ans[1950:])
+        return res
