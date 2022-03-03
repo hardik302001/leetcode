@@ -1,5 +1,5 @@
-    //STACK
-
+//STACK
+// NSE
 /*
 
 Here greedy approach is applied to solve the question.
