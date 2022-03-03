@@ -12,7 +12,7 @@ class Solution:
             
         # print(mapping)
         map = sorted(mapping)
-        # print(map)
+        print(map)
         res = []
         prev, color = None, 0
         for now in map:
@@ -23,3 +23,16 @@ class Solution:
             prev = now
             
         return res
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
