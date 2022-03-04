@@ -7,6 +7,9 @@
 //why not for row 99, bcz we can fill more on row 99, so when we will fill for row 100 then we would be sure for row 99!
 //so we need 101 x 101 matrix
 
+// in short, query_row and query_glass both are zero indexed and so we need to completely fill that row, then only 
+// we can access value of ith glass in that row, thats why we conisder less than-equal (query_row)
+
 
 class Solution {
 public:
@@ -25,6 +28,8 @@ public:
 	                }
 	            }
 	        }
+        
+        
         return result[query_row][query_glass];
 	}
     
