@@ -1,20 +1,30 @@
 class Solution {
 public:
-    string removeDuplicates(string S) {
-        string ans;  //for storing answer
-        for(char i:S)  //for traversing each element in the string
-        {
-            if(ans.size()==0) ans.push_back(i);  //if string is empty then just push element simply...
-            else if(i==ans.back()) ans.pop_back();  //or if the current element is equal to the last element of the string then it's the adjacent one, so delete it.
-            else ans.push_back(i);  //else just push the element simply
+    string removeDuplicates(string s) {
+        stack<char>st;
+        st.push(s[0]);
+        int n= s.length();
+        for(int i=1;i<n;i++){
+            if(st.empty()){
+                st.push(s[i]);
+            }
+            else{
+                if(st.top()==s[i]){
+                    st.pop();
+                }
+                else{
+                    st.push(s[i]);
+                }
+            }
         }
-        return ans;  //return the string
+        
+        string res = "";
+        while(!st.empty()){
+            res += st.top();
+            st.pop();
+        }
+       
+        reverse(res.begin(), res.end());
+        return res;
     }
 };
-
-
-
-
-/*
-if you use stack data stricture u will get tle...its better to use string as STACK
-*/
