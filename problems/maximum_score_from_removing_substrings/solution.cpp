@@ -35,6 +35,8 @@ public:
             }
         }
         
+        
+        // bcz now we are going back..so we are actually looking for "ab", but bcz string is reversed ,s o we look for "ba"
         stack<int>st2;
         while(!st.empty()){
             char cur = st.top();
@@ -85,7 +87,7 @@ public:
                 }
             }
         }
-        
+        // bcz now we are going back..so we are actually looking for "ba", but bcz string is reversed ,s o we look for "ab"
         stack<int>st2;
         while(!st.empty()){
             char cur = st.top();
