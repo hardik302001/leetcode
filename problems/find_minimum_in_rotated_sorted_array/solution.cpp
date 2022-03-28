@@ -16,7 +16,7 @@ public:
         while (lo < hi) {
             int mid = lo + (hi-lo)/2;
             if (nums[mid] < nums[hi]) {    //always we are comparing with end!   , you can do it wrt first position also, see SOLUTION for more info
-                hi = mid;  //check in left ahlf
+                hi = mid;  //check in left half
             } else {
                 lo = mid+1; //check in right half
             }
@@ -25,3 +25,9 @@ public:
     } 
     
 };
+
+
+
+
+
+
