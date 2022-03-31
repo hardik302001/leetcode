@@ -10,6 +10,9 @@
     # keep a speerate variable ans , and equate ans to the value, whenever we get valid result for answer from function
 */
 
+// Given an array of nn integers and a value X, determine the minimum number of subarrays the array needs to be divided into such that no subarray sum is greater than X.
+
+// minimise maximum
 class Solution {
 public:
     
@@ -25,7 +28,7 @@ public:
         }
         if(count<=m)         // bcz m <= nums.length
             return true;
-        return false;  // bcz we need count subarray to manintain maximum as mid, but we can aonly have m subarrays, so we failed, so fuck off 
+        return false;  // bcz we need count subarray to manintain maximum as mid, but we can only have atmost m subarrays, so we failed, so fuck off 
         
     }
     
