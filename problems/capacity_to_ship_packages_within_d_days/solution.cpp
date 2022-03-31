@@ -1,3 +1,5 @@
+// minimise the maximum weight.
+
 class Solution {
 public:
     bool helper(int mid,vector<int>& weights,int days){
@@ -10,7 +12,7 @@ public:
                 sum=weights[i];
             }
         }
-        if(count<=days)
+        if(count<=days)    // count<days , then we can minimise our mid more, and get less value of mid
             return true;
         return false;
     }
