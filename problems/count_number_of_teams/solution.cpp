@@ -1,3 +1,5 @@
+// bcz n==1000 , so n^2 will work
+
 class Solution {
 public:
     int numTeams(vector<int>& arr) {
