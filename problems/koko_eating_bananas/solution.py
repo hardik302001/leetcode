@@ -17,6 +17,7 @@
 #                        OR
 # keep a speerate variable ans , and equate ans to the value, whenever we get valid result for answer from function
 # see: https://leetcode.com/problems/maximum-running-time-of-n-computers/submissions/
+# see: https://leetcode.com/problems/maximum-candies-allocated-to-k-children/
 '''
 
 
@@ -33,17 +34,13 @@ class Solution(object):
                 lo = mid + 1
         return lo
     
-    
-    
     def canEat(self,k, piles, H):                         #can eat all
         time = 0
         for i in range(len(piles)):
             time += ((piles[i]+k-1)//k)
             if time > H: return False
         return True
-    
-    
-    
+
 '''
 
 very important ques
