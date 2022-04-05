@@ -1,7 +1,10 @@
 // binary search on force!
+// THIS QUES IS EXACTLY SAME AS : AGGRESSIVE COWS
+// https://www.codingninjas.com/codestudio/problems/aggressive-cows_1082559
+
+
+
 /*
-
-
 
 # minimise maximum, so we return do hi = mid for valid case, and return low
 # if it was maximise minimum, then we will do li = mid +1 for valid case and return li - 1
@@ -14,16 +17,19 @@
 
 // Time: O(log(max(A)) * N + NlogN)
 // Space: O(1)
+
+// maximise the minimum
+
 class Solution {
 
 public:
-    int maxDistance(vector<int>& A, int m) {
+    int maxDistance(vector<int>& A, int k) {
         sort(begin(A), end(A));
-        if (m == 2) return A.back() - A[0];
+        if (k == 2) return A.back() - A[0];
         int L = 1 , R = A.back() - A[0];
         while (L < R) {
             int M = (L + R) / 2;
-            if (valid(A, M, m)){
+            if (valid(A, M, k)){
                 L = M+1;
             }
             else{
@@ -33,25 +39,20 @@ public:
         return L-1;
     }
     
-    bool valid(vector<int> &A, int M, int m) {
-        int ind = 1;  //why ind==1, and m==1 , bz we have d=fixed our first ball in first basket, so we start from second position
-        int prev = 0;
-        for(int i = 1;i<m;i++){
-            while(ind<A.size() and A[prev] + M > A[ind]){
-                ind++;
-            }        
-            
-            if(ind<A.size() and A[prev]+M<=A[ind]){   // we need ind<A.size(), bcz what if after while loo it is at last index, so when here we will access A[ind], it will give error
-                prev = ind;
-                ind++;
-            }
-            else{
-                return false;
-            }
-            
-        }
+    bool valid(vector<int> &A, int M, int k) {
+        // fix first ball
         
-        return  true;
+        int prev = A[0];
+        int placed = 1;
+        
+        for(int i = 1 ;i<A.size();i++){
+            if(A[i]-prev >= M){
+                placed++;
+                prev = A[i];
+            }
+        }
+                
+        return placed>=k;
     }
     
 };
