@@ -1,4 +1,8 @@
-// O(k3) , one for for k , second for sum from beginning, third for sum from end
+// x from front , so (k-x) from end
+// also see: https://leetcode.com/problems/minimum-difference-between-largest-and-smallest-value-in-three-moves/
+
+
+// O(k3) , one for k , second for sum from beginning, third for sum from end
 
 // Brute force
 // TC:O(k*k)  : prefix sum
