@@ -38,10 +38,16 @@ class Solution:
         for i in range(len(quan)):
             store += int(math.ceil(quan[i]/int(k)))    #to conisder how many stores will quan[i] take, if we can have atmost k products in each store
             
-            if store > n: return False       #k is too small, less k leads to more number of stores
-        
-        
-        return True   #bcz some stores can be 0!
+        return store <= n 
+            
+            
+            
+#             if store > n: return False       # k is too small, less k leads to more number of stores   
+#         return True   #bcz some stores can be 0!
+    
+    
+    
+      
 
 
 '''
