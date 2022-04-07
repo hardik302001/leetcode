@@ -1,12 +1,8 @@
 class Solution:
     def repeatedSubstringPattern(self, s: str) -> bool:
-        n = len(s)
-        for i in range(n-1):
-            p = s[:i+1]
-            np = len(p)
-            if n%np==0:
-                d = n//np
-                if p*d==s:
-                    return True
-        return False
+        if not s:
+            return False
             
+        ss = (s + s)[1:-1]
+        return s in ss
+        
