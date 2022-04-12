@@ -1,5 +1,5 @@
 # O(n2)
-# bute force 
+# brute force 
 
 # class Solution:
 #     def maximumSwap(self, num: int) -> int:
@@ -20,6 +20,10 @@
         
 #         return int("".join(num))
     
+
+    
+# O(n) solution
+#keep track of last index of greater elements than current elements
 
 class Solution:
     def maximumSwap(self, num: int) -> int:
