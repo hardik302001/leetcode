@@ -9,7 +9,7 @@ public:
         while(l<r)
         {
             int m=l+(r-l)/2;         
-            bool even_length=(r-m)%2==0;    //can be both even and odd acordingly
+            bool even_length=(r-m)%2==0;    //can be both even and odd acordingly (number of lemeents between right end and elemenst after mid (r-mid== excluding mid, elements tilll end...))
             if(nums[m]==nums[m+1])
             {
                 if(even_length)
