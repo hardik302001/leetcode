@@ -13,6 +13,6 @@ class Solution:
             if not isBadVersion(m):
                 l = m+1
             else:
-                r= m  #bcz we need first occurence if bad word
+                r = m  #bcz we need first occurence if bad word
                 
         return l
