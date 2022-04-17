@@ -1,3 +1,6 @@
+//  can aslo be done using BS + PQ
+// see that method also
+
 
 class Solution {
 public:
