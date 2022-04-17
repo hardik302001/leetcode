@@ -5,12 +5,10 @@ public:
         long long l = 1;
         long long r = n+1;
         
-        long long ans= -1;
         while(l<r){
             long long m = l + (r-l)/2;
             if(check(m , n)){
                 r = m;
-                ans = m;
             }else{
                 l = m+1;
             }
