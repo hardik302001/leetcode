@@ -12,7 +12,7 @@ public:
     int specialArray(vector<int>& nums) {
        int low=0,high=1000;
         
-        while(low<=high){
+        while(low<high){
             int mid=(low+high)/2;
             
             int comp=solve(nums,mid);
@@ -24,7 +24,7 @@ public:
                 low=mid+1;
             }
             else{
-                high=mid-1;
+                high=mid;
             }
         }
         return -1;
