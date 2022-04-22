@@ -1,3 +1,5 @@
+// also see: https://leetcode.com/problems/smallest-range-ii/
+
 class Solution {
 public:
     int smallestRangeI(vector<int>& A, int K) {
