@@ -16,7 +16,98 @@ Repeat this for all the groups and you get your sorted string.
 */
 
 
+// DSU
 
+class Solution {
+public:
+    
+    class UnionFind {
+        public:  
+            vector<int> parent;
+            int count = 0;
+            UnionFind(int n){                  //constructor
+                count = n;
+                parent = vector<int>(n,-1);
+            }
+
+            int find(int x){
+                if(parent[x]==-1) return x;
+                return parent[x] = find(parent[x]);
+            }
+
+            void Union(int x,int y){
+                int X = find(x);
+                int Y = find(y);
+                // cout<<X<<" "<<Y<<endl;
+                if(X==Y) return ;   //cycle found
+
+                parent[Y]=X;         //A ->B
+                count--;
+                // return false;
+            }
+            
+
+            int getCount(){
+                return count;
+            }
+         
+            vector<int> pari(){return parent;}
+    };
+    
+    
+    
+    
+    string smallestStringWithSwaps(string s, vector<vector<int>>& pairs) 
+    {
+        int n = s.size();
+        UnionFind uf(n);
+        
+        for(vector<int> &v:pairs){
+            uf.Union(v[0],v[1]);
+        }
+        
+        
+        vector<int>parent = uf.pari();
+        // for(auto i:parent){
+        //     cout<<i<<" ";
+        // }
+        // cout<<endl;
+        
+        unordered_map< int, vector<char> > m1;
+        unordered_map< int, vector<int > >m2;
+        for(int i =0 ;i<n;i++){
+            if(parent[i]==-1){m1[i].push_back(s[i]);
+                              m2[i].push_back(i);}
+            else{m1[uf.find(i)].push_back(s[i]);
+                 m2[uf.find(i)].push_back(i);}
+        }
+        vector<char>ans(n);
+    
+        
+        for(auto i: m2){
+            sort(i.second.begin(),i.second.end());
+            sort(m1[i.first].begin(),m1[i.first].end());
+
+            vector<char> sorted = m1[i.first];
+            for(int j = 0;j<i.second.size();j++){
+                ans[i.second[j]] = sorted[j];
+            }
+        }
+        
+        
+        string res;
+        for(auto i:ans)res.push_back(i);
+        
+
+        return res;
+    }
+};
+
+
+
+// DFS
+
+/*
 class Solution {
 public:
     vector<int> indices;                                                 //Stores indices of same group.
@@ -56,3 +147,5 @@ public:
         return s;
     }
 };
+
+*/
