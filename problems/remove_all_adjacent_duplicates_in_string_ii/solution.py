@@ -8,7 +8,6 @@ class Solution:
                     stack.pop()
             else:
                 stack.append([c, 1])
-            #print(stack)
         res = ""
         for c,k in stack:
             res = res + c*k
