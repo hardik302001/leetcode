@@ -25,22 +25,22 @@ public:
     }
     
     int next() {
-        int ans =  dq.front();
-        dq.pop_front();
+        int ans =  q.front();
+        q.pop();
         return ans;
 
     }
     
     bool hasNext() {
-        return !dq.empty();
+        return !q.empty();
     }
 
 private:
-    deque<int>dq;
+    queue<int>q;
 
     void makeFlat(NestedInteger x) {
         if (x.isInteger()) {
-            dq.push_back(x.getInteger());
+            q.push(x.getInteger());
         }
         else {
             for (auto y : x.getList())
