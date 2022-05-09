@@ -12,6 +12,7 @@ Single scan. Given the current sum and the k, we check if (sum-k) existsed befor
 also see: https://www.tutorialspoint.com/maximum-size-subarray-sum-equals-k-in-cplusplus
 also see: https://leetcode.com/problems/subarray-sums-divisible-by-k/
 also see: https://leetcode.com/problems/continuous-subarray-sum/
+https://leetcode.com/problems/make-sum-divisible-by-p/
 '''
 
 #for more context search subarray sum equals k on yputube and watch pepcoding videos
