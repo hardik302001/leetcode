@@ -16,7 +16,7 @@
         #sum_so_far : index
         #   0       :   -1                base case
         #   -1      :    0               when weconsider 0
-        #    0      :    1                   now we will consider 1..present inddex will be 1..for that sum_so_far will be 0 that already occurs..so we need not change the first index..we will directly find max....(1 - (-1)) = 2(length)
+        #    0      :    1                   now we will consider 1..present index will be 1..for that sum_so_far will be 0 that already occurs..so we need not change the first index..we will directly find max....(1 - (-1)) = 2(length)
 
         #i = index
         #v = value
@@ -29,7 +29,6 @@ Equal number of 0 and 1 means , sum = 0
 so suppose upto index i we have sum as X and upto index j (j>i)  we also have sum X
 So , we can surely say that sum of subarray [i:j] will have sum 0 and thats what we want!
 # similar idea to : https://leetcode.com/problems/longest-valid-parentheses/
-
 
 '''
         
@@ -44,10 +43,10 @@ class Solution:
 
         for i, v in enumerate(nums):
             sum_so_far += 1 if v else -1
-            if sum_so_far in sums:
+            if sum_so_far in sums:   # we need not update index of sum_so_far even if it exists bcz we want maximum length , so we consider first occurence
                 max_size = max(i - sums[sum_so_far], max_size)  #present index - first occurence 
-                # we also used this trick in 
-            else:
+                # we also used this trick in https://leetcode.com/problems/longest-valid-parentheses/
+            else:  # sum_so_far doesn't exist in map , add it
                 sums[sum_so_far] = i  #first occurence of that sum occured at which index
         
         
