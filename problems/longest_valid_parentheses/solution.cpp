@@ -14,7 +14,7 @@ public:
                 stack.push(i);
             else {
                 if (!stack.empty() && s[stack.top()] == '(') {
-                    stack.pop();                             //most impo step!   bcz we want beginning of subarray to find length of longest valid parantheis
+                    stack.pop();                 //most impo step! bcz we want beginning of subarray to find length of longest valid parantheis
                     
                     int lastPos = -1;           //suppose stack is empty now, we have 0 based indexing, len = i +1 [ == i - (-1) ] 
                                                 //else len = i - (start of subarray or top of stack)
