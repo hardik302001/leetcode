@@ -43,3 +43,31 @@ public:
         return root;
     }
 };
+
+
+
+
+/*
+// Look for bfs solution always in tree questions!
+//because of large skewed tree case, it is a linkedlist and traversing deep and deep in dfs  recursive way will lead to memry overflow!
+
+
+
+class Solution {
+public:
+
+    TreeNode* invertTree(TreeNode* root) {
+        if(root!=NULL){
+            TreeNode* temp = root->left;
+            root->left = root->right;
+            root->right = temp;
+
+            invertTree(root->left);
+            invertTree(root->right);
+    
+        }
+        
+        return root;
+    }
+};
+*/
