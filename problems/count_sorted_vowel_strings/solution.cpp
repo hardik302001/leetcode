@@ -1,46 +1,33 @@
+// RECURSION + DP(2 state, size of cur string and last char of current string )
+
+
 class Solution {
 public:
-    int arr[26][51];
-   string vowel = "aeiou";
-    int util(char c, int len, int n, string s){
-        if(len == n)
-        {
-            cout<<s<<"\n";
-            
+    int dp[6][51];
+
+    vector<char>vow = {'a', 'e', 'i' , 'o', 'u'};
+    int recur(int last , int n){
+        if(n==0){
             return 1;
         }
         
-        if(arr[c-'a'][len]!=-1)
-            return arr[c-'a'][len];
+        if(dp[last][n]!=-1){
+            return dp[last][n];
+        }
+        
         int ans = 0;
-          for(auto x : vowel){
-            if(x>=c)  
-            {  
-                s+=x;
-                ans+= util(x, len+1, n,s+x);
-                s.pop_back();
+        for(int x = 0;x<vow.size();x++){
+            if(vow[x]>=vow[last]){
+                ans+= recur(x , n-1);
             }
         }
-        return arr[c-'a'][len] = ans;
+        
+        return dp[last][n] = ans;    
     }
+    
     int countVowelStrings(int n) {
-      
-       
-        int ans = 0;
-        
-        for(int i=0;i<26;i++){
-            for(int j=0;j<51;j++){
-                arr[i][j] = -1;
-            }
-        }
-        
-        for(auto c : vowel){
-            string s = "";
-            ans+= util(c, 1, n, s+c);
-        }
-        
-        return ans;
-        
-        
+        memset(dp , -1, sizeof dp);
+        return recur(0,n);
+    
     }
 };
