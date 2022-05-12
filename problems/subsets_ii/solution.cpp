@@ -1,3 +1,6 @@
+// bitmanipulation
+
+/*
 class Solution {
 public:
 	vector<vector<int>> subsetsWithDup(vector<int>& nums) {
@@ -22,5 +25,33 @@ public:
        }
         
        return ans;      
+    }
+};
+
+*/
+
+
+// alterate method , ignoring the repeated ones..
+class Solution {
+public:
+   void backtrack(int i,vector<int>& nums,int n,vector<int>curr,vector<vector<int>>&ans)
+    {
+        ans.push_back(curr);
+        for(int j=i;j<nums.size();j++)
+        {
+            if(j>i&&nums[j]==nums[j-1])continue;
+            curr.push_back(nums[j]);
+            backtrack(j+1,nums,n,curr,ans);
+            curr.pop_back();
+        }
+    }
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        int i=0;
+        sort(nums.begin(),nums.end());
+        vector<vector<int>>ans;
+        vector<int>curr;
+        int n=nums.size();
+        backtrack(i,nums,n,curr,ans);
+        return ans;
     }
 };
