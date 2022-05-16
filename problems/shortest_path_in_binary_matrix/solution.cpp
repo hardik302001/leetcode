@@ -10,7 +10,7 @@ public:
         vector<vector<int>> dis(M,vector<int>(N,-1));
         todo.push({0,0});
         dis[0][0] = 0;
-        if(mat[0][0]==1){
+        if(mat[0][0]==1 or mat[M-1][N-1]==1){
             return -1;
         }
         
