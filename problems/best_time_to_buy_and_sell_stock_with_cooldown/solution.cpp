@@ -1,7 +1,6 @@
 //NEETCODE YT SOLN
 //we know profit = price[y] - price[x] , directly
-
-
+ 
 //but how this comes directly
 //when buy profit =  (-price[alpha])   , relative minus of price[alpha]
 //when sell profit =  (+price[beta])   , relative plus of price[beta]
@@ -31,7 +30,7 @@ public:
     
     
     int recur(vector<int>&prices, int i, int buying){
-        int buy, sell, cooldown;
+        int buy, sell, wait;
         if(i>=prices.size()){
             return 0;
         }
@@ -39,21 +38,21 @@ public:
             return dp[i][buying];
         }
         
-             
+        int ans = 0;
         if (buying){           //if in buying state
             buy = recur(prices, i+1, buying^1) - prices[i];   //if buy , then relative profit would be curr profit + (-price[i]) 
-            cooldown = recur(prices, i+1, buying);   
-            dp[i][buying] = max(cooldown, buy);  //either you will buy or cooldown, 
+            wait = recur(prices, i+1, buying);   
+            ans = max(wait, buy);  //either you will buy or wait, 
             
         }
         else{
             sell = recur(prices, i+2, buying^1) + prices[i]; //if sell , then relative profit would be curr profit + (+price[i]) 
             //i+2 for cooldown , mentioned in ques
-            cooldown = recur(prices, i+1, buying);   
-            dp[i][buying] = max(cooldown, sell);
+            wait = recur(prices, i+1, buying);   
+            ans = max(wait, sell);
         }
             
-        return dp[i][buying];
+        return dp[i][buying] = ans;
     
     }
 };
