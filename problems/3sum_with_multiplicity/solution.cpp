@@ -1,6 +1,9 @@
 // Use a map to count all sums of two numbers.
 // Then, if target - arr[i] is in map, it means we have a three-sum, so we add it to the result.
 
+
+// you cant do better than n^2, so rememebr this soln
+
 class Solution {
 public:
     int threeSumMulti(vector<int>& arr, int target) {
