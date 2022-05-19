@@ -1,3 +1,9 @@
+# also see: insert interval
+# https://leetcode.com/problems/insert-interval/
+
+
+
+# TC: O(nlogn) , SC  = O(n)
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         intervals.sort()          #starting time
