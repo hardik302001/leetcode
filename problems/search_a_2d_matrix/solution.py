@@ -1,4 +1,6 @@
 # same as : https://leetcode.com/problems/binary-search/   
+# TC: O(logn(m*n))
+
 
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
@@ -16,5 +18,6 @@ class Solution:
             else:
                 l = mid + 1
         # print(l)
+        
         x, y = l//len(matrix[0]), l%len(matrix[0])
         return matrix[x][y]==target
