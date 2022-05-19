@@ -1,8 +1,9 @@
 #O(n) moore algo   O(1) space
+
 class Solution:
     def majorityElement(self, nums):
         count = 0
-        candidate = None
+        candidate = -1
 
         for num in nums:
             if count == 0:
