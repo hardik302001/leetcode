@@ -1,6 +1,5 @@
-#do read all solutions from SOLUTION SECTION!
-
-#it is O(n)
+# do read all solutions from SOLUTION SECTION!
+# T.C. =  O(n)
 
 class Solution:
     def longestConsecutive(self, nums):
@@ -19,3 +18,6 @@ class Solution:
                 longest_streak = max(longest_streak, current_streak)
 
         return longest_streak
+    
+    
+# sort and find longest streak , nlogn
