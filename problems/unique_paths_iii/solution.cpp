@@ -11,9 +11,17 @@ We need to cover all non empty boxes and then recah target!
 
 */
 
+/*
+Time Complexity : O(3^(m * n)). At every cell (except the start cell), we can continue the path exploration in 3 direction (after excuding previous visited cell) and there can be O(m*n) cells in total to be visited. In reality, the number of recursions required is much less due to dead-ends.
+
+Space Complexity : O(m*n) required for implicit recursive stack in dfs.
+*/
+
 class Solution {
 public:
-    int res = 0, empty = 1;
+    int res = 0;
+    int empty = 1; // including dest also
+    
     void dfs(vector<vector<int>>& grid, int x, int y, int count) {
         if (x < 0 || x >= grid.size() || y < 0 || y >= grid[0].size() || grid[x][y] == -1) return;
         
