@@ -1,12 +1,41 @@
+'''
+see striver video
+
+* ele1 and ele2 shud be different values while initialisation 
+* in else part, cnt1 qnd cnt2 both shud be decreased...
+
+'''
+
+
+
 class Solution:
     def majorityElement(self, nums: List[int]) -> List[int]:
-        d = Counter()
-        n = len(nums)
-        for i in nums:
-            d[i]+=1
+        element1, element2, cnt1, cnt2 = 0, 1, 0, 0
+        for e in nums:
+            if element1 == e:
+                cnt1 += 1
+            elif element2 == e:
+                cnt2 += 1
+            elif cnt1 == 0:
+                element1, cnt1 = e, 1
+            elif cnt2 == 0:
+                element2, cnt2 = e, 1
+            else:
+                cnt1 -= 1
+                cnt2 -= 1
+
+        cnt1 = cnt2 = 0
+        for e in nums:
+            if element1 == e:
+                cnt1 += 1
+            elif element2 == e:
+                cnt2 += 1
+
         ans = []
-        for i in d:
-            if d[i]>(n//3):
-                ans.append(i)
-        
+        if cnt1 > len(nums) // 3:
+            ans += [element1]
+        if cnt2 > len(nums) // 3:
+            ans += [element2]
+
         return ans
+        
