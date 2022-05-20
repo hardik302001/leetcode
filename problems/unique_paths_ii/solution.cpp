@@ -1,6 +1,8 @@
 //courtesy codencode
 
 
+// tabulation dp
+
 class Solution {
 public:
     long long int uniquePathsWithObstacles(vector<vector<int>>& mat) {
@@ -48,3 +50,36 @@ public:
         return dp[0][0];
     }
 };
+
+
+
+
+// also see: https://leetcode.com/problems/unique-paths-ii/discuss/1909942/C%2B%2B-MEMO-TABULAR-SPACE-OPTIMISED
+
+
+// recur + memo dp
+/*
+class Solution {
+public:
+    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+        int i = 0, j = 0;
+        int m = obstacleGrid.size(), n = obstacleGrid[0].size();
+        vector<vector<int>> dp(m+1, vector<int>(n+1, -1));
+        return fun(obstacleGrid,i, j, m, n, dp);
+    }
+    int fun(vector<vector<int>> &obstacleGrid, int i, int j, int m, int n, vector<vector<int>> &dp) {
+       if (i > m-1 || j > n-1 || obstacleGrid[i][j] == 1) return 0;
+       if (i == m - 1 && j == n - 1) return 1;
+	   // dp part
+        if (dp[i][j] != -1) return dp[i][j];
+       // Right
+        int right = fun(obstacleGrid, i, j+1, m, n, dp);
+        // DOWN
+        int down = fun(obstacleGrid, i+1, j, m, n, dp);
+        // return
+        return dp[i][j] = (right + down);
+    }
+};
+        
+        
+*/
