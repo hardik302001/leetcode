@@ -8,6 +8,43 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+
+// 1 traversal
+
+
+// removing nth from end == removing (total length - n) from beginning
+
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode * start = new ListNode(); // extra node to reach one step before the node to be removed
+        start -> next = head;
+        ListNode* fast = start;
+        ListNode* slow = start;     
+
+        for(int i = 1; i <= n; ++i)
+            fast = fast->next;
+    
+        // now slow will move (length - n) steps from beginning
+        while(fast->next != NULL)
+        {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        
+        
+        // remove the node
+        slow->next = slow->next->next;
+        
+        return start->next;
+    }
+};
+
+
+
+// 2 traverals
+/*
 class Solution {
 public:
     int length(ListNode* head){
@@ -20,9 +57,8 @@ public:
     }
     ListNode* removeNthFromEnd(ListNode* head, int n) {
         int size = length(head);
-        cout<<size;
-        int loc = size-n;
-        if(loc==0){
+        int loc = size-n;  // remove after loc elements ( or loc -1 jumps bcz head points to 1st element)
+        if(loc==0){ // remove first element
             head = head->next;
             return head;
         }
@@ -39,3 +75,4 @@ public:
     
     }
 };
+*/
