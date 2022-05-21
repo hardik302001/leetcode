@@ -1,6 +1,8 @@
 //k = k%length
 //link last node to head node
 //move head(n-k)times and make prev of head to null.
+
+
 class Solution {
 public:
 
