@@ -5,6 +5,10 @@
 
 
 //see pepcoding video for this question
+
+// better soln 
+
+
 class Solution {
 public:
     int maxChunksToSorted(vector<int>& arr) {
@@ -30,6 +34,15 @@ public:
         }
         rightMin[n] = INT_MAX;
 
+        /*
+            If current leftMax is less than or equal to
+            minimum of all elements to its right,
+            it means it can't have an impact further.
+            It belongs to a chunk till this point only.
+            And then, we move ahead.
+        */
+        
+
         int cnt = 0;
         for(int i=0; i<n; i++) 
         {
@@ -43,6 +56,8 @@ public:
 
 
 //monotonic stack solution
+// nse
+
 
 // class Solution {
 // public:
