@@ -1,3 +1,5 @@
+// very impo ques
+
 /*
 TUF
 3 solutions:
@@ -16,6 +18,9 @@ TUF
 
 
 */
+
+
+// https://takeuforward.org/data-structure/find-intersection-of-two-linked-lists/
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
@@ -24,7 +29,7 @@ public:
         }
         ListNode* a = headA;
         ListNode* b = headB;
-        //if a and b have differet len, then we will stop loop after second iteration..
+        //if a and b have different len, then we will stop loop after second iteration..
         while(a!=b){
             //for the end of first iteration, we just reset the pointer to head of another linkedlist
             
@@ -41,8 +46,7 @@ public:
             else{
                 b = b ->next;
             }
-            
-            
+                 
         }
         
         
