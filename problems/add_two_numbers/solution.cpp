@@ -10,25 +10,10 @@
  */
 class Solution {
 public:
-    void insertattail(ListNode* &head, int val){
-        ListNode* n = new ListNode(val);
-        if (head==NULL){
-            head = n;
-            return;
-        }
-        ListNode* temp = head;
-        while(temp->next!=NULL){
-            temp = temp ->next;
-        }
-        temp->next = n;
-        n->next = NULL;
-
-    }
-    
-    
     
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode* c = NULL;
+        ListNode *c = new ListNode();  // dummy node with initial value 0
+        ListNode *temp = c; // temp pointing to head of c
         int carry = 0;
 
         while(l1!=NULL or l2!=NULL or carry){
@@ -43,11 +28,21 @@ public:
             }
             sum = sum + carry;
             carry = sum/10;
-            insertattail(c,sum%10);
+            
+            ListNode* node = new ListNode(sum%10);
+            c->next = node;
+            c = c->next;
         }
         
-        return c;
-        
+        return temp->next;   // answer starts from next of head of c    
         
     }
 };
+
+/*
+
+Time Complexity: O(max(m,n)). Assume that m and n represent the length of l1 and l2 respectively, the algorithm above iterates at most max(m,n) times.
+
+Space Complexity: O(max(m,n)). The length of the new list is at most max(m,n)+1.
+
+*/
