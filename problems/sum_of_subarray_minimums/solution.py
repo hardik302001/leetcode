@@ -1,3 +1,6 @@
+# also see: https://leetcode.com/problems/sum-of-total-strength-of-wizards/
+
+
 #lead coding by fraz yt: https://www.youtube.com/watch?v=9-TXIVEXX2w
 #MONOTONIC STACK
 
@@ -43,12 +46,12 @@ class Solution:
             if prev_smaller_element[i]== -1:
                 left_diff = i - 0
             else:
-                left_diff = (i - prev_smaller_element[i]) - 1
+                left_diff = (i - prev_smaller_element[i]) - 1 # -1 bcz i dont have to include prev_smaller
                 
             if next_smaller_element[i]== -1:
                 right_diff = n-1 - i
             else:
-                right_diff = (next_smaller_element[i] - i) - 1
+                right_diff = (next_smaller_element[i] - i) - 1  
             
             # print(left_diff, right_diff)
             ans = ans + arr[i]* (left_diff +1)*( right_diff+1)
@@ -57,6 +60,11 @@ class Solution:
         
         return ans
     
+    
+    
+# The reason we use <= on left but < on right is to avoid duplicates.
+# Here is an example array: 1 2 3 4 2 3 4 2 1
+# For the highlighted subarray 2 3 4 2, we want to calculate the strength using the 2nd 2 but not the first 2
 #one thing to note here is that we have strict and non strict condition in NSE and PSE respectively! Why ?
 #When we have duplicate cases, then if we have both strict then we would have answer less than the expected cases, we would miss some subarray's
 #if both non strict then some cases would be considered more than once
