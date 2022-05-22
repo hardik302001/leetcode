@@ -6,15 +6,16 @@
 class Solution {
 public:
     
-    void recur(int i, int target , vector<int>&temp , vector<int>&cand, set<vector<int>>&ans){
+    void recur(int i, int target , vector<int>&temp , vector<int>&cand, vector<vector<int>>&ans){
         if(target<0) return;
         if(target==0){
-            ans.insert(temp);
+            ans.push_back(temp);
             return;
         }
         
         if(i>=cand.size()) return;
         if(cand[i]>target) return;
+        
         // consider and move to next
         temp.push_back(cand[i]);
         recur(i+1 , target-cand[i] , temp , cand , ans);
@@ -23,19 +24,27 @@ public:
         
         while(i<cand.size()-1 and cand[i]==cand[i+1]) i++;
         // move to next unique: ignore current
+        
+        
         recur(i+1 , target , temp , cand , ans);
         
     }
     
     vector<vector<int>> combinationSum2(vector<int>& cand, int target) {
-        set<vector<int>>ans;
+        vector<vector<int>>ans;
         sort(cand.begin(), cand.end());
         vector<int>temp;
         recur(0 , target , temp , cand , ans);
-        vector<vector<int>> res;
-        for(auto v: ans){
-            res.push_back(v);
-        }
-        return res;
+        
+        return ans;
     }
 };
+
+/*
+Time Complexity:O(2^n*k)
+Reason: Assume if all the elements in the array are unique then the no. of subsequence you will get will be O(2^n). we also add the ds to our ans when we reach the base case that will take “k”//average space for the ds.
+
+Space Complexity:O(k*x)
+Reason: if we have x combinations then space will be x*k where k is the average length of the combination.
+
+*/
