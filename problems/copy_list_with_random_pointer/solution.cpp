@@ -22,12 +22,13 @@ public:
         map<Node*, Node*> m;
         
         Node* ptr = head;
-        while (ptr) {
-            m[ptr] =new Node(ptr->val);
+        while (ptr) {                      // traverse for new node and value
+            m[ptr] =new Node(ptr->val);    // here ptr is address of current node
             ptr = ptr->next;
         }
+        
         ptr = head;
-        while (ptr) {
+        while (ptr) {                       // traverse and update address 
             m[ptr]->next = m[ptr->next];
             m[ptr]->random = m[ptr->random];
             ptr = ptr->next;
