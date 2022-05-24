@@ -2,9 +2,26 @@
 // take u forward => https://takeuforward.org/data-structure/n-queen-problem-return-all-distinct-solutions-to-the-n-queens-puzzle/
 // better see yt video
 
+
+
+// also see: RAT IN MAZE : https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1
+
+
+
+
 /*
 
-Time Complexity: O(N^3), row *coln *(3*checking safe) 
+
+
+
+REMEMBER TC OF N - QUEEN IS ALWAYS n!, STRIVER SAID N^3 , N^2, IDK why?? , but everywhere it is n!
+
+
+
+
+
+
+Time Complexity: O(N^3), row *coln *(3*checking safe)    // it shud be n!
 
 Space Complexity: O(N^2)
 
@@ -92,7 +109,7 @@ Space Complexity: O(N^2)
 
 /*
 
-Time Complexity: O(N^2), row *coln *(3*O(1)) 
+Time Complexity: O(N^2), row *coln *(3*O(1))    // it shud be n!
 
 Space Complexity: O(N^2) + 3*O(n)
 
