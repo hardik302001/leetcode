@@ -12,16 +12,7 @@
 /*
 
 
-
-
-REMEMBER TC OF N - QUEEN IS ALWAYS n!, STRIVER SAID N^3 , N^2, IDK why?? , but everywhere it is n!
-
-
-
-
-
-
-Time Complexity: O(N^3), row *coln *(3*checking safe)    // it shud be n!
+Time Complexity: Exponential in nature, since we are trying out all ways. To be precise it goes as O(N! * N) nearly.
 
 Space Complexity: O(N^2)
 
@@ -105,13 +96,14 @@ Space Complexity: O(N^2)
 
 //-----------------------------------------------------------------------------------
 
-// approach 2, optimising isSafe function, dec TC, and inc SC
+
+// improving sc
 
 /*
 
-Time Complexity: O(N^2), row *coln *(3*O(1))    // it shud be n!
+Time Complexity: Exponential in nature since we are trying out all ways, to be precise it is O(N! * N).
 
-Space Complexity: O(N^2) + 3*O(n)
+Space Complexity: O(N)
 
 */
 
