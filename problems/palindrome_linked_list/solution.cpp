@@ -50,7 +50,7 @@ bool isPalindrome(ListNode* head) {
     //print(head);
     ListNode* a = head;
     ListNode* b = mid->next;
-    while(b!=NULL){
+    while(b!=NULL){ 
         if(a->val!=b->val){
           //  cout<<"a->data "<<a->data<<endl;
           //  cout<<"b->data "<<b->data<<endl;
