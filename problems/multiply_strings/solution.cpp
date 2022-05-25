@@ -1,10 +1,14 @@
 /*
-Time complexity: O(M \cdot N)O(M⋅N).
+Time complexity: O(M⋅N).
 
-During multiplication, we perform N operations for each of the M digits of the second number, so we need M \cdot NM⋅N time for it.
+During multiplication, we perform N operations for each of the M digits of the second number, so we M⋅N time for it.
 
-Space complexity: O(M + N)O(M+N).
+Space complexity:  O(M+N).
 */
+
+
+// read the solution 3 from editorial
+//see neetcode video yt
 
 
 class Solution {
@@ -20,7 +24,7 @@ public:
         
         // Initialize answer as a string of zeros of length N.
         int N = num1.size() + num2.size();
-        string answer(N, '0');
+        string answer(N, '0');       // the answer can have atmax sum of length of digits size
         
         for (int place2 = 0; place2 < num2.size(); place2++) {
             int digit2 = num2[place2] - '0';
