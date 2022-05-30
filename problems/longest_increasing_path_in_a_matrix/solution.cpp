@@ -1,6 +1,7 @@
 // https://leetcode.com/problems/longest-increasing-path-in-a-matrix/discuss/1151418/Longest-Increasing-Path-in-a-Matrix-or-Short-and-Simple-w-Explanation
 // dp soln with memoization easy peasy!
 // TC: O(n*m)
+// current posi is start of inc path
 
 class Solution {
 public:
@@ -11,7 +12,7 @@ public:
         
         vector<int> dx = {1, 0 , -1, 0};
         vector<int> dy = {0 , 1 , 0 , -1};
-        int res = 1;     // path will eb atleast of size 1c ( suppose all 4 directions are invalid[ 3rd sample TC] )
+        int res = 1;     // path will be atleast of size 1 ( suppose all 4 directions are invalid[ 3rd sample TC] )
         for(int k = 0;k<4;k++){
             int newx = i + dx[k];
             int newy = j + dy[k];
