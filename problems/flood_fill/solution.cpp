@@ -1,51 +1,36 @@
-class Solution 
-{
+class Solution {
 public:
-    vector<vector<int>> floodFill(vector<vector<int>>& mat, int sr, int sc, int newColor) 
-    {
-        int M = mat.size();
-        int N = mat[0].size();
-        int old = mat[sr][sc];
-        if (old==newColor){    //else it will lead to tle..or keep a vis array!
-            return mat;
-        }
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
+        vector<int>dx = {1, 0 , -1 , 0};
+        vector<int>dy = {0 , 1 , 0 , -1};
+        int m = image.size();
+        int n = image[0].size();
+        
+        queue<pair<int, int>>q;
+        q.push({sr , sc});
+        int org = image[sr][sc];
+        if(org==newColor) return image;
         
         
-        queue<pair<int, int>> todo;
-        vector<int> dx = {-1, 0,1, 0};
-        vector<int> dy = {0,1,0,-1};
-        
-        todo.push({sr,sc});
-        
-        
-        while (!todo.empty()) {
-            int curx = todo.front().first;
-            int cury = todo.front().second;
-            mat[curx][cury] = newColor;
-            todo.pop();
-            
-            for(int i = 0;i<4;i++){
-                int newx = curx + dx[i];
-                int newy = cury + dy[i];
+        while(q.size()){
+            int sz = q.size();
+            while(sz--){
+                auto p = q.front();
+                q.pop();
+                int x = p.first ;
+                int y = p.second;
+                image[x][y] = newColor;
                 
-                if(inside(newx , newy , M , N , mat) and mat[newx][newy]==old){
-                    todo.push({newx, newy});
-                    
+                for(int i = 0;i<4;i++){
+                    int newx = x + dx[i];
+                    int newy = y + dy[i];
+                    if(newx>=0 and newx<m and newy>=0 and newy<n and image[newx][newy]==org){
+                        q.push({newx, newy});
+                    }
                 }
-                
-            }   
-            
+            }
         }
         
-        
-        return mat;
-            
-    }
-
-     bool inside(int x, int y, int &M, int &N, vector<vector<int> > &mat) {
-        if ((x < 0 || x >= M || y < 0 || y >= N )) {
-            return false;
-        }
-        return true;
+        return image;
     }
 };
