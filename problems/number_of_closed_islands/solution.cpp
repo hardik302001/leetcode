@@ -1,12 +1,15 @@
 // We are not considering edge connected zeroes for solution so first do DFS for those zeroes and assign the value -1 so at time of counting it would not be consider for solution.
 
+
+// 2 pass
+
 class Solution {
 public:
     int r , c;
     
     void dfs(vector<vector<int>>& grid , int i , int j){
         if(i < 0 || j < 0 || j >= c || i >= r || grid[i][j] != 0) return;
-        grid[i][j] = -1;
+        grid[i][j] = -1; // it shud be updated from 0 , irrespective of 1 or -1, bcz all 0 left after border dfs will by closed by 1(initial 1) only ...
         dfs(grid , i - 1 , j);
         dfs(grid , i + 1 , j);
         dfs(grid , i , j - 1);
