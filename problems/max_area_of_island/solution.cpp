@@ -1,39 +1,87 @@
 class Solution {
 public:
-    int DFS(vector<vector<int>>& grid,vector<vector<bool>>& vis,int i,int j,int n,int m)
-    {
+    int ans = 0;
+    
+    int dfs(int x , int y, int m , int n , vector<vector<int>>&vis, vector<vector<int>>&grid){
+        if(x<0 or x>=m or y<0 or y>=n or vis[x][y]==1 or grid[x][y]==0) return 0;
+        int c = 0;
+        c++;
+        vis[x][y] = 1;
+        grid[x][y] = 0;
         
-        if(i<0||i>=n||j<0||j>=m){
-            return 0;
-        }
-        if(grid[i][j]==0 || vis[i][j]==true)
-        {
-            return 0;
-        }
+        c+=dfs(x+1, y , m , n , vis, grid);
+        c+=dfs(x, y+1 , m , n , vis , grid);
+        c+=dfs(x-1, y , m , n , vis , grid);
+        c+=dfs(x, y-1 , m , n , vis , grid);
+        return c;
         
-        vis[i][j]=true;
-        //everytime we visit one 1 we increase the count 
-        return 1+DFS(grid,vis,i+1,j,n,m)+
-            DFS(grid,vis,i-1,j,n,m)+DFS(grid,vis,i,j+1,n,m)+DFS(grid,vis,i,j-1,n,m);
     }
+    
+    
     int maxAreaOfIsland(vector<vector<int>>& grid) {
-        if (grid.empty()) return 0;
-
- 		int n = grid.size();
- 		int m = grid[0].size();
- 		vector<vector<bool>>vis(n, vector<bool>(m, false));//intialising a grid with all false to check whether a node is visited or not
-        int maxi=0;
-         for(int i=0;i<n;i++)
-        {
-            for(int j=0;j<m;j++)
-            {
-                 if(grid[i][j]==1 and !vis[i][j])
-                 {
-                     maxi=max(maxi,DFS(grid,vis,i,j,n,m));
-                 }
+        int m = grid.size();
+        int n = grid[0].size();
+        
+        vector<vector<int>>vis(m , vector<int>(n , 0));
+        
+        for(int i = 0;i<m;i++){
+            for(int j = 0;j<n;j++){
+                if(!vis[i][j] and grid[i][j]==1){
+                    int x = dfs(i , j, m , n, vis , grid);
+                    ans = max( ans , x);
+                }
             }
         }
         
-        return maxi;
+        
+        return ans;
     }
 };
+
+
+/*
+
+class Solution {
+public:
+    int ans = 0;
+    int c;
+    
+    void dfs(int x , int y, int m , int n , vector<vector<int>>&vis, vector<vector<int>>&grid){
+        if(x<0 or x>=m or y<0 or y>=n or vis[x][y]==1 or grid[x][y]==0) return;
+        c++;
+        vis[x][y] = 1;
+        grid[x][y] = 0;
+        
+        dfs(x+1, y , m , n , vis, grid);
+        dfs(x, y+1 , m , n , vis , grid);
+        dfs(x-1, y , m , n , vis , grid);
+        dfs(x, y-1 , m , n , vis , grid);
+        
+        
+    }
+    
+    
+    int maxAreaOfIsland(vector<vector<int>>& grid) {
+        int m = grid.size();
+        int n = grid[0].size();
+        
+        vector<vector<int>>vis(m , vector<int>(n , 0));
+        
+        for(int i = 0;i<m;i++){
+            for(int j = 0;j<n;j++){
+                if(!vis[i][j] and grid[i][j]==1){
+                    c = 0;
+                    dfs(i , j, m , n, vis , grid);
+                    ans = max( ans , c);
+                }
+            }
+        }
+        
+        
+        return ans;
+    }
+};
+
+
+
+*/
