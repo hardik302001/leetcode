@@ -1,35 +1,36 @@
-//same code as previous...
-
-//must visit question number of islands
-
-
 class Solution {
 public:
-    void dfs(vector<vector<int>>& grid1, vector<vector<int>>& grid2, int x, int y, int &res) {
-        int m = grid1.size(), n = grid1[0].size();
-        if(x < 0 || y < 0 || x >= m || y >= n) return;
-        if(grid1[x][y] == 0 && grid2[x][y] == 1) {
-            res = false;
+    void dfs(int i , int j , int m , int n , vector<vector<int>>& grid1, vector<vector<int>>& grid2, bool& f){
+        
+        // we pass f as refernce bcz , even if we know that sub-island is not possible we need not stop, we need to traverse full sub-island and mark it as visited, else we get WA
+        if(i<0 or i>=m or j<0 or j>=n or grid2[i][j]==0){
+            return;
         }
-        if(grid2[x][y] == 0) return;
-        grid2[x][y] = 0;
-        dfs(grid1, grid2, x + 1, y, res);
-        dfs(grid1, grid2, x, y + 1, res);
-        dfs(grid1, grid2, x - 1, y, res);
-        dfs(grid1, grid2, x, y - 1, res);
+        if(grid1[i][j]==0)f = false;
+        grid2[i][j] = 0;
+        
+        dfs(i+1 , j , m , n, grid1, grid2, f);
+        dfs(i , j+1 , m , n, grid1, grid2, f);
+        dfs(i-1 , j , m , n, grid1, grid2, f);
+        dfs(i , j-1 , m , n, grid1, grid2, f);
+        
+        
     }
+    
     int countSubIslands(vector<vector<int>>& grid1, vector<vector<int>>& grid2) {
-        int m = grid1.size(), n = grid1[0].size();
+        int m = grid2.size();
+        int n = grid2[0].size();
         int ans = 0;
-        for(int i = 0; i < m ; i++) {
-            for(int j = 0; j < n; j++) {
-                if(grid2[i][j] == 1) {
-                    int res = true;
-                    dfs(grid1, grid2, i, j, res);
-                    ans += res;
+        for(int i = 0;i<m;i++){
+            for(int j =0 ;j<n;j++){
+                if(grid2[i][j]==1){
+                    bool f = true;
+                    dfs(i , j , m , n , grid1, grid2, f); 
+                    ans+= int(f);
                 }
             }
         }
+        
         return ans;
-    }
+    } 
 };
