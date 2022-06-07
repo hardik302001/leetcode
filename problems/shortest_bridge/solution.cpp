@@ -24,7 +24,7 @@ public:
         n=mat[0].size();
 
         vis.resize(m,vector<int>(n,0));
-        int flag=0;
+        int flag=0;  // to keep track of island
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
                 if(mat[i][j]==1){
