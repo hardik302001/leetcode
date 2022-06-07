@@ -24,7 +24,7 @@ public:
                 if(inside(curx + dx[i] , cury + dy[i],M,N,maze)){
                     int newx = curx + dx[i];
                     int newy = cury + dy[i];
-                    cout<<newx<<" "<<newy<<endl;
+                    // cout<<newx<<" "<<newy<<endl;
                     dist[newx][newy] = dist[curx][cury] + 1;
                     maze[newx][newy] = '+';                  //to mark as visited
                     todo.push({newx, newy});
