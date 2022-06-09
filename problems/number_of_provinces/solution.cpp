@@ -46,3 +46,46 @@ public:
         return uf.getCount();
     }
 };
+
+
+/*
+
+class Solution {
+public:
+    vector<int>adj[201];
+    vector<int>vis = vector<int>(201 , 0);
+    
+    void dfs(int src){
+        vis[src]  = 1;
+        for(auto nei: adj[src]){
+            if(!vis[nei]){
+                dfs(nei);
+            }
+        }
+    }
+    int findCircleNum(vector<vector<int>>& g) {
+        int n = g.size();
+        
+        for(int i = 0;i<n;i++){
+            for(int j = 0;j<i;j++){
+                if(g[i][j]){
+                    adj[i].push_back(j);
+                    adj[j].push_back(i);
+                }
+            }
+        }
+        
+        int c = 0;
+        for(int i  = 0;i<n;i++){
+            if(!vis[i]){
+                c++;
+                dfs(i);
+            }
+        }
+        
+        return c;
+    }
+};
+
+
+*/
