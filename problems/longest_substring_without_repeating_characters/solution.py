@@ -1,23 +1,15 @@
-#sliding window
-
-
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         l = 0
-        m = 0
-        d = {}
-        n = len(s)
+        ans = 0
+        n  = len(s)
+        d = Counter()
         
         for r in range(n):
-            if s[r] in d:
-                d[s[r]]+=1
-            else:
-                d[s[r]] = 1
-            
-            #bcz we have repetition at the latest added eleemnt only, so we will check its freq only
+            d[s[r]]+=1
             while d[s[r]]>1:
                 d[s[l]]-=1
-                l = l +1
-                
-            m = max(m,r-l+1)
-        return m
+                l+=1
+            ans = max(ans , r-l+1)
+            
+        return ans
