@@ -29,15 +29,15 @@ public:
             for (auto a: adj[curr]){
                 if (!visited[a]){
                     visited[a] = true;
-                    ans++;
                     q.push(a);
+                    ans++;
                 }
             }
             // push other nodes so we visit everything
             for (auto b: back[curr]){
                 if (!visited[b]) {
-                    q.push(b);
                     visited[b] = true;
+                    q.push(b);
                 }
             }
         }
