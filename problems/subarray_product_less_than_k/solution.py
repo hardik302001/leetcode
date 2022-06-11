@@ -1,18 +1,14 @@
-#slidimg window
-
+# also see: https://leetcode.com/problems/count-subarrays-with-score-less-than-k/
 
 class Solution:
     def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
-        p = 1
-        l = 0
-        n = len(nums)
-        ans = 0
-        for r in range(n):
-            p = p*nums[r]
-            
-            while p>=k and l<=r:
-                p = p//nums[l]
-                l = l +1
-            ans = ans + (r-l+1)
-        
+        if k <= 1: return 0
+        prod = 1
+        ans = left = 0
+        for right, val in enumerate(nums):
+            prod *= val
+            while prod >= k:
+                prod //= nums[left]
+                left += 1
+            ans += right - left + 1
         return ans
