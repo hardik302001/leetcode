@@ -1,31 +1,21 @@
-#exactly same as : https://leetcode.com/problems/longest-substring-without-repeating-characters/         cpp soln
-#we consider sum here, rather than size of subarray
-
-
-
 class Solution:
     def maximumUniqueSubarray(self, nums: List[int]) -> int:
+        d = {}
         l = 0
-        m = 0
-        d = {}     #d[x]==1 -> prsent  , d[x]==0  -> absent
-        s = 0
+        ans = 0
         n = len(nums)
+        s = 0
+        
         for r in range(n):
-            cur = nums[r]
-            if cur not in d or d[cur]==0:
-                d[cur] = 1
-                s = s + nums[r]
-            else:                 #key exist and d[key]>0(presemnt) also
-                while nums[l]!=cur:
-                    d[nums[l]]= 0
-                    s = s - nums[l]
-                    l = l + 1
-                 
-                s = s - nums[l]
-                l = l +1
-                s = s + nums[r]
-                
-            m = max(m, s)
+            s+=nums[r]
+            if nums[r] in d:
+                d[nums[r]]+=1
+            else:
+                d[nums[r]] = 1
             
-        return m
-            
+            while d[nums[r]]>1:
+                s-=nums[l]
+                d[nums[l]]-=1
+                l+=1
+            ans = max(ans , s)
+        return ans
