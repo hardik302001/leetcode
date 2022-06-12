@@ -1,18 +1,36 @@
-//dfs
-//also see bfs soln
+//bfs
 
 class Solution {
 public:
     
-    bool dfs(vector<int>& arr, vector<bool>& visited, int i) {
-        if (i < 0 or i >= arr.size() or visited[i]) return false;
-        if (arr[i] == 0) return true;
-        visited[i] = true;
-        return ( dfs(arr, visited, i + arr[i]) || dfs(arr, visited, i - arr[i]) );
+    bool bfs(vector<int>& arr, vector<bool>& visited, queue<int>q) {
+        
+        while(!q.empty()){
+            
+            int t= q.front(); 
+            q.pop();
+            if(arr[t]==0){
+                return true;
+            }
+            if((t+arr[t])>=0 and (t+arr[t])<arr.size() and !visited[(t+arr[t])]){
+                q.push(t + arr[t]);
+                visited[(t+arr[t])] = true;
+            }
+            if((t-arr[t])>=0 and (t-arr[t])<arr.size() and !visited[(t-arr[t])]){
+                q.push(t - arr[t]);
+                visited[(t-arr[t])] = true;
+            }
+                
+        }
+        
+        return false;
     }
     
     bool canReach(vector<int>& arr, int start) {
         vector<bool> visited(arr.size(), false);
-        return dfs(arr, visited, start);
+        queue<int> q;
+        q.push(start);
+        visited[start] = true;
+        return bfs(arr, visited, q);
     }
 };
