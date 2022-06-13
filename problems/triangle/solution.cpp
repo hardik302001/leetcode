@@ -1,17 +1,22 @@
+
+// https://leetcode.com/problems/triangle/discuss/1721645/Recursion-or-Memoization-or-Tabulation-or-Space-Optimized-C%2B%2B
+
+
+
 class Solution {
 public:
-    int minimumTotal(vector<vector<int>>& tri) {
-        int n = tri.size();
-        vector<vector<int> > dp(n,vector<int>(n,0));
-        for(int j = 0;j<n;j++){
-            dp[n-1][j] = tri[n-1][j];
-        }
-        for(int i = n-2;i>=0;i--){
-            for(int j = 0;j<=i;j++){
-                dp[i][j] = tri[i][j] + min(dp[i+1][j],dp[i+1][j+1]);
-            }
-        }
-        
-        return dp[0][0];
+    int triangledp(vector<vector<int>>& triangle,int i,int j,vector<vector<int>>&dp)
+    {
+        if(i>=triangle.size())
+            return 0;
+        if(i==triangle.size()-1)
+            return dp[i][j] = triangle[i][j];
+        if(dp[i][j]!=-1)
+            return dp[i][j];
+        return dp[i][j] = triangle[i][j] + min(triangledp(triangle,i+1,j,dp),triangledp(triangle,i+1,j+1,dp));
+    }
+    int minimumTotal(vector<vector<int>>& triangle) {
+        vector<vector<int>>dp(triangle.size(),vector<int>(triangle.size(),-1));
+        return triangledp(triangle,0,0,dp);
     }
 };
