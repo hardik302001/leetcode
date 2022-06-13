@@ -30,7 +30,7 @@ public:
                         
                         if(s.find(temp)!= s.end()){
                             q.push(temp);
-                            s.erase(temp);
+                            s.erase(temp);  // work as a vis array
                         }
                     }
                 }
