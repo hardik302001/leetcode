@@ -19,7 +19,7 @@ public:
             auto set = m[s.size()-1];
             auto it = set.find(newstr);
             if(it!=set.end()){
-                res = max(res, 1 + solve(newstr, m, dp));
+                res = max(res, 1 + solve(newstr, m, dp)); // bcz strings are not sorted, so maybe we havent seen newstr until now, so we recurse on it also 
             }
         }
         
