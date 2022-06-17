@@ -4,4 +4,5 @@ SELECT employee_id,
     WHEN employee_id%2=1 AND name NOT LIKE 'M%' THEN salary 
     ELSE 0 
     END 
-AS bonus FROM Employees;
+AS bonus FROM Employees
+ORDER BY employee_id;
