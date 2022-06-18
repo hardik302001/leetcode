@@ -1,12 +1,17 @@
+# detect cycle in  hashset
 class Solution:
     def isHappy(self, n: int) -> bool:
 
-        mem = set()
-        while n != 1:
-            n = sum([int(i) ** 2 for i in str(n)])
-            if n in mem:
-                return False
-            else:
-                mem.add(n)
-    
-        return True
+        def get_next(n):
+            total_sum = 0
+            while n > 0:
+                n, digit = divmod(n, 10)
+                total_sum += digit ** 2
+            return total_sum
+
+        seen = set()
+        while n != 1 and n not in seen:   # check for cycle
+            seen.add(n)
+            n = get_next(n)
+
+        return n == 1
