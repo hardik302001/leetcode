@@ -12,28 +12,28 @@ class Solution {
 public:
     
 ListNode* merge(ListNode*a, ListNode*b){         //merge 2 sorted link list time = O(m+n), space = O(m+n)
-//2 pointer
-//find min and append it to a third link list c
+    //2 pointer
+    //find min and append it to a third link list c
 
-//base vase
-if(a==NULL){
-    return b;
-}
-if(b==NULL){
-    return a;
-}
+    //base vase
+    if(a==NULL){
+        return b;
+    }
+    if(b==NULL){
+        return a;
+    }
 
-//rec vase
-ListNode* c=NULL;
-if(a->val < b->val){
-    c = a;
-    c->next = merge(a->next,b);
-}
-else{
-    c = b;
-    c->next = merge(a,b->next);
-}
-return c;
+    //rec vase
+    ListNode* c=NULL;
+    if(a->val < b->val){
+        c = a;
+        c->next = merge(a->next,b);
+    }
+    else{
+        c = b;
+        c->next = merge(a,b->next);
+    }
+    return c;
 
 }
 
