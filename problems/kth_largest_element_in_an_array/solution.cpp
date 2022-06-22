@@ -9,6 +9,8 @@
 
 //other method is priority queue also..see prev code for minhesp and max heap implementation!
 
+
+// TC : 200ms
 class Solution {
 public:
     int partition(vector<int>& a,int s,int e){
@@ -53,3 +55,89 @@ public:
         }
     }
 };
+
+
+
+
+// ------------------------------------------------------------------
+
+/*
+
+// 8 ms
+//Method : Using priority queue of size k  (max heap)
+// https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        priority_queue<int> pq(nums.begin(), nums.end());
+        for (int i = 0; i < k - 1; i++) {
+            pq.pop();
+        }
+        return pq.top();
+    }
+};
+
+//Time: In worst case, O(nlogk).
+*/
+
+
+// ---------------------------------------------------------------------
+
+
+
+/*
+
+// 14 ms
+//Method : Using priority queue of size k  (min heap)
+// https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/
+
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        priority_queue<int, vector<int>, greater<int>> pq;
+        for (int num : nums) {
+            pq.push(num);
+            if (pq.size() > k) {
+                pq.pop();
+            }
+        }
+        return pq.top();
+    }
+};
+
+//Time: In worst case, O(nlogk).
+*/
+
+
+
+
+// -----------------------------------------------------------------
+
+
+
+/*
+// 4ms
+//Method : Using priority queue of size k
+
+class Solution {
+public:
+    int findKthLargest(vector<int>& a, int k) {
+        priority_queue<int,vector<int>>p;
+        k=a.size()-k+1;
+        for(int i=0;i<a.size();i++){
+            if(p.size()<k){
+                p.push(a[i]);
+            }
+            else{
+                if(p.top()>a[i]){
+                    p.pop();
+                    p.push(a[i]);
+                }
+            }
+        }
+        return p.top();
+    }
+};
+//Time: In worst case, O(nlogk).
+
+*/
