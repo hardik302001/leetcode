@@ -1,7 +1,7 @@
 // topological sort
 // kahn algo
 // bfs, remove indegree == 0, nodes, bcz directed graph
-// store topo sort ans, it topo sort exists then res array length will be equal to number pf initial nodes
+// store topo sort ans, it topo sort exists then res array length will be equal to number of initial nodes
 
 // https://leetcode.com/problems/minimum-height-trees/submissions/
 
