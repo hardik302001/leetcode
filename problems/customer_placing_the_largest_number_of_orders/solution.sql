@@ -5,6 +5,6 @@ HAVING COUNT(order_number) = (
 	SELECT COUNT(order_number) as cnt
 	FROM orders
 	GROUP BY customer_number
-	ORDER BY cnt DESC
+	ORDER BY cnt DESC       # to find max count
 	LIMIT 1
 )
