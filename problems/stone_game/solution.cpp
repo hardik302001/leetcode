@@ -1,19 +1,43 @@
+// dp soln
+// exactly same as : https://leetcode.com/problems/predict-the-winner/submissions/
+
+
 class Solution {
 public:
-    bool stoneGame(vector<int>& piles) {
-        return true;
-    }
-        
-        
-};
+    int dp[1005][1005];
     
-    //why because ..
-        //um approach is greedy,,we sort and reveerse, and do 1 + 3+ 5+ 7 terms...for alex
-        //2 + 4 +6 8....for bob..
+    int f(int l, int r, vector <int> &piles) {
+        if(l>r) return 0;
+        if(l==r) return piles[l];
+        if(dp[l][r] != -1) return dp[l][r];
         
-        //so its sorted ..so term at first place will be surely greater than second and second will be greater than third and third will be greater than fourth..so we can say 1+ 3> 2+ 4, it will be true..
+        // min for bob bcz we are solving from alice pov, 
+        int ifleft = piles[l] + min(f(l+2, r, piles), f(l+1, r-1, piles)); // consider both choice for bob
+        int ifright = piles[r] + min(f(l+1, r-1, piles), f(l, r-2, piles));
         
-        //we can do similar thing for whole array..
-        
-        //so finally 1 + 3+ 5...  > 2 + 4 +6 ...
-        //so alex wins always
+        return dp[l][r] = max(ifleft, ifright);
+    }
+    bool stoneGame(vector<int>& piles) {
+        int l = 0, r = piles.size()-1;
+        memset(dp, -1, sizeof(dp));
+        int alex = f(l, r, piles);
+        int sum = 0;
+        for(int i=0;i<piles.size();i++) sum += piles[i];
+
+        return alex > (sum - alex);
+    }
+};
+
+
+// also seee: this way to code solution : https://leetcode.com/problems/stone-game/discuss/346757/C%2B%2B-Minimax-or-Game-theory-or-Stone-Game
+
+
+/*
+Alice clearly always wins the 2 pile game. With some effort, we can see that she always wins the 4 pile game.
+
+If Alice takes the first pile initially, she can always take the third pile. If she takes the fourth pile initially, she can always take the second pile. At least one of first + third, second + fourth is larger, so she can always win.
+
+so alice always win..
+
+
+*/
