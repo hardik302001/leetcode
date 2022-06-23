@@ -1,25 +1,29 @@
+// top dowm 
+//  O(n^1.5)
+
+
 class Solution {
 public:
-    bool winnerSquareGame(int n) {
-        vector<int>dp(n+1 , false);
-        dp[1] = true;
-        for(int i = 1;i<=n;i++){
-            bool possible = false;
-            for(int j = 1;j*j<=i;j++){
-                if (i==j*j){
-                    dp[i] = true;
-                }
-                if(dp[i-j*j]==false){
-                    possible = true;
-                }
+    int dp[100001];
+    int solve(int n){  // int , bcz so we have 3 state fr dp => -1(uninitialised) , 0(false)  , 1(true)
+        if(n==0) return 0;
+        if(dp[n]!=-1) return dp[n];
+        
+        int ans = 0;
+        
+        for(int i = 1;i*i<=n;i++){
+            if(solve(n-(i*i))==0){  // bob should loose
+                ans = 1; 
+                break;
             }
-            if(possible){
-                dp[i] = true;
-            }
-            
         }
         
-   
-        return dp[n];
+        return dp[n] = ans;
+    }
+    
+    bool winnerSquareGame(int n) {
+        memset(dp , -1 , sizeof dp);
+        bool res = solve(n);
+        return res;
     }
 };
