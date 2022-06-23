@@ -35,7 +35,7 @@ public:
             q.push(t);
             sum += t;
             
-            if (sum > d)          //sum agar jyda ho gya toh pop kr rhe h..ofc popped will be less than / equal to the curr added course time
+            while (sum > d)          //sum agar jyda ho gya toh pop kr rhe h..ofc popped will be less than / equal to the curr added course time
             {
                 sum -= q.top(); //This can be some other long course
                 q.pop();
