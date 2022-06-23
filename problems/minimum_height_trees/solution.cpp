@@ -29,6 +29,8 @@ public:
         }
         while(!queue.empty())
         {
+            
+            // very important to clear res  , bcz we need last step nodes only!
             res.clear();// clear vector before we start traversing level by level.
             int size=queue.size();
             for(int i=0;i<size;i++)
