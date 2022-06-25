@@ -10,7 +10,7 @@ class Solution:
                 continue
             else:
                 for piece in pieces:
-                    if piece.count(i):
+                    if i in piece:
                         for x in piece:
                             d[x]-=1
                         
