@@ -10,17 +10,20 @@ public:
         if(k == 1)  // bcz if one side is left , means 3 side full done , means we will surely make the 4th side
             return true;
         if(currSum == subsetSum) {
-            return possible(matchsticks, n-1, 0, subsetSum, k-1);
+            return possible(matchsticks, 0, 0, subsetSum, k-1);  // idx = 0, cur = 0
         }
         
-        for(int i = numsIndex; i>=0; i--) {
+        if(numsIndex>=n) //This line is important to avoid tle
+           return false;
+        
+        for(int i = numsIndex; i<n; i++) {
             if(visited[i] || currSum + matchsticks[i] > subsetSum)
                 continue;
             
             visited[i] = 1;
             currSum   += matchsticks[i];
             
-            if(possible(matchsticks, i-1, currSum, subsetSum, k))
+            if(possible(matchsticks, i+1, currSum, subsetSum, k))
                 return true;
             
             visited[i] = 0;
@@ -41,14 +44,13 @@ public:
         if(sum%4 != 0)
             return false;
         
+        
         memset(visited, 0, sizeof(visited));
         
         n                   = matchsticks.size();
         int subsetSum       = sum/4;
-        int numsIndex       = n-1;
-        int currSum         = matchsticks[numsIndex];
-        visited[numsIndex]  = 1;
+        sort(begin(matchsticks),end(matchsticks),greater<int>());  // For avoid extra calculation
         
-        return possible(matchsticks, numsIndex, currSum, subsetSum, k);
+        return possible(matchsticks, 0, 0, subsetSum, k);
     }
 };
