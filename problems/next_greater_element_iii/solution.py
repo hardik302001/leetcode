@@ -1,3 +1,5 @@
+# similar to next permutation
+
 '''
 Introducion :
 
