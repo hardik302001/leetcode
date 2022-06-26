@@ -8,23 +8,27 @@
 class Solution {
 public:
     int n;
-    int visited[16];
+    int visited[16];   // see contsraints
     
     bool possible(vector<int>& nums, int numsIndex, int currSum, int& subsetSum, int k) {
-        if(k == 1)
+        if(k == 1)  // bcz if one side is left , means (k-1) side full done , means we will surely make the 4th side
             return true;
+        
+        if(numsIndex>=n) //This line is important to avoid tle
+           return false;
+        
         if(currSum == subsetSum) {
-            return possible(nums, n-1, 0, subsetSum, k-1);
+            return possible(nums, 0, 0, subsetSum, k-1);  // start again, idx = 0, cur = 0, k-=1
         }
         
-        for(int i = numsIndex; i>=0; i--) {
+        for(int i = numsIndex; i<n; i++) {
             if(visited[i] || currSum + nums[i] > subsetSum)
                 continue;
             
             visited[i] = 1;
             currSum   += nums[i];
             
-            if(possible(nums, i-1, currSum, subsetSum, k))
+            if(possible(nums, i+1, currSum, subsetSum, k))
                 return true;
             
             visited[i] = 0;
@@ -44,10 +48,8 @@ public:
         
         n                   = nums.size();
         int subsetSum       = sum/k;
-        int numsIndex       = n-1;
-        int currSum         = nums[numsIndex];
-        visited[numsIndex]  = 1;
+        sort(begin(nums),end(nums),greater<int>());  // For avoid extra calculation
         
-        return possible(nums, numsIndex, currSum, subsetSum, k);
+        return possible(nums, 0, 0, subsetSum, k);
     }
 };
