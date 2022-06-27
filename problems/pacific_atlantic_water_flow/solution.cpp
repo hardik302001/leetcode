@@ -8,7 +8,7 @@ public:
     int n,m;
     void dfsp(int i,int j,vector<vector<int>>& h,int prev)
     {
-        if(i<0||j<0||i==n||j==m||pac[i][j]||h[i][j]<prev){return;}
+        if(i<0||j<0||i>=n||j>=m||pac[i][j]||h[i][j]<prev){return;}
         pac[i][j]=true;
         
         int v=h[i][j];
