@@ -1,25 +1,20 @@
-#greedy
+# also see: https://leetcode.com/problems/minimum-increment-to-make-array-unique/
+
+# also see pq solution: cpp
+
 class Solution:
     def minDeletions(self, s: str) -> int:
-        d = {}
-        for i in s:
-            if i in d:
-                d[i]+=1
-            else:
-                d[i] = 1
-        a = d.values()
+        n =len(s)
+        d = Counter(s)
+        p = list(d.values())
+        ss = set()
         ans = 0
-        if len(a) ==len(set(a)):
-            return 0
-        se = set()
-        for i in a:
-            if i not in se:
-                se.add(i)
-            else:
-                while (i in se) and i!=0:
-                    i = i -1
-                    ans = ans +1
-                if i !=0:
-                    se.add(i)
-        print(se)
+        for i in p:
+            cur = i
+            while (cur in ss) and (cur!=0):
+                cur-=1
+                ans+=1
+            ss.add(cur)
+    
         return ans
+        
