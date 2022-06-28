@@ -1,3 +1,5 @@
+# also see: https://leetcode.com/problems/minimum-deletions-to-make-character-frequencies-unique/solution/
+
 # courtesy : HAPPY CODING! YT
 
 
@@ -8,13 +10,13 @@ class Solution:
     def minIncrementForUnique(self, nums: List[int]) -> int:
         ans = 0
         nums.sort()
-        prev = nums[0]
+        prev = nums[0]   # what is expected on current position
         for i in nums:
             if i>prev:
-                prev = i+1
+                prev = i+1    # when we go on next position , we expect (i+1)
             else:
                 ans += prev-i
-                prev += 1
+                prev += 1      # when we go on next position , we expect (prev+1)
         return ans
     
 '''
@@ -25,10 +27,10 @@ sort       : 1 1 2 2 3 7
 pos fixing : 1 2 3 4 5 7
 ans +=       0 1 1 2 2 0
 ans = 6
- 
+  
 '''   
 
-#Same thing as above, but using counting sort
+# Same thing as above, but using counting sort
 # tc = O(n), SC = O(n)
 
 class Solution:
