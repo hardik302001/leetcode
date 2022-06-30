@@ -1,24 +1,13 @@
+# meet at median
+
 class Solution:
-    def minMoves2(self, nums: List[int]) -> int:
-        def minOperations(l, k):
-            
-            l.sort()
-            p = l.copy()
-            # print(l)
-            sz = len(l)
+    def minMoves2(self, l: List[int]) -> int:
+        l.sort()
+        n = len(l)
 
-            mid = l[sz//2]
-            ans1 = 0
-            for i in range(sz):
-                if l[i]<mid:
-                    c = (mid-l[i])//k
-                    ans1 = ans1 + c
-                    l[i] = l[i] + c*k
-                elif l[i]>mid:
-                    c = (l[i]-mid)//k
-                    ans1 = ans1 +c
-                    l[i] = l[i]-c*k
-
-            return ans1
+        mid = l[n//2]
+        ans = 0
+        for i in range(n):
+            ans+= abs(l[i]-mid)
         
-        return minOperations(nums,1)
+        return ans
