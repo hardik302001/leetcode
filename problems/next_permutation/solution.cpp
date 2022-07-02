@@ -2,21 +2,39 @@ class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
         int n = nums.size();
-        int ind = n-2;
-        while(ind>=0 and nums[ind]>=nums[ind+1]){
-            ind--;
-        }
-        if(ind==-1){
-            reverse(nums.begin() , nums.end());
-            return;
-        }
-        int swa = n-1;
-        while(swa>ind and nums[swa]<=nums[ind]){
-            swa--;
+        if(n==1){ return; }
+        int idx = n-2;
+        int prev = nums[n-1];
+        while(idx>=0 and nums[idx]>=prev){
+            prev = nums[idx];
+            idx--;
         }
         
-        swap(nums[swa] , nums[ind]);
-        reverse(nums.begin() + ind +1 ,nums.end());
+        
+        if(idx==-1){
+            vector<int>ans = nums;
+            sort(begin(nums), end(nums));
+            return;
+        }
+        
+        
+        int swa = idx+1;
+        for(int i = idx+1;i<n;i++){
+            if(nums[i]>nums[idx]){
+                swa = i;
+            }else{
+                break;
+            }
+        }
+        
+        swap(nums[idx], nums[swa]);
+        int l = idx+1;
+        int r = n-1;
+        // cout<<l<<" "<<r<<endl;
+        while(l<r){
+            swap(nums[l++], nums[r--]);
+        }
+        return ;
         
     }
 };
