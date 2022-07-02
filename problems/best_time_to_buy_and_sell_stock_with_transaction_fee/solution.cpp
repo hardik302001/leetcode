@@ -4,6 +4,8 @@
 // sell after buy only , or wait
 // start from buying state
 
+// O(n)
+
 
 class Solution {
 public:
