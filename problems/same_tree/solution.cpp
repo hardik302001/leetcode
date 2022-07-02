@@ -1,22 +1,21 @@
-//THE CODE IS QUITE SIMILAR TO SYMMETRIC TREE QUESTION(EASY)
-// here we will chceking for every left we traversed left and for every right we traversed //right..but there it is opposite bcz its mirror image ...so for evry left we will check right and //for evry right we will check left
-
-
-//  https://leetcode.com/problems/symmetric-tree/submissions/
-
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
 class Solution {
 public:
-    bool isSameTree(TreeNode* root1, TreeNode* root2) {
-        if (root1 == NULL and root2==NULL)
-            return true;
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        if((p and !q) or (!p and q)) return false;
+        if(!p and !q) return true;
         
-        if (root1 == NULL || root2 == NULL)
-            return false;
-        
-        if (root1->val != root2->val){
-            return false;
-        }
-        
-        return isSameTree(root1->left, root2->left) and  isSameTree(root1->right, root2->right) ;                     
+        if(p->val!= q->val) return false;
+        return isSameTree(p->left , q->left) and isSameTree(p->right , q->right);
     }
 };
