@@ -16,7 +16,7 @@ https://www.youtube.com/watch?v=M65xBewcqcI
     
     
 3. mujhe smjh nhi aaya aache se...wo col= 1 to col = 0 wala logic ( i guess to keep track for first col)  o striver ne bola...but ignlre it..see below code.
-It is optmisation of SECOND approach, tere we took speerate vectors for ro and column, to keep trackof zero and one,
+It is optmisation of SECOND approach, there we took speerate vectors for row and column, to keep trackof zero and one,
 
 we can optimise it by taking these both vectors as first column and first row of the matrix..
 but we cant make them 0 in beginning only...bcz then we cant keep track of new and old zero..so we will take 2 variable..isrow and iscol...rest you can understand by code
@@ -31,7 +31,7 @@ but we cant make them 0 in beginning only...bcz then we cant keep track of new a
 */
 
 
-//DO LOOK AT PREIOVOUS CODE..IT IS BETTER VERSION OF PERVIOUS CODE
+// DO LOOK AT PREIOVOUS CODE..IT IS BETTER VERSION OF PERVIOUS CODE
 class Solution {
 public:
     
