@@ -12,8 +12,27 @@ public:
     }
     
     //for finding if this stop is includes in route or not
-    bool present(vector<int> &a,int s){
-        return binary_search(a.begin(), a.end(), s);
+    bool present(vector<int> &nums,int s){
+        // return binary_search(nums.begin(), nums.end(), s);
+
+        int l = 0;
+        int h = nums.size();
+        if(nums[0]==s or nums[h-1]==s) return true;
+        
+        while(l<h){
+            int m = l + (h-l)/2;
+            if(nums[m]==s){
+                return true;
+            }
+            
+            if(nums[m]>s){
+                h = m;
+            }else{
+                l = m+1;
+            }
+        }
+        return false;
+        
     }
     
     int numBusesToDestination(vector<vector<int>>& routes, int source, int target) {
@@ -38,7 +57,7 @@ public:
         for(int i=0;i<n;i++){
             if(present(routes[i],source)){
                 vis[i]=1;
-               q.push(i); 
+                q.push(i); 
             }
         }
         int ans=1;
