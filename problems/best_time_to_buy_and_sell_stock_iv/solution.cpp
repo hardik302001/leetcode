@@ -1,18 +1,17 @@
 // (SAME AS BEST TIME TO BUY AND SELL STOCK 3)
 // there is some other soln also , with 2 state only , see striver video ...do that also later on..
 
+
+
+// TC: O(nk)
+
+
 class Solution {
 public:
     int dp[1001][2][101];            //just chnged the constriants accordingly
     int maxProfit(int transac, vector<int>& prices) {
         int n = prices.size();
-        for(int i = 0;i<n;i++){
-            for(int j = 0;j<2;j++){
-                for(int k = 0;k<transac+1 ; k++){      // atmost transac = 0 , 1, 2 .. transac  = transac + 1
-                    dp[i][j][k] = -1;
-                }
-            }
-        }
+        memset(dp , -1, sizeof dp);
         int ans = recur(prices, 0 , 1,transac);  
         return ans;
     }
