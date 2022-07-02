@@ -1,14 +1,14 @@
-// minimise buy time
-
 class Solution {
 public:
-    int maxProfit(vector<int>& prices) {
-        if (prices.empty()) return 0;
-        int buy = prices[0], profit = 0;
-        for (int i=1; i<prices.size(); i++) {
-            if (prices[i] > buy) profit = max(prices[i]-buy, profit);
-            else                 buy    = min(buy, prices[i]);
+    int maxProfit(vector<int>& nums) {
+        int n = nums.size();
+        int mi = INT_MAX;
+        int ans = 0;
+        for(int i = 0;i<n;i++){
+            ans = max(ans , nums[i]-mi);
+            mi = min(nums[i], mi);
         }
-        return profit;
+        
+        return ans;
     }
-};
+}; 
