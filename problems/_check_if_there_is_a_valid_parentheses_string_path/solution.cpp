@@ -105,8 +105,7 @@ public:
     }
     
     bool recur(vector<vector<char>>& grid , int m , int n  , int i , int j , int open , int req){
-        if(i>=m or j>=n or open<0) return false;
- 
+        if(i>=m or j>=n) return false;
         
         if(grid[i][j]=='('){
             open++;
@@ -124,6 +123,8 @@ public:
         if(dp[i][j][open]!=-1){
             return dp[i][j][open];
         }
+        
+        
         if(recur(grid , m , n , i+1 , j , open ,  req)) return dp[i][j][open] = true;
         if(recur(grid , m , n , i , j+1 , open ,  req)) return dp[i][j][open] = true;
         
