@@ -10,3 +10,6 @@ class Solution:
             row.append(1)
             Tri.append(row)
         return Tri
+    
+# TC: O(n^2)
+# SC: O(n^2)
