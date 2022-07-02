@@ -1,4 +1,4 @@
-//very similar to best time to buy and sell stock with cooldown 
+//very similar to best time to buy and sell stock with cooldown or buy sell stock 2 
 //coding idea from codencode..
 //logic idea is same as best time to buy and sell stock with cooldown 
 //just make new variable for transactions
@@ -10,13 +10,7 @@ public:
     int dp[100001][2][3];
     int maxProfit(vector<int>& prices) {
         int n = prices.size();
-        for(int i = 0;i<n;i++){
-            for(int j = 0;j<2;j++){
-                for(int k = 0;k<3;k++){        
-                    dp[i][j][k] = -1;
-                }
-            }
-        }
+        memset(dp , -1 , sizeof dp);
         int ans = recur(prices, 0 , 1, 2);    // 3 choice possible , 0 transac , 1 transac , 2 transac
         return ans;
     }
