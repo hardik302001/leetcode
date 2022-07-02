@@ -4,6 +4,8 @@
 // sell after buy only , or wait
 // start from buying state
 
+// see py for one liner
+
 
 class Solution {
 public:
