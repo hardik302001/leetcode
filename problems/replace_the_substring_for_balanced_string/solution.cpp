@@ -1,3 +1,7 @@
+// get extra elements, and check minimum window substring between extra and actual string!
+// https://leetcode.com/problems/minimum-window-substring/
+
+
 class Solution {
 public:
     int balancedString(string s) {
@@ -23,6 +27,8 @@ public:
     }
     
     
+    
+    // same as: https://leetcode.com/problems/minimum-window-substring/
     string minWindow(string s, string t) {
         
         vector<int> tmap(128,0), smap(128,0);      //128 bcz ascii A = 65, ascii a = 97 , so large gap
@@ -43,7 +49,6 @@ public:
             if(tmap[s[end]-'A']>=smap[s[end]-'A']) {   //no. of valid chrs from string t, that are occuring in string s! so we update c till freq of chars are less than equal to freq of char of string t
                 c++;
             }   
-            //cout<<s[end]<<" "<<c<<endl;
             
             //by this time, if we have reached the matching substring, we will start resizing. If not, then the window has been expanded on the right size and its proceeding
             while(c==counter){        //when freq equates than do sliding
