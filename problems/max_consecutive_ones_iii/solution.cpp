@@ -8,7 +8,7 @@ public:
         for( int r = 0 ; r < A.size() ; ++r ) {
             if( A[ r ] == 0 ) ++zeroCount;
             if( zeroCount > K ) {
-                if( A[ l ] == 0 ) --zeroCount;
+                if( A[ l ] == 0 ) zeroCount--;
                 ++l;
                 
             }
