@@ -14,7 +14,7 @@ public:
             s1.pop();
         }
         s2.push(x);          //we cant swap stack as we did in https://leetcode.com/submissions/detail/605017448/
-                            // logic is more of cycle doing cycles as https://leetcode.com/problems/implement-stack-using-queues/submissions/
+                            // logic is more of cycle doing cycles as https://leetcode.com/submissions/detail/737223459/
         while(!s2.empty()) {
             s1.push(s2.top());
             s2.pop();
