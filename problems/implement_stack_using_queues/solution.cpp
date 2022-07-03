@@ -7,8 +7,6 @@ public:
         
     }
     
-    
-    
     void push(int x) {    //every time we push into queue, we do a cycle, and get the lastest element at front
 		que.push(x);
 		for(int i=0;i<que.size()-1;++i){
