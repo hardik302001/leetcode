@@ -1,3 +1,6 @@
+// also see: https://leetcode.com/problems/number-of-increasing-paths-in-a-grid/
+
+
 // https://leetcode.com/problems/longest-increasing-path-in-a-matrix/discuss/1151418/Longest-Increasing-Path-in-a-Matrix-or-Short-and-Simple-w-Explanation
 // dp soln with memoization easy peasy!
 // TC: O(n*m)
@@ -20,6 +23,7 @@ public:
                 res = max(res, 1 + solve( newx, newy , m , n , dp , matrix));   // max of all 4 direction longest path
                 
                 // 1 + ...bcz we know current cell is surely included in longest inc path!
+                // this is length of paths
             } 
         }
         dp[i][j] = res;
