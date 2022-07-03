@@ -1,12 +1,14 @@
-#problem is same as subarray sum equals k
+# problem is same as subarray sum equals k
 # https://leetcode.com/problems/subarray-sum-equals-k/
 
-#just convert nums[i] = 0, if even 
-#else
-#nums[i] = 1
+# just convert nums[i] = 0, if even 
+# else
+# nums[i] = 1
+
+# now ques is exactly same as: https://leetcode.com/problems/binary-subarrays-with-sum/
+# now ques is exactly same as suabrray sum k (where k is odd count)
 
 
-#now ques is exactly same as suabrray sum k (where k is odd count)
 
 class Solution:
     def numberOfSubarrays(self, nums: List[int], k: int) -> int:
