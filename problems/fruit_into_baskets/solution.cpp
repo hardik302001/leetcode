@@ -21,7 +21,6 @@ public:
             }
             
             ma=max(ma,r-l+1);
-            
             r++;
         }
         return ma;
