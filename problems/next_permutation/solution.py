@@ -54,17 +54,17 @@ class Solution:
             n.sort()    # or n = n[::-1] bcz its already sorted in reverse direction
             return n
         
-        swap=i  #current index
-        pos=i   
-        p = n[swap]  #current element
+        swap=i+1  # current index
+        pos=i   # position of pivot
+        p = n[pos]  # current element
          
-        for x in range(swap+1,N):
-            if n[x]>p:              #start from next element of swap(cur index) and check for *next possible strictly greater element* bcz now array is in dec order 
+        for x in range(N-1, i , -1):
+            if n[x]>p:              # start from right side and check for first greater element than p ,  check for *next possible strictly greater element* bcz now array is in dec order 
                 swap=x
-            else:
                 break
+#                 
                 
-        print(pos, swap)
+        # print(pos, swap)
         n[pos],n[swap]=n[swap],n[pos]
         
         l, r = pos+1, N-1  # reverse the second part(or sort same thing bcz it already in decreasing)
