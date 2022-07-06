@@ -28,6 +28,7 @@ public:
             }
         }
 
+        cout<<smallest<<largest<<endl;
         //next step find the right index where smallest and largest lie (subarray) for our solution
         if(smallest==1000000 or largest ==-1000000){
             return 0;
