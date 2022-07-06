@@ -12,6 +12,8 @@ class Solution:
         for i in range(1, n):
             if intervals[i][0] <= begin[1]:
                 c = c + 1
+                
+                # we consider small interval, after overlap , bcz we need to minimise no of arrows
                 if intervals[i][1]>= begin[1]:
                     begin = begin
                 else:
