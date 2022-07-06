@@ -1,4 +1,4 @@
-// go solve it first belowe question, then come here
+// go solve it first below question, then come here
 
 
 //also see very similar ques : https://leetcode.com/problems/valid-parenthesis-string/submissions/
