@@ -1,5 +1,6 @@
 // first part of ques..
-//https://youtu.be/SO1lFWyaSdE
+// https://youtu.be/SO1lFWyaSdE  : this is removed
+// see lc 1798: https://leetcode.com/problems/maximum-number-of-consecutive-values-you-can-make/
 
 // patching array is follow up for above ques..
 // https://leetcode.com/problems/patching-array/discuss/78492/C++-8ms-greedy-solution-with-explanation
