@@ -3,11 +3,10 @@
 
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        n=len(nums)
+        
+        n = len(nums)
         nums.sort()
-
         res= []
-    
         target = 0 
     
         i = 0
@@ -33,6 +32,7 @@ class Solution:
                     end-=1
                 else:
                     start+=1
+                    
             # repetition of first number
             while i+1 < n-2 and nums[i] == nums[i+1]:   
                 i += 1
