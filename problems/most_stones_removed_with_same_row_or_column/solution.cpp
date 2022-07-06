@@ -48,6 +48,10 @@ public:
             }
         }
         
+        // so at end we will have uf.getCOunt() connected groups
+        // if we start removing stones, so we will end up having only one stonein each connected group at end.. why bcz, we need maximum no of stones to be removed, so we will remove sequentially stones in each group and at end we will only have uf.count() no of stones left
+        
+        // therefore , we removed n - uf.getCount() stones..
         return n - uf.getCount();
     }
 };
