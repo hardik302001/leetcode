@@ -1,4 +1,6 @@
 # tc:      O(n2)
+# see if for refernce=> O(n3) solutionis good, traverse from back..
+
 
 class Solution:
     def countQuadruplets(self, nums: List[int]) -> int:
