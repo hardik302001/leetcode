@@ -1,4 +1,10 @@
-//similar to https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/submissions/
+// similar to https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/submissions/
+
+
+// also see: https://leetcode.com/problems/first-missing-positive/
+
+
+// also see: https://leetcode.com/problems/find-the-duplicate-number/
 
 
 class Solution {
@@ -8,7 +14,7 @@ public:
         for(int i = 0; i < nums.size(); i++){
             int n = abs(nums[i]);
             nums[n-1] = -nums[n-1];
-            if(nums[n-1] > 0) res.push_back(abs(nums [i]));
+            if(nums[n-1] > 0) res.push_back(abs(nums[i]));
         }
         return res;
     }
