@@ -2,6 +2,9 @@
 
 // Space Complexity: As we are using extra space for the dummy matrix the space complexity will also be O(n*m).
 
+// Direct: (m+n-2)C(n-1)  
+
+
 // recursive 
 
 class Solution {
