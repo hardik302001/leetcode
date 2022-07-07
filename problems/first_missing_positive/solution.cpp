@@ -1,5 +1,12 @@
 //courtesy codencode yt
 
+// also see: https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/submissions/
+// also see: https://leetcode.com/problems/find-the-duplicate-number/
+
+
+
+// bring nums[i] at its corret position
+// [1, 2, 3 ,4 ..., n]
 
 class Solution {
 public:
