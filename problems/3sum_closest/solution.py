@@ -1,3 +1,6 @@
+# it gives fucking TLE, mfs uupdated the tcs
+# see cpp solution 
+
 class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
         nums.sort()
@@ -19,6 +22,5 @@ class Solution:
                     l+=1
                 # print(cur_sum)
         return ans
-                
                 
                 
