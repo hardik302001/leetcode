@@ -2,7 +2,7 @@
 see striver video
 
 * ele1 and ele2 shud be different values while initialisation 
-* in else part, cnt1 qnd cnt2 both shud be decreased...
+* in else part, cnt1 and cnt2 both shud be decreased...
 
 '''
 
