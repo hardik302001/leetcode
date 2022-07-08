@@ -2,38 +2,58 @@
 
 // also see this solution , other way of doing things: https://leetcode.com/submissions/detail/703847747/
 
-// also see: https://leetcode.com/problems/reverse-pairs/
-// see striver video, inversion count , reverse pairs
-// COUNT INVERSIONS , for every index i
 
+// first see it, then come here..|
+//                              \|/
+// also see: https://leetcode.com/problems/reverse-pairs/
+
+
+// see striver video, inversion count , reverse pairs
+
+/*
+ 
+COUNT INVERSIONS , for every index i
+thats why we did vector of pair, bcz we need to give answer for each index, and after sorting indexes will interchange , so we need to keep index intact with value
+
+*/
 class Solution {
 public:
     
     void merge(vector<pair<int, int>>&vp , int start , int mid , int end , vector<int>&ans){
         
-        vector<pair<int, int>>temp(end-start+1);     // to join the 2 sorted partitions
-        int i = start; // start of left partition
-        int j = mid+1; // start of right partition
-        int k = 0; // index for combined sorted partition
-        int c = 0; // count of smaller number 
-        
+        // CALCULATING 
+        int j = mid+1;
+        int i;
         
         // rememeber both left and right partition are sorted
         // so try to visualise yourself ,how to find count for every i in left partition such that nums[i] > nums[j] in right partition , and both partition are sorted...
         // we traverse and count for each i , uptil when nums[i]>nums[j] and upadte j, when this condition breaks , it means we dont have more j such that nums[i]>nums[j] , bcz right partition is sorted..
         
-        // another thing to notice is that value of c for current i , will be intilially same for next i also.. bcz left partition is also sorted, so if my current i is greater than some alpha j's then my i+1 will also be atleast greater than alpha j's!  Initially it remains as (j-(mid+1)) only , and then we update accordingly..
-        
-        
+         
+        for(i = start;i<=mid;i++){
+            while(j<=end and vp[i].first>vp[j].first){
+                j++;
+            }
+            ans[vp[i].second] += (j-(mid+1));
+        }
+                
+                
+        // ----------------- doing the merge sort part ---------------------
+        vector<pair<int, int>>temp(end-start+1);     // to join the 2 sorted partitions
+        i = start; // start of left partition
+        j = mid+1; // start of right partition
+        int k = 0; // index for combined sorted partition
         while(i<=mid and j<=end){
             if(vp[i].first>vp[j].first){
-                temp[k++] = vp[j++];
+                temp[k] = vp[j];
+                k+=1;
+                j+=1;
             }else{
-                ans[vp[i].second] += (j-(mid+1));  // for some i,count of smaller elements from start of right partition to current j , here elements from (mid+1) to (j-1) are only included..so (j-1 - (mid+1)+1) = (j-(mid+1))
-                temp[k++] = vp[i++];
+                temp[k] = vp[i];
+                k+=1;
+                i+=1;
             }
         }
-        
         
         // now adding remaining elements to our sorted temp..
         
@@ -41,7 +61,7 @@ public:
         // so we add size of right partition to our ans[vp[i].second]
         // now j = end+1
         
-        while(i<=mid) ans[vp[i].second]+=(j-(mid+1)), temp[k++] = vp[i++]; 
+        while(i<=mid) temp[k++] = vp[i++]; 
         while(j<=end) temp[k++] = vp[j++];
         
         
