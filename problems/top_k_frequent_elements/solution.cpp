@@ -89,7 +89,7 @@
         
 //         for (auto it : cnt){
 //             Q.push({it.second, it.first});
-//             if(Q.size()>k){  // keep only top k elements
+//             if(Q.size()>k){  // keep only top k elements, remove extra smallest ones
 //                 Q.pop();
 //             }
 //         }
