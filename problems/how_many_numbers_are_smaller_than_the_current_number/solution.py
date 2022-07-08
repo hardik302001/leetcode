@@ -1,9 +1,13 @@
-#U CAN DO BRUTE
-#OTIMIZATION  1 : 
-#COUNTING SORT AND PREF SUM: IN QUES MENTIONED 1  TO 100   (O(n))
+ 
 
-#method 2:
-#Sorting+dictionary   O(nlogn)
+
+# U CAN DO BRUTE
+# OPTIMIZATION  1 : 
+# COUNTING SORT AND PREF SUM: IN QUES MENTIONED 1  TO 100   (O(n))
+
+# method 2:
+# Sorting+dictionary   O(nlogn)
+
 
 class Solution:
     def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
@@ -14,7 +18,6 @@ class Solution:
 		    if sorted_list[i] not in dic:
 			    dic[sorted_list[i]] = i
 	    return [dic[n] for n in nums]
-
 
 
 
