@@ -1,24 +1,16 @@
-
+// also see: https://www.codingninjas.com/codestudio/problems/merge-k-sorted-arrays_975379?leftPanelTab=2
 
 /*
 take starting 2 lists from vector..merge them and push at end ...
 
-do thsi until you have only on list left in the vector
- tc : O(nlogk)
+do this until you have only on list left in the vector
+ tc : O(nk)
  sc: O(1)
 
-
 */
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
+
+
+
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists){
@@ -56,13 +48,8 @@ public:
             c->next = merge2Lists(l1->next, l2);
         }
         return c;
-    }
-    
-    
+    }    
 };
-
-
-
 
 
 // check my c++ solution, without using push_back, erase, which is time consuming,
@@ -99,25 +86,22 @@ public:
 */
 
 
-
+// tc: O(nlogk)
+// sc: O(n)
 /*
-
-
+class compare {
+public: 
+    bool operator()(const ListNode* l, const ListNode* r) {
+        return l->val > r->val;
+    }
+};
+    
 class Solution {
 public:
-
-    
-    struct compare {
-        bool operator()(const ListNode* l, const ListNode* r) {
-            return l->val > r->val;
-        }
-    };
-    
-    
-    ListNode *mergeKLists(vector<ListNode *> &lists) { //priority_queue
+    ListNode *mergeKLists(vector<ListNode *> &lists) {    // min heap - priority_queue
         priority_queue<ListNode *, vector<ListNode *>, compare> q;
         for(auto l : lists) {
-            if(l)  q.push(l);    //adress of head pointer
+            if(l)  q.push(l);    //address of head pointer
         }
         if(q.empty())  return NULL;
 
