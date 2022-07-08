@@ -1,3 +1,8 @@
+// also see: https://leetcode.com/problems/top-k-frequent-elements/
+// also see: https://leetcode.com/problems/kth-largest-element-in-an-array/
+// alse see: https://www.interviewbit.com/problems/maximum-sum-combinations/
+// also see: https://leetcode.com/problems/kth-largest-element-in-an-array/submissions/
+
 //see all previous codes
 
 
@@ -8,7 +13,7 @@
 /*
 This “comparator” function returns a value; convertible to bool, which basically tells us whether the passed “first” argument should be placed before the passed “second” argument or not. 
 
-Suppose we passes ( a,b) [note that a comes first], so whenever you will return true, a will come before b, 
+Suppose we passes ( a,b ) [note that a comes first], so whenever you will return true, a will come before b, 
 whenever you return false b will come before a.
 
 true means, the order of passing paramter to comp is maintained , and the output after comparing will also be returned in same order, if it is false, it means thatorder need to be swapped.
@@ -26,7 +31,7 @@ http://neutrofoton.github.io/blog/2016/12/29/c-plus-plus-priority-queue-with-com
 
 
 in MAX HEAP , if (a,b) is passed , return true when a is smaller than b, else return false
-
+bcz we arrange in small to big, so that when we pop, we get big(max) element
 in miN HEAP, if (a,b) is passed, return true when b is smaller than a, else return false.
 
 ignore cases when a==b
