@@ -6,7 +6,7 @@ public:
     
     // max heap    min heap
     // by default go into max
-    // maximum of ma heap shud be less than minimum of min heap
+    // maximum of max heap shud be less than minimum of min heap
     
     
     MedianFinder() {
@@ -15,8 +15,12 @@ public:
     
     void addNum(int num) {
         if(maxi.empty() or maxi.top() > num ){  // most important line
+            // bcz we want top of maxheap to be less than top of min heap , so if we get such element that is less than top of max heap , then we cant put it into min heap, bcz all elements of min heap should be greater than all elements of max heap..
+            // so we put it into max heap...
+            
             maxi.push(num);
-        }else{
+        }else{         // if that is not the case, then it goes into min heap
+            
             mini.push(num);
         }
         
