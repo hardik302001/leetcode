@@ -28,6 +28,17 @@ public:
                 if(s[j] == '0')   q.push(j);
             }   
             curr_max = min(i+maxJump+1, n-1);   // pruning, magic line
+            // bzc we have already considered occurence of 0 uptil (i+ maxjump)
+            
+            // so in next iteration for position j, we will again start from
+            // j+minjump to j+maxjump
+            // 
+            //                                |----------------------|
+            // we would have order like: i i+minjump  j j+minjump i+maxjump j+maxjump
+            //                                             |-------------------|        
+            // so we are doing extra computation for [j+minjump , i+maxjump]
+            // we used cur_max to take care of it..
+            
         }
         return false;
     }
