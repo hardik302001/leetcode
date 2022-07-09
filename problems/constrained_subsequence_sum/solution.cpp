@@ -10,7 +10,7 @@ public:
         
         int n=nums.size();
         vector<int> dp = nums;  // dp[i], gives maximum constrainted subseq sum till ith index
-        int ans = dp[0];  
+        int ans = dp[0];  // non empty subsequence, so we cant use 0(if all are neg)
         deque<int> dq;       //max deque, dq.front(), gives max element
         
         for(int i=0;i<n;i++){
@@ -23,11 +23,9 @@ public:
             
             if(!dq.empty() && dq.front() ==i-k) //If elements are out of range k
                 dq.pop_front(); //pop from front
-            
-            
-            ans = max(ans , dp[i]);    // taking max of all dp[i]
+                        
+            ans = max(ans , dp[i]);    // taking max of all dp[i], bcz we can choose uptil whatever point we want , so we consider out of all cases
         }
-        
 
         return ans;
     }
