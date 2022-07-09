@@ -1,3 +1,5 @@
+// similar code and idea as: https://leetcode.com/problems/longest-increasing-path-in-a-matrix/
+
 // memosised dp O(n2)
 
 class Solution {
@@ -33,7 +35,7 @@ public:
     
     int maxJumps(vector<int>& arr, int d) {
         int n = arr.size();
-        int res = 1;
+        int res = 1;   // current position where i m standing
         for(int i = 0;i<n;i++){
             res = max(res, recur(arr, d , i));
         }
