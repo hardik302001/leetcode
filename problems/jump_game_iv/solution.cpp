@@ -20,12 +20,14 @@ public:
         vector<bool>vis(n,false);
         queue<int> q;
         q.push(0);
+        vis[0] = true;
+        
         int jump = 0;
+        
         while(!q.empty()){
             int x = q.size();
             while(x--){
                 int cur = q.front();
-                vis[cur] = true;
                 q.pop();
                 
                 if(cur==(n-1)){
@@ -33,13 +35,16 @@ public:
                 }
                 
                 if(cur-1>=0 and !vis[cur-1]){
+                    vis[cur-1] = true;
                     q.push(cur - 1);
                 }
                 if(cur+1<n and !vis[cur+1]){
+                    vis[cur+1] = true;
                     q.push(cur +1);
                 }
                 for(auto it: m[arr[cur]]){
                     if((it!= (cur +1) or it!= (cur-1)) or (it!=cur) and !vis[it]){
+                        vis[it] = true;
                         q.push(it);
                     } 
                 }
