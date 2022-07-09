@@ -7,7 +7,7 @@ class Solution:
         if nums[0]==0:
             return False
         n = len(nums)
-        canReach = 0
+        canReach = 0   # initially at position 0
         for i in range(n):
             if canReach<i:   #at that point we are stuck
                 return False
