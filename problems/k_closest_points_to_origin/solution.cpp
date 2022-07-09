@@ -1,3 +1,5 @@
+// also see: binary/ quickselect search solution
+
 class Solution {
 public:
     vector<vector<int>> kClosest(vector<vector<int>>& points, int K) {
