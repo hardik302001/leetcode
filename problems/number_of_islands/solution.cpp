@@ -22,8 +22,6 @@ public:
                     }
             }
         
-        
-        
         return ans;
     }
     
@@ -40,20 +38,11 @@ public:
                 
                 if(inside(newx , newy , M , N , mat) and mat[newx][newy]=='1'){
                     todo.push({newx, newy});
-                    mat[newx][newy] = '0';  // very important to mark it here only..
-                    
+                    mat[newx][newy] = '0';  // very important to mark it here only..   
                 }
-                
-            }   
-            
+            }      
         }
-        
-    
     }
-
-
-
-
 
      bool inside(int x, int y, int &M, int &N, vector<vector<char> > &mat) {
         if ((x < 0 || x >= M || y < 0 || y >= N )) {
