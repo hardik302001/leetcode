@@ -21,6 +21,7 @@ public:
 
 // BFS
 /*
+
 class Solution {
 public:
     Node* cloneGraph(Node* node) {
@@ -28,18 +29,22 @@ public:
             return NULL;
         }
         Node* copy = new Node(node -> val, {});
-        copies[node] = copy;                  // map ,
-        decalred in private scope
+        copies[node] = copy;                  // map , decalred in private scope
         queue<Node*> todo;
         todo.push(node);
         while (!todo.empty()) {
             Node* cur = todo.front();
             todo.pop();
             for (Node* neighbor : cur -> neighbors) {
-                if (copies.find(neighbor) == copies.end()) {
+            
+            
+            // like i do in python while addding to dict
+                if (copies.find(neighbor) == copies.end()) {              // if not visited, make a copy for it, ad to queue
                     copies[neighbor] = new Node(neighbor -> val, {});
                     todo.push(neighbor);
                 }
+
+		// now we have node for neighbour, time to add this neighbour to neighbours of or=ur current node.
                 copies[cur] -> neighbors.push_back(copies[neighbor]);
             }
         }
@@ -48,6 +53,7 @@ public:
 private:
     unordered_map<Node*, Node*> copies;    // to keep track that every node have its copy 
 };
+
 */
 
 // DFS
