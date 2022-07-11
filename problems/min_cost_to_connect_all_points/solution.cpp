@@ -53,7 +53,7 @@ public:
             
             auto topa = minpq.top();
             minpq.pop();
-            if(!uf.Union(topa[1], topa[2])){
+            if(!uf.Union(topa[1], topa[2])){  // not already connected, so connect them and fuck it mann
                 ans  = ans + topa[0];
                 edges_count++;
             }
