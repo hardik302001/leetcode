@@ -1,8 +1,7 @@
 // https://leetcode.com/problems/daily-temperatures/submissions/
-// nge
 
 
-
+// pge
 // we need to return at each step, so we have to calculate at every step and keep track !
 
 
@@ -14,13 +13,13 @@ class StockSpanner {
 
         int next(int price) {
             int days = 1;
-            while(st.size() && price >= st.top().first)
+            while(st.size() &&  st.top().first <= price )
             {
                 int x =  st.top().second;  //span of previous stock
                 days = days + x;
                 st.pop();
             }
-            cout<<days<<" ";
+            // cout<<days<<" ";
             st.push({price, days});
             return days;
             
