@@ -18,6 +18,11 @@ class Solution:
             if not flag and len(pre) > len(cur):    #if strimg are  equal , but pre is of longer size than cur, return  false 
                 return False
             
-            #else we just contnue for next words in words array
+            #else we just continue for next words in words array
             
         return True
+    
+
+    
+# very important ques, leetcode HARD PREMIUM
+# also see: https://www.lintcode.com/problem/892/description
