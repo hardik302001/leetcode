@@ -19,7 +19,7 @@ public:
             dq.push_back(i);
             
             // remove extra
-            if (!dq.empty() && dq.front() == i-k) dq.pop_front();  // aubarray size shud be k only
+            if (!dq.empty() && dq.front() == i-k) dq.pop_front();  // subarray size shud be k only
             
             // update answer
             if (i>=k-1) ans.push_back(nums[dq.front()]);  // ==(k-1) , we got subarray of size k
