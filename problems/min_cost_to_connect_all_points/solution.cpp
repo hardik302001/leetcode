@@ -1,39 +1,51 @@
 // Kruskal , O(ElogV)
+class UnionFind {
+    public:  
+        vector<int> parent;
+        int count = 0;
+	    vector<int>size;
+        UnionFind(int n){                  //constructor
+            count = n;
+            parent = vector<int>(n,-1);
+	    size = vector<int>(n , 1);
+        }
+
+        int find(int x){                         // O(logn)
+            if(parent[x]==-1) return x;
+            return parent[x] =  find(parent[x]);        // path compression   
+        }
+
+        bool Union(int x,int y){               // O(logn)
+            int X = find(x);
+            int Y = find(y);
+
+            if(X==Y) return true;              // cycle found
+            
+
+	    if (size[X] < size[Y])
+            	swap(X, Y);
+            parent[Y] = X;
+            size[X] += size[Y];          
+	   
+            count--;
+	    return false;
+        }
+
+        int getCount(){
+            return count;
+        }
+         
+        bool connected(int a, int b) {
+            return find(a) == find(b);
+        }     
+    
+        vector<int> pari(){return parent;}
+         
+};
+
+
 class Solution {
 public:
-    
-    class UnionFind {
-        public:  
-            vector<int> parent;
-            int count = 0;
-            UnionFind(int n){                  //constructor
-                count = n;
-                for(int i = 0;i<=(n);i++){    //path compression
-                    parent.push_back(i);
-                }
-            }
-
-            int find(int x){
-                if(parent[x]==x) return x;
-                return parent[x] = find(parent[x]);
-            }
-
-            bool Union(int x,int y){
-                int X = find(x);
-                int Y = find(y);
-                
-                if(X==Y) return true;   //cycle found
-
-                parent[Y]=X;
-                count--;
-                return false;
-            }
-            
-            int getCount(){
-                return count;
-            }
-    };
-    
 
     int minCostConnectPoints(vector<vector<int>>& points) {
         
