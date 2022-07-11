@@ -17,45 +17,51 @@ Repeat this for all the groups and you get your sorted string.
 
 
 // DSU
+class UnionFind {
+    public:  
+        vector<int> parent;
+        int count = 0;
+	    vector<int>size;
+        UnionFind(int n){                  //constructor
+            count = n;
+            parent = vector<int>(n,-1);
+	    size = vector<int>(n , 1);
+        }
 
-class Solution {
-public:
-    
-    class UnionFind {
-        public:  
-            vector<int> parent;
-            int count = 0;
-            UnionFind(int n){                  //constructor
-                count = n;
-                parent = vector<int>(n,-1);
-            }
+        int find(int x){                         // O(logn)
+            if(parent[x]==-1) return x;
+            return parent[x] =  find(parent[x]);        // path compression   
+        }
 
-            int find(int x){
-                if(parent[x]==-1) return x;
-                return parent[x] = find(parent[x]);
-            }
+        bool Union(int x,int y){               // O(logn)
+            int X = find(x);
+            int Y = find(y);
 
-            void Union(int x,int y){
-                int X = find(x);
-                int Y = find(y);
-                // cout<<X<<" "<<Y<<endl;
-                if(X==Y) return ;   //cycle found
-
-                parent[Y]=X;         //A ->B
-                count--;
-                // return false;
-            }
+            if(X==Y) return true;              // cycle found
             
 
-            int getCount(){
-                return count;
-            }
+	    if (size[X] < size[Y])
+            	swap(X, Y);
+            parent[Y] = X;
+            size[X] += size[Y];          
+	   
+            count--;
+	    return false;
+        }
+
+        int getCount(){
+            return count;
+        }
          
-            vector<int> pari(){return parent;}
-    };
+        bool connected(int a, int b) {
+            return find(a) == find(b);
+        }     
     
-    
-    
+        vector<int> pari(){return parent;}
+         
+};
+class Solution {
+public:    
     
     string smallestStringWithSwaps(string s, vector<vector<int>>& pairs) 
     {
@@ -68,10 +74,7 @@ public:
         
         
         vector<int>parent = uf.pari();
-        // for(auto i:parent){
-        //     cout<<i<<" ";
-        // }
-        // cout<<endl;
+
         
         unordered_map< int, vector<char> > m1;
         unordered_map< int, vector<int > >m2;
