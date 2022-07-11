@@ -5,7 +5,7 @@ public:
         if(!root)   return;
         if(lv==res.size()) res.push_back(root->val);  // at every level we can onlu=y consider one elemenet! 
         dfs(root->right,lv+1,res);  //priority is right side
-        dfs(root->left,lv+1,res); // then we go to keft side it right side is null
+        dfs(root->left,lv+1,res); // then we go to left side it right side is null
     }
 
     vector<int> rightSideView(TreeNode* root) {
