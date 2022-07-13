@@ -46,9 +46,6 @@ public:
 // 2nd approach
 // cpp soln
 // here we try to remove only k elements, we aim to remove k in beginning only, bcz we want lexographically smallest string
-// size k == removing (n-k) elements
-// very similar to : https://leetcode.com/problems/remove-k-digits/submissions/            cpp solution
-// https://leetcode.com/problems/find-the-most-competitive-subsequence/
 
 
 class Solution {
