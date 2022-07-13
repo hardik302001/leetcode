@@ -1,8 +1,10 @@
 # very similar to : https://leetcode.com/problems/maximum-score-of-a-good-subarray/
+# current element is minimim, bcz we conisder minimum height
 
-#nse 
-#pse
-#monotonic stack
+
+# nse 
+# pse
+# monotonic stack
 
 class Solution:
     def largestRectangleArea(self, arr):
@@ -38,6 +40,9 @@ class Solution:
                 right_diff = n-1 - i
             else:
                 right_diff = (next_smaller_element[i] - i) - 1
+            
+            # current element is minimim, bcz we conisder minimum height
+            
             m = arr[i]* (left_diff +  right_diff+1)
             ans = max(ans ,m)
             
