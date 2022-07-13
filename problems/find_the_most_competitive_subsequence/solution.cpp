@@ -1,3 +1,7 @@
+// same as: https://leetcode.com/problems/remove-k-digits/
+// also see: https://leetcode.com/problems/create-maximum-number/submissions/
+
+
 // 1st approach!
 // size k = maintain size k
 // nse 
