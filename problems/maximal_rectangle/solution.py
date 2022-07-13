@@ -57,10 +57,10 @@ class Solution:
                 if matrix[i][j] == '1': 
                     m[i][j] = m[i-1][j] + 1            
         
-        # for i in range(row):
-        #     for j in range(cols):
-        #         print(m[i][j],end = " ")
-        #     print()
+#         for i in range(row):
+#             for j in range(cols):
+#                 print(m[i][j],end = " ")
+#             print()
             
             
         ma = 0
