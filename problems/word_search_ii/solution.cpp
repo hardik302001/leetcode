@@ -24,7 +24,7 @@ public:
         //build trie
         TrieNode* root = new TrieNode;          
         /*
-        //here no constructor, so we declare it liek object..
+        //here no constructor, so we declare it likr object..
         //if there was some constructor like below, so instantiate it like this 
         
                 Trie() {
@@ -126,10 +126,7 @@ public:
     {
         TrieNode* curr = root;
         return helper(board,x,y,root,ans,"");
-    }
-
-    
-    
+    } 
 };
 
 
