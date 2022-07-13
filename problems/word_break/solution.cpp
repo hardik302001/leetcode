@@ -2,85 +2,61 @@
 
 
 /*
-
 // DP (O(n^3)) => n for traversal , n for recursion , n for checking in dict
 
-class Solution {
-public:
-    bool wordBreak(string s, vector<string>& dict) {
-        unordered_set<string> wordDict(dict.begin(), dict.end());
-        vector<char> mem(s.size(),-1);
-        return canBrk(0,s,wordDict,mem);    
-    }
-    bool canBrk(int start, string& s, unordered_set<string>& wordDict,vector<char>& mem) {
-        int n = s.size();
-        if(start == n) return 1;
-        if(mem[start]!= -1) return mem[start];
-        string sub;
-        for(int i = start; i<n; i++) if(wordDict.count(sub+=s[i]) && canBrk(i+1,s,wordDict,mem)) return mem[start] = 1; 
-        return mem[start] = 0;
-    }
-    
-};
-
+Step 1: Create set named dictionary. Set will help to get all words in sorted order.
+Step 2: Declare dp vector of integers of size n (size of given string).
+dp[i] will denote if string from i...n-1 can be broken into valid parts or not.
+Initially dp[i] is -1. It means we do not know whether it can be broken or not.
+Step 3: Call recursiveSoln function.
+Step 4: How recursiveSoln function works?
+Suppose string from i...n-1 is: aabc
+Then it will one by one partition like: (a abc), (aa bc), (aab c), (aabc ).
+And if partition is valid ,then it will call recursiveSoln function for remaining string.
+(Suppose "a" is present in dictionary, then it will check for "abc").
+Step 5: We can get to same index again:
+For example : string s="aabd" can be partitioned like:
+["a","a","bd"] , ["aa","bd"]. We are reaching to same string again.
+So we are storing result in dp after calculating for first time.
 */
 
-//O(n3)
-
 class Solution {
 public:
-    bool wordBreak(string s, vector<string> &wordDict) {
-        unordered_set<string> dict(wordDict.begin(),wordDict.end());
+    bool recursiveSoln(int index,string &s,set<string>&dictionary,vector<int>&dp){
+        if(index>=s.size()){
+            return true;
+        }
+        if(dp[index]!=-1){
+            return dp[index];
+        }
         
-        int n = s.size();
-        if(dict.size()==0) return false;
+        string part;
         
-        vector<bool> dp(n+1,false);
-        dp[0]=true;
-
-        for(int i=1;i<=s.size();i++)
-        {
-            for(int j=i-1;j>=0;j--)
-            {
-                if(dp[j])
-                {
-                    string word = s.substr(j,i-j);
-                    cout<<word<<endl;
-                    
-                    if(dict.find(word) != dict.end())
-                    {
-                        dp[i]=true;
-                        break; //next i
-                    }
+        for(int i=index;i<s.size();i++){
+            part.push_back(s[i]);
+            
+            if(dictionary.find(part)!=dictionary.end()){//Word found
+    
+                if( recursiveSoln(i+1,s,dictionary,dp)){ //Checking for remaining string
+                    return dp[index]=true; //found the way of partitioning
                 }
+
             }
         }
+        return dp[index]=false; //Checked all possible ways but can't break into valid parts.
+    }
 
-        return dp[n];
+    bool wordBreak(string s, vector<string>& wordDict) {
+        set<string>dictionary;
+        for(auto &word:wordDict){
+            dictionary.insert(word);
+        }
+        vector<int>dp(s.size(),-1);
+        return recursiveSoln(0,s,dictionary,dp);
     }
 };
 
-// l
-// le
-// lee
-// leet
-// c
-// leetc
-// co
-// leetco
-// cod
-// leetcod
-// code
 
-// All the lines below won't run b/c of break;
-// Index 4 is a valid start index, and index 4 - index 7 make up the word `code`
-// We can break once we've found any connecting word because
-// all we're trying to do is find SOME valid way to connect to s[i].
-// Once we've found SOME word that does that, there's no need to continue checking.
-//    -----
-//   ------
-//  -------
-// --------
-
+// similar thing using trie: https://leetcode.com/problems/word-break/discuss/1556777/C%2B%2B-or-MEMOIZATION-%2B-TRIE-or-NO-HASHMAP-or-O(N3)-TIME
 
 
