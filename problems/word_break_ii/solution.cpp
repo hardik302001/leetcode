@@ -1,6 +1,6 @@
 
 
-// backtracking
+// backtracking : O(n^n)
 
 class Solution {
 public:
@@ -23,6 +23,7 @@ public:
             //we have reached end
             curr.pop_back(); //remove the trailing space
             res.push_back(curr);
+            return;
         }
         string str="";
         for(int i=ind;i<s.length();i++)
