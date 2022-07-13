@@ -24,9 +24,9 @@
 #         return False
 
 # O(n) , idea from NEETCODE VIDEO
-# mi[st[-1]] for first element(1) , arr[st[-1]] for middle element(3) , and arr[j] for third element(2)
+# mi[st[-1]] for first element(1) , arr[st[-1]] for middle element(3) , and arr[k] for third element(2)
 # minimise first as much as possible, maximise second as much as possible and traverse with third elmeent and check condition
-# we consider that minimum value before that index uptill where we got the maximum middle element..i.e. mi[st[-1]], where st[-1] is index of maximum element before index j(third element) , TO MAINTAIN THE ORDER OF INDEX
+# we consider that minimum value before that index uptill where we got the maximum middle element..i.e. mi[st[-1]], where st[-1] is index of maximum element before index k(third element) , TO MAINTAIN THE ORDER OF INDEX
 
 class Solution:
     def find132pattern(self, arr: List[int]) -> bool:
@@ -37,16 +37,20 @@ class Solution:
             
         
         st = []
-        for j in range(1, n):
+        for k in range(1, n):
 
-            while st and arr[st[-1]]<=arr[j]:     # nge type stack , we dont create nge array , we only consider elements in stack...
+            while st and arr[st[-1]]<=arr[k]:     # nge type stack , we dont create nge array , we only consider elements in stack...
                 st.pop()
          
-            if st and mi[st[-1]]<arr[st[-1]] and arr[st[-1]]>arr[j] and mi[st[-1]]<arr[j]:  # all 3 condition, 1<3 , 3>2 and 1<2
-                print(mi[st[-1]] , arr[st[-1]], arr[j])
+            # now arr[st[-1]] will be maximum element (arr[j])   3
+            # mi[st[-1]] will be minimum                         1
+            # and arr[k] will be the third                       2
+            
+            if st and mi[st[-1]]<arr[st[-1]] and arr[st[-1]]>arr[k] and mi[st[-1]]<arr[k]:  # all 3 condition, 1<3 , 3>2 and 1<2
+                print(mi[st[-1]] , arr[st[-1]], arr[k])
                 return True
             
-            st.append(j)
+            st.append(k)
             
         return False
     
