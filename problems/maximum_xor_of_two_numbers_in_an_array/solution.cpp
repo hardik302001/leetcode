@@ -53,7 +53,7 @@ public:
                 res  = res | (1<<i);
                 cur = cur->child[index];   //considered the benefitting way
             } else {
-                cur = cur->child[index ? 0 : 1];  // benefitting way is Null, so we dont have any choice to choose the other way
+                cur = cur->child[index ? 0 : 1];  // benefitting way is Null, so we dont have any choice to choose the other way(the same value as in num, bcz we arent getting different value)
             }
         }
         return res;
