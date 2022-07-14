@@ -1,3 +1,4 @@
+/*
 class Solution {
 public:
     // c++  code
@@ -23,5 +24,39 @@ public:
             }    
         
         return ret;
+    }
+};
+
+*/
+
+// backtracking
+
+class Solution {
+public:
+    vector<string> restoreIpAddresses(string s) {
+        vector<string> result;
+        string ip;
+        dfs(s,0,0,ip,result); //paras:string s,start index of s,step(from0-3),intermediate ip,final result
+        return result;
+    }
+    void dfs(string s,int start,int step,string ip,vector<string>& result){
+        if(start==s.size()&&step==4){
+            ip.erase(ip.end()-1); //remove the last '.' from the last decimal number
+            result.push_back(ip);
+            return;
+        }
+        
+        if(s.size()-start>(4-step)*3) return;   // more chars are left than required
+        if(s.size()-start<(4-step)) return;    // less chars are required than required
+        
+        int num=0;
+        for(int i=start;i<min(start+3, int(s.size()));i++){
+            num=num*10+(s[i]-'0');
+            if(num<=255){
+                ip+=s[i];  // we are updating ip at every step
+                dfs(s,i+1,step+1,ip+'.',result);
+            }
+            if(num==0) break;            // very important
+        }
     }
 };
