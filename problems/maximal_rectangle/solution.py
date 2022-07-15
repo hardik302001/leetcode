@@ -1,3 +1,8 @@
+# also see: https://leetcode.com/problems/largest-submatrix-with-rearrangements/
+
+
+# you can also dp , without extra space on actual matrix
+
 class Solution:
     def largestRectangleArea(self, arr):
         n = len(arr)
@@ -56,13 +61,7 @@ class Solution:
             for j in range(cols):
                 if matrix[i][j] == '1': 
                     m[i][j] = m[i-1][j] + 1            
-        
-#         for i in range(row):
-#             for j in range(cols):
-#                 print(m[i][j],end = " ")
-#             print()
-            
-            
+
         ma = 0
         for row in m:
             # print(row) #this row is itself a histogram
