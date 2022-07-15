@@ -1,3 +1,5 @@
+// also see: https://leetcode.com/problems/best-sightseeing-pair/submissions/
+
 class Solution {
 public:
     int maxProfit(vector<int>& nums) {
