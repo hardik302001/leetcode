@@ -1,4 +1,6 @@
 # very similar to maximal rectangle, just update side as min( height , width)
+# also see: https://leetcode.com/problems/count-square-submatrices-with-all-ones/
+
 
 class Solution:
     def largestRectangleArea(self, arr):
@@ -35,7 +37,7 @@ class Solution:
             else:
                 right_diff = (next_smaller_element[i] - i) - 1
                 
-            side = min(arr[i] , left_diff +  right_diff+1)
+            side = min(arr[i] , left_diff +  right_diff + 1)
             ans = max(ans ,side*side)
             
         return ans
@@ -51,7 +53,6 @@ class Solution:
         
         for i in range(cols):
             m[0][i] = 1 if matrix[0][i]=='1' else 0
-            
         
         for i in range(1 , row):
             for j in range(cols):
@@ -94,7 +95,7 @@ class Solution:
         rows = len(matrix)
         cols = len(matrix[0])
         
-        dp = [[0]*(cols+1) for _ in range(rows+1)]    #extra row and column, so you can easily code
+        dp = [[0]*(cols+1) for _ in range(rows+1)]    # extra row and column, so you can easily code
         max_side = 0
         
         for r in range(rows):
@@ -107,11 +108,11 @@ class Solution:
     
 '''
     
-#well you dont even need extra space
-#you can change the matrix only, bcz we are just updating once!
-#try visualising with the sample test case!
-#TC = O(mn)
-#SC = O(1)
+# well you dont even need extra space
+# you can change the matrix only, bcz we are just updating once!
+# try visualising with the sample test case!
+# TC = O(mn)
+# SC = O(1)
 
 # see figure in solution section
 
