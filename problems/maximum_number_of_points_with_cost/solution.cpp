@@ -16,6 +16,7 @@ dp[i][j] = max(dp[i - 1][k] - k) + points[i][j] + j for all j <= k <= points[i].
 // Time Complexity: O(n*m)
 // Space Complexity: O(m)
 
+
 #define ll long long
 
 class Solution {
@@ -30,18 +31,17 @@ public:
         vector<ll> curr(m, 0);
         auto right = curr, left = curr;
         
-        /*
-        left[j] =  max( dp[current row - 1][j] + abs(j) for i in range(0 to j included)) 
-        */
+        
+        // left[j] =  max( dp[current row - 1][j] + abs(j) for i in range(0 to j included)) 
+        
         // traverse left to right
         left[0] = prev[0];
         for(int j=1; j<m; ++j) {
           left[j] = max(left[j-1]-1, prev[j]);    
         }
         
-        /*
-        rightt[j] =  max( dp[current row - 1][j] + abs(j-i) for i in range(j included to m)) 
-        */
+        
+        // right[j] =  max( dp[current row - 1][j] + abs(j-i) for i in range(j included to m)) 
         // traverse right to left
         right[m-1] = prev[m-1];
         for(int j=m-2; j>=0; --j) {
@@ -63,28 +63,28 @@ public:
 };
 
 
-/*
+
+
+
 //TLE: O(m*n*n) , bcz m*n for grid and n for traversing whole row again to find abs diff of all cases
 // leetcode 931 and leetcode 1014
+/*
 class Solution {
 public:
     
     int solve(int i,int j,int m,int n,vector<vector<int>>& p,
              vector<vector<int>> &dp)
     {
-        if(i<0 || j<0 || i>m || j>n) return INT_MIN;
-        if(i == m) return p[i][j];
+        if(j<0 or j>=n) return INT_MIN;
+        if(i == m-1) return p[i][j];
         
         if(dp[i][j] != -1) return dp[i][j];
         int temp = INT_MIN;
-        for(int x = 0;x<=n;x++){
-            int res = solve(i+1,x,m,n,p,dp);
-            if(dp[i+1][x]!=-1){
-                res = dp[i+1][x];
-            }
-            temp = max(temp ,  res- abs(j - x));
+        for(int x = 0;x< n;x++){
+            int res = p[i][j] + solve(i+1,x,m,n,p,dp)- abs(j - x);
+            temp = max(temp ,  res);
         }
-        return  (dp[i][j] = p[i][j] + temp);
+        return  (dp[i][j] =  temp);
                 
     }
 
@@ -96,9 +96,10 @@ public:
         vector<vector<int>> dp(m,vector<int>(n,-1));
         for(int j=0;j<n;j++)
         {
-           ans = max(ans,solve(0,j,m-1,n-1,p,dp));    
+           ans = max(ans,solve(0,j,m,n,p,dp));    
         }
         return ans;
     }
 };
+
 */
