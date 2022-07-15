@@ -1,3 +1,5 @@
+// greedy , simulation
+
 class Solution {
 public:
     int minCost(vector<int>& s, vector<int>& e, vector<int>& r, vector<int>& c) {
