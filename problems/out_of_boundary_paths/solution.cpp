@@ -1,7 +1,10 @@
 class Solution {
 public: 
    int mx=1e9+7; //used to take modulo 
-   int find(int m, int n, int N, int i, int j,vector<vector<vector<int>>> &memo)
+
+    // 3 states, moves, x coord , y coord
+   
+    int find(int m, int n, int N, int i, int j,vector<vector<vector<int>>> &memo)
    { 
        if(i<0||j<0||i>=m||j>=n) return 1; //Outside the grid  
        if(N==0) return 0;                 //if we are inside the grid and we have no moves 
@@ -29,3 +32,6 @@ public:
        return find(m,n,N,i,j,memo);
    }
 };
+
+
+// TC: o(m*n*Moves)
