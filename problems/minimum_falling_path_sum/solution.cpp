@@ -1,3 +1,5 @@
+// O(m*n)
+
 class Solution{
 public:
     int solve(int i,int j,int m,int n,vector<vector<int>>& matrix,
@@ -53,7 +55,7 @@ public:
 //         for(int i = m-2;i>=0;i--){
 //             for(int j = 0;j<n;j++){
 //                 dp[i][j] = mat[i][j]; 
-//                 int mini = dp[i+1][j];   // 3 chouces, so for time being kets consider middle one as minimium
+//                 int mini = dp[i+1][j];   // 3 choices, so for time being kets consider middle one as minimium
 //                 if(j+1<n){
 //                     mini = min(mini, dp[i+1][j+1]);
 //                 }
