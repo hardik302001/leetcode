@@ -1,3 +1,14 @@
+/*
+Time Complexity: O(N*K) + O(N)
+k = target sum
+Reason: There are N*K states therefore at max ‘N*K’ new problems will be solved and we are running a for loop for ‘N’ times to calculate the total sum
+----------------------------------------------------------------------------
+Space Complexity: O(N*K) + O(N)
+Reason: We are using a recursion stack space(O(N)) and a 2D array ( O(N*K)).
+
+*/
+
+
 class Solution {
 public:
     
@@ -18,13 +29,16 @@ public:
     
     bool isSubsetSum(int idx ,  int cur , vector<int>&nums, int n, int sum)
     {
-        if(idx>=n) return false;
-        if(cur>sum) return false;
-        
-        if(cur==sum) return true;
+        if(idx>n) return 0;
+        if(cur>sum) return 0;
+        if(idx==n) return (cur==sum)? 1 :0;
         if(dp[idx][cur]!=-1) return dp[idx][cur];
         bool ans =  isSubsetSum(idx+1, cur , nums , n , sum) or isSubsetSum(idx+1 , cur + nums[idx] , nums, n,  sum);
         
         return dp[idx][cur] = ans;
     }
 };
+
+
+
+
