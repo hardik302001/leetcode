@@ -2,7 +2,7 @@
 // also see happy coding video on yt
 /*
     So the idea here is instead of doing 1 traversal form (0,0)->(n-1,n-1) and then 1 traversal from (n-1,n-1)->(0,0)
-    We will do 2 traversals independtly from (0,0)->(n-1,n-1). Now lets's talk about state we can have 
+    We will do 2 traversals independently and simulataneously from (0,0)->(n-1,n-1). Now lets's talk about state we can have 
 [r1,c1,r2,c2] -> state we can have but this is O(n^4) we can reduce it to O(n^3) because manhattan distance remains same
 i.e. (r1-0) + (c1-0) = (r2-0) + (c2-0) so the current state becomes [r1,c1,c2] and r2 = r1+c1-c2 
 */
@@ -10,7 +10,7 @@ i.e. (r1-0) + (c1-0) = (r2-0) + (c2-0) so the current state becomes [r1,c1,c2] a
 // TC: O(n3)
 // SC = O(n3)
  
-// we kept c2 in terms of r1, c1, r2 because to keep one varible less! To improve complexity
+// we kept r2 in terms of r1, c1, r2 because to keep one varible less! To improve complexity
 
 class Solution {
 public:
@@ -24,7 +24,7 @@ public:
     {
         int r2 = r1 + c1 - c2;//explanation in the above section 
         //if any of the current rows or colums goes out of bound or there is a thorn on a current block then return INT_MIN
-        if(r1>=n || r2>=n || c1>=n || c2>=n|| grid[r1][c1]==-1 || grid[r2][c2]==-1)
+        if(r1<0 or r2<0 or c1<0 or c2<0 or r1>=n or r2>=n or c1>=n or c2>=n or grid[r1][c1]==-1 or grid[r2][c2]==-1)
             return INT_MIN;
         if(dp[r1][c1][c2]!=-1)//if we have already calculated the value for current state then return that value
             return dp[r1][c1][c2];
@@ -32,19 +32,18 @@ public:
 
         int ans = 0;
         
-        if(r1== r2 and c1==c2){
+        if(r1 == r2 and c1 == c2){
             ans = ans + grid[r1][c1];
         }
         else{
             ans = ans + grid[r1][c1]  + grid[r2][c2];
         }
         
-        if(r1==n-1 && c1 == n-1)
+        if(r1==n-1 and c1 == n-1)
             return ans;  //bcz if r1 and c1==(n-1)(n-1) then, r2 and c2 will also be eqaul to (n-1)(n-1), so basically same cell
         
         
         //ans will be the ans for current state + future state
-        
         
         //Now we need to take the max of 4 cases for both traversals
         //1.) Right Right
@@ -64,11 +63,11 @@ public:
 
 
 /*
-//backtracking soliton O(4^(n*n))
-//TLE (but still it is brute force solution! for interview pov)
+// backtracking soliton O(4^(n*n))
+// TLE (but still it is brute force solution! for interview pov)
 // for more info visit pepcoding video for the same ques
 
-//we wont go 2 times, up to dowm (find max cherry), down to top (find max cherry) and do sum!   <= THIS IS WRONG, greedy solution wont work ! see pepcoding video
+// we wont go 2 times, up to dowm (find max cherry), down to top (find max cherry) and do sum!   <= THIS IS WRONG, greedy solution wont work ! see pepcoding video
 
 class Solution {
 public:
