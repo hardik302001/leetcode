@@ -1,5 +1,5 @@
 /*
-Wecheck recusively for each character in t whether it matches with our source string s's current index in which we are standing. If yes, we have two choices, whether to include in our possible string or leave it and check the remaining characters in s. We compute this until we run out of characters to match, i.e our t is empty, in which case we have 1 valid sequence. If we run out of characters in s, we have an invalid/incomplete sequence.
+We check recusively for each character in t whether it matches with our source string s's current index in which we are standing. If yes, we have two choices, whether to include in our possible string or leave it and check the remaining characters in s. We compute this until we run out of characters to match, i.e our t is empty, in which case we have 1 valid sequence. If we run out of characters in s, we have an invalid/incomplete sequence.
 */
 class Solution {
 
