@@ -1,4 +1,5 @@
 
+// approach 2
 //  For this, we introduce two new states for a cell:
 // 2: newly alive and 3: newly dead
 
