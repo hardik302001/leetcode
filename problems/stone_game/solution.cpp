@@ -11,7 +11,8 @@ public:
         if(l==r) return piles[l];
         if(dp[l][r] != -1) return dp[l][r];
         
-        // min for bob bcz we are solving from alice pov, 
+        // min for alice bcz we are solving from alice pov,
+        // bob will take maximum ,alice will be left with minimum
         int ifleft = piles[l] + min(f(l+2, r, piles), f(l+1, r-1, piles)); // consider both choice for bob
         int ifright = piles[r] + min(f(l+1, r-1, piles), f(l, r-2, piles));
         
