@@ -5,11 +5,16 @@ class Solution:
     def checkArithmeticSubarrays(self, nums: List[int], l: List[int], r: List[int]) -> List[bool]:
         
         def solve(arr):
-            m = min(arr)
-            gap = (max(arr) - m) / (len(arr) - 1)
-            if gap == 0: return True
-            s = set(num - m for num in arr)
-            return len(s) == len(arr) and all(diff % gap == 0 for diff in s)
+            st = set(arr)
+            if len(arr) != len(st): return len(st) == 1 # take care of duplicates
+            mx, mn = max(arr), min(arr)
+            if (mx - mn)%(len(arr)-1) != 0: return False
+            step = (mx - mn)//(len(arr)-1)
+            for i in range(mn, mx, step):
+                if i not in st:
+                    return False
+            return True   
+        
         
         ans = []
         for i in range(len(l)):
