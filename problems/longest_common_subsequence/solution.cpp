@@ -1,5 +1,5 @@
-//see how to print string, you cant directly push characrter into string, like we did in last soln, that is wrong!
-//also see https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/
+// see how to print string, you cant directly push characrter into string, like we did in last soln, that is wrong!
+// also see https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/
 // O(mn) time and space
 class Solution {
 public:
