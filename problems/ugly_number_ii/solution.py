@@ -20,7 +20,7 @@ class Solution:
                 j+=1
             if x==res[k]*5:
                 k+=1
-            print(i,j,k)
+            # print(i,j,k)
         print(res)
         return res[n-1]
     
