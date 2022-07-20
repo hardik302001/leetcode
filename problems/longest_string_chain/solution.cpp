@@ -1,48 +1,36 @@
 // dp
-// dp[s] is length of longest chain ending at string s
+// similar to lis - bottm up
+/*
+Time Complexity: O(nlog(n) + nll)
+O(nlog(n)) for sorting
+O(nll): n for each loop, l for inner loop and l for string concatenation.
+
+Space Complexity: O(ns)
+O(n) for both sorting and storing in dictionary.
+O(ns): s for creating space for prev, n times.
+*/
 
 class Solution {
 public:
-    
-    int solve(string s, unordered_map< int, unordered_set < string > > &m, unordered_map<string, int>&dp){
-        if(dp.count(s)){
-           return dp[s];
-        }
-        
-        int res = 1;
-        if( m.count(s.size()-1) ==0){
-            return dp[s] = res;
-        }
-        string temp = s;
-        for(int i = 0;i<temp.size();i++){
-            string newstr = temp.substr(0, i) + temp.substr(i+1);
-            auto set = m[s.size()-1];
-            auto it = set.find(newstr);
-            if(it!=set.end()){
-                res = max(res, 1 + solve(newstr, m, dp)); // bcz strings are not sorted, so maybe we havent seen newstr until now, so we recurse on it also 
-            }
-        }
-        
-        return (dp[s] = res);
-      
+
+    static bool compare(const string &s1, const string &s2) {
+        return s1.length() < s2.length();
     }
-    
+
     int longestStrChain(vector<string>& words) {
-        unordered_map<int, unordered_set<string> >m;
         unordered_map<string, int> dp;
-        for(auto w: words){
-            m[w.size()].insert(w);
+        sort(words.begin(), words.end(), compare);   // reveerse sort on basis of length
+        int res = 1;
+        for (string word : words) {
+            dp[word] = 1;
+            for (int i = 0; i < word.size(); i++) {
+                string prev = word.substr(0, i) + word.substr(i + 1);
+                if (dp.find(prev) != dp.end() and dp[word]<dp[prev]+1) {
+                    dp[word] = dp[prev] + 1;
+                }
+            }
+            res = max(res, dp[word]);
         }
-        int n = words.size();
-        int ans = -1;
-        for(int i = 0;i<n;i++){
-            int output = solve(words[i], m, dp);
-            ans = max(ans,output );
-        }
-        
-        // for(auto it: dp){
-        //     cout<<it.first<<" "<<it.second<<endl;
-        // }
-        return ans;
+        return res;
     }
 };
