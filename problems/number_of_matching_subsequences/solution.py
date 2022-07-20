@@ -1,3 +1,5 @@
+# cpp solution is better
+
 class Solution:
 #begineer friendly but slow
 #make dictionary for repeated strings...do briute force, checking all subsequence for match
