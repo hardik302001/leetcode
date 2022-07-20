@@ -1,3 +1,6 @@
+// also see: https://leetcode.com/problems/container-with-most-water/
+
+
 class Solution
 {
     public:
@@ -17,7 +20,8 @@ class Solution
                     }
                     else
                     {
-                        res += maxLeft - height[left];
+                        res += maxLeft - height[left];  // water collected will be : 
+                        // distance b/w max left and current height  
                     }
                     left++;
                 }
