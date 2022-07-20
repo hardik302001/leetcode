@@ -43,7 +43,9 @@ public:
     }
     
     int editDistance(string& word1, string& word2, int m, int n, vector<vector<int>>& memo){
-        if(m == 0) return memo[m][n] = n;
+        // one of string ends, then delete all left chars of other string
+        
+        if(m == 0) return memo[m][n] = n;  
         if(n == 0) return memo[m][n] = m;
         
         if(memo[m][n] != -1)
