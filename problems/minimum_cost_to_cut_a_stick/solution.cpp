@@ -19,7 +19,7 @@ public:
         
         int minimum = INT_MAX;
         for(int i=cuts_start; i<=cuts_end; i++)
-            minimum = min(minimum, (end-start)+mincost(start, cuts[i], cuts, cuts_start, i-1)+mincost(cuts[i], end, cuts, i+1, cuts_end));
+            minimum = min(minimum, (end-start)+mincost(start, cuts[i], cuts, cuts_start, i-1)+mincost(cuts[i], end, cuts, i+1, cuts_end));  // bcz cuts is sorted, we can directly send index as parameter, and we cant use 
         
         return dp[cuts_start][cuts_end] = minimum;
     }
@@ -38,13 +38,6 @@ public:
 
 
 //-----------------------------------------------------------------
-
-
-
-
-
-
-
 
 
 // good ques
