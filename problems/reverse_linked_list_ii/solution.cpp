@@ -4,19 +4,19 @@
 class Solution {
 public:
 
-	ListNode* reverse(ListNode* head) {
-		ListNode* p = NULL;
-		ListNode* n;
-		ListNode* c = head;
-		while(c){
-			n= c->next;
-			c->next = p;
-			p = c;
-			 c=n;
-		}
-		head = p;
-		return head;
-	}
+    ListNode* reverse(ListNode* head) {
+        ListNode* prev = NULL;
+        ListNode* curr = head;
+        ListNode * nxt;
+        while(curr!=NULL){
+            nxt = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = nxt;
+        }
+
+        return prev;
+    }
 
 	ListNode* reverseBetween(ListNode* head, int m, int n) {
 
@@ -39,7 +39,7 @@ public:
 			i++;
 		}
 
-		revend->next = NULL;
+		revend->next = NULL;  // bcz for reversing we need to make a stopping point
 
 		revend = reverse(rev);
 
@@ -49,7 +49,7 @@ public:
 			head = revend;
 		}
 
-		rev->next = revend_next;
+		rev->next = revend_next;   // bcz list ahs been reversed
 		return head;
 	}
 };
