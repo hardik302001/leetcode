@@ -1,4 +1,4 @@
-  //see prev submission
+
 class Solution {
 public:
     bool isValidBST(TreeNode* root, long long int min = LONG_MIN, long long int max = LONG_MAX) {
@@ -20,3 +20,37 @@ public:
     }
 };
 
+//---------------------------------------------------------------------------
+
+//inorder should be sorted
+
+/*
+class Solution {
+public:
+    vector<int>inord;
+    bool isValidBST(TreeNode* root) {
+        
+        inorder(root);
+        bool f = true;
+        for(int i = 0;i<inord.size()-1;i++){
+            if(inord[i]>=inord[i+1]){
+                f = false;
+                break;
+            }
+        }
+        
+        
+        return f;
+    }
+    
+    
+    void inorder(TreeNode * root){
+        if(root==NULL){
+            return ;
+        }
+        inorder(root->left);
+        inord.push_back(root->val);
+        inorder(root->right);
+    }
+};
+*/
