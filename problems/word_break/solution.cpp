@@ -35,12 +35,9 @@ public:
         for(int i=index;i<s.size();i++){
             part.push_back(s[i]);
             
-            if(dictionary.find(part)!=dictionary.end()){//Word found
-    
-                if( recursiveSoln(i+1,s,dictionary,dp)){ //Checking for remaining string
-                    return dp[index]=true; //found the way of partitioning
-                }
-
+            if(dictionary.find(part)!=dictionary.end() and recursiveSoln(i+1,s,dictionary,dp)){
+                //Word found and //Checking for remaining string
+                return dp[index]=true; //found the way of partitioning
             }
         }
         return dp[index]=false; //Checked all possible ways but can't break into valid parts.
