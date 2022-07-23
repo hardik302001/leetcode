@@ -1,31 +1,49 @@
-//see prev solns
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
 
+// backtracking
+/*
+Time: O(N^2), where N <= 5000 is the number of elements in the binary tree.
 
+First, we think the time complexity is O(N) because we only visit each node once.
+But we forgot to calculate the cost to copy the current path when we found a valid path, which in the worst case can cost O(N^2), let see the following example for more clear.
+
+space : O(h)
+*/
 class Solution {
 public:
+    vector<vector<int>>ans;
     
-    void dfs(TreeNode* root, vector<vector<int>>& result, vector<int> &path, int sum) {
-        if (root == NULL) return;
-        path.push_back(root->val);
-        if (root->right == NULL and root->left ==  NULL){            //bcz we need till leaf
-            if(root->val == sum){
-                result.push_back(path);
+    void recur(TreeNode* root, vector<int>&cur, int target){
+        if(root==NULL) return ;
+        cur.push_back(root->val);
+        if(root->left ==NULL and root->right==NULL){   // now i m not leaf node, and only left with leaf node value
+            if(target==root->val){             // conisder the leaf node value
+                ans.push_back(cur);
             }
+            // we wont return here bcz we have added current node, and we need to pop it also , bcz else it will forever
         }
-        dfs(root->left, result, path, sum - root->val);
-        dfs(root->right, result, path , sum - root->val);
         
-        path.pop_back();
+    
+        recur(root->left, cur,  target-root->val);
+        recur(root->right, cur, target-root->val);
+        cur.pop_back();
+        
     }
     
     
-    vector<vector<int>> pathSum(TreeNode* root, int sum) {
-        
-        vector<vector<int>> paths; 
-        vector<int> path;
-        
-        dfs(root, paths, path, sum);
-        return paths;
-        
+    vector<vector<int>> pathSum(TreeNode* root, int target) {
+        vector<int>cur;
+        recur(root, cur, target);
+        return ans;
     }
 };
