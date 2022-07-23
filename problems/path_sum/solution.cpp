@@ -9,6 +9,10 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+
+
+// also see: https://www.interviewbit.com/problems/path-to-given-node/
 class Solution {
 public:
     bool hasPathSum(TreeNode* root, int target) {
