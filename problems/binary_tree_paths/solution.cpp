@@ -1,8 +1,5 @@
 class Solution{
 public:
-
-
-
     void binaryTreePaths(vector<string>& result, TreeNode* root, string t) {
         if(!root->left && !root->right) {
             result.push_back(t);
