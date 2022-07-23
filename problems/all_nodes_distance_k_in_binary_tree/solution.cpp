@@ -5,7 +5,6 @@ class Solution {
 public:
     vector<int> distanceK(TreeNode* root, TreeNode* target, int K) {
         unordered_map<TreeNode*, TreeNode*> parent_track; // node -> parent
-        unordered_map<TreeNode*, bool> visited;
         queue<TreeNode*> queue;
         queue.push(root);
         while(!queue.empty()) {   //First BFS to get a track of parent nodes
@@ -22,6 +21,7 @@ public:
         
         
         queue.push(target);
+        unordered_map<TreeNode*, bool> visited;
         visited[target] = true;
         int curr_level = 0;
         while(!queue.empty()) {   //Second BFS to go upto K level from target node and using our hashtable info
@@ -64,7 +64,6 @@ class Solution {
 public:
     vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
         unordered_map<TreeNode*, TreeNode*> parent_track; // node -> parent
-        unordered_map<TreeNode*, bool> visited;
         queue<TreeNode*> queue;
         queue.push(root);
         while(!queue.empty()) { // First BFS to get a track of parent nodes 
@@ -81,6 +80,7 @@ public:
         
         
         vector<int>ans;
+        unordered_map<TreeNode*, bool> visited;
         visited[target] = true;
         dfs(target , k, ans, parent_track , visited);
         
