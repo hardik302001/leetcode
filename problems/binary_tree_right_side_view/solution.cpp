@@ -1,9 +1,12 @@
+// also see: https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/submissions/
+// also see top view, bottom view, vertical view
+// left view code at bottom
 
 class Solution {
 public:
     void dfs(TreeNode* root, int lv, vector<int> &res){
         if(!root)   return;
-        if(lv==res.size()) res.push_back(root->val);  // at every level we can onlu=y consider one elemenet! 
+        if(lv==res.size()) res.push_back(root->val);  // at every level we can only consider one elemenet! 
         dfs(root->right,lv+1,res);  //priority is right side
         dfs(root->left,lv+1,res); // then we go to left side it right side is null
     }
@@ -14,8 +17,12 @@ public:
         return res;
     }
 };
+// Time Complexity: O(N)
+// Space Complexity: O(H)       (H -> Height of the Tree)
 
 
+
+// ------------------------------------------------------------------------
 
 /*
 class Solution {
@@ -48,3 +55,30 @@ public:
 };
 
 */
+
+
+// ---------------------------------------------------------------------------------------------------
+// left view
+
+/*
+class Solution {
+public:
+    void dfs(TreeNode* root, int lv, vector<int> &res){
+        if(!root)   return;
+        if(lv==res.size()) res.push_back(root->val);  // at every level we can only consider one elemenet! 
+        dfs(root->left,lv+1,res);  //priority is left side 
+        dfs(root->right,lv+1,res);  // then we go to right side if left side is null
+        
+    }
+
+    vector<int> leftSideView(TreeNode* root) {
+        vector<int> res;
+        dfs(root, 0, res);
+        return res;
+    }
+};
+*/
+
+// Time Complexity: O(N)
+// Space Complexity: O(H)       (H -> Height of the Tree)
+
