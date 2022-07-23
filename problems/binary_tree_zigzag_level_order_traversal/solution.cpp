@@ -1,4 +1,4 @@
-// without rervse operation
+// without reverse operation
 // O(n)
 // striver video
 
@@ -29,7 +29,7 @@ public:
                 
                 level[ind] = top->val;
                 if(top->left)         q.push(top->left);
-                if(top->right)   q.push(top->right);
+                if(top->right)        q.push(top->right);
             }
             ans.push_back(level);
             leftToRight = !leftToRight;
