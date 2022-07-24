@@ -18,9 +18,10 @@ public:
         
         while(inorder[pivot] != preorder[Idx]) pivot++;   
         
+        TreeNode* newNode = new TreeNode(inorder[pivot]); 
+        
         Idx++;  
         
-        TreeNode* newNode = new TreeNode(inorder[pivot]); 
         newNode->left = helper(preorder, inorder, Idx, left, pivot-1);
         newNode->right = helper(preorder, inorder, Idx, pivot+1, right);
         
