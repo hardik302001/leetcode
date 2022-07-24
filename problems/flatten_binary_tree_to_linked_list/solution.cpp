@@ -10,9 +10,9 @@ public:
         flatten(root->right);
         
         TreeNode *tmp = root->right;  // head of right side
-        root->right = root->left;    // put flattened left on right side
-        root->left = NULL;           // mark left side as NULL 
-        while (root->right)         // now traverse to end of left flattened(that is on right side now)
+        root->right = root->left;     // put flattened left on right side
+        root->left = NULL;            // mark left side as NULL 
+        while (root->right)           // now traverse to end of left flattened(that is on right side now)
             root = root->right;
         
         root->right = tmp;             // attached head of flattened right side to tail of flattened left side
