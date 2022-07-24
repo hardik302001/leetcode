@@ -1,9 +1,8 @@
-//COURTESY : TECH DOSE
-
-
+// COURTESY : TECH DOSE
 // TC = O( (logn)^2 ), bcz we traverse atmax logn times (bcz logn nodes if lh!=rh) brutely, and logn  time to find height evertime
 
-//SC = O(h) = O(logn)
+// SC = O(h) = O(logn)
+
 class Solution {
 public:
     int countNodes(TreeNode* root) {
@@ -39,22 +38,24 @@ public:
 
 
 // O(n) = count nodes
-//O(logn) = space comp
-// class Solution {
-// public:
-//     int c = 0;
-//     void count(TreeNode* root){
-//         if(root==NULL){
-//             return ;
-//         }
-//         else{
-//             c++;
-//         }
-//         count(root->left);
-//         count(root->right);
-//     }
-//     int countNodes(TreeNode* root) {
-//         count(root);
-//         return c;
-//     }
-// };
+// O(h) = logn space comp
+/*
+class Solution {
+public:
+    int c = 0;
+    void count(TreeNode* root){
+        if(root==NULL){
+            return ;
+        }
+        else{
+            c++;
+        }
+        count(root->left);
+        count(root->right);
+    }
+    int countNodes(TreeNode* root) {
+        count(root);
+        return c;
+    }
+};
+*/
