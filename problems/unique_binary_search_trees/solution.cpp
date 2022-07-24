@@ -30,9 +30,8 @@ public:
 
         dp[0] = dp[1] = 1;
         for (int i=2; i<=n; i++) {     //if we have i elements then, 
-            
             for (int j=1; j<=i; j++) {        //we can have root from j = 1 to j = i, total cases will be summation for same
-                dp[i] += dp[j-1] * dp[i-j];     //j-1 for left trre, i-j because now we have i elements, right subtree will have (i-j) cases
+                dp[i] += dp[j-1] * dp[i-j];     //j-1 for left tree, i-j because now we have i elements, right subtree will have (i-j) cases
             }
         }
         return dp[n];
