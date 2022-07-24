@@ -1,3 +1,9 @@
+// also see: https://leetcode.com/discuss/study-guide/1886481/minimum-time-taken-to-burn-the-binary-tree-from-a-node
+// the res is to get the start node, bcz we are given the data, not the node address
+
+// idea : https://www.youtube.com/watch?v=2r5wLmQfD6g&list=PLgUwDviBIf0q8Hkd7bK2Bpryj2xVJk8Vk&index=32
+
+
 /*
 // BFS APPROACH : 
 // find parents and and left and right , and then traverse in bfs manner to find kth distannce nodes
