@@ -1,24 +1,67 @@
-//  https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/discuss/758462/C%2B%2B-Detail-Explain-or-Diagram
+
+// Recursive Approach(C++):
+// Intuition: Basically we start from Idx 0 & find preorder[Idx] from inorder, let's call it as index pivot.
+// Then we create a new node with inorder[pivot] simultaneoulsy create its left child recursively and it's right child recursively and finally return the new node.
+// TC= O(n^2), bcz for traversing and searching..
+
+/*
+class Solution {
+public:
+    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+		int n = inorder.size();
+        int Idx = n-1;             // postorder
+        return helper(inorder, postorder, Idx, 0, n-1);
+    }
+    
+    TreeNode* helper(vector<int>& inorder, vector<int>& postorder, int& Idx, int left, int right) {
+        if (left > right) return NULL;
+        int pivot = left;  // find the root from inorder
+        
+        while(inorder[pivot] != postorder[Idx]) pivot++;   
+        
+        TreeNode* newNode = new TreeNode(inorder[pivot]); 
+        
+        Idx--;  
+        //postorder, 
+        newNode->right = helper(inorder, postorder, Idx, pivot+1, right);     // right      
+        newNode->left = helper(inorder, postorder, Idx, left, pivot-1);       // then left
+
+        
+        return newNode;
+    }
+};
+*/
 
 
-
-//Use HashMap to reduce the time complexity to O(n)
+// O(n), map
+// now searching in O(1)
 
 class Solution {
 public:
-    unordered_map<int, int> Map;
-    TreeNode* build(int inS, int inE, vector<int>& inorder, int poS, int poE, vector<int>& postorder ) {
-        if (inS > inE || poS > poE) return NULL;
-        int index = Map[postorder[poE]];
-        TreeNode* root = new TreeNode(inorder[index]);
-        root->right = build(index+1, inE, inorder, poE + index - inE, poE - 1, postorder);
-        root->left =  build (inS, index - 1, inorder, poS, poE+index-inE - 1, postorder);
-        return root;
-    }
+    unordered_map<int, int>mp;
     
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
-        for (int i = 0; i < inorder.size(); i++)
-            Map[inorder[i]] = i;
-        return build(0, inorder.size() - 1, inorder, 0, postorder.size() - 1, postorder);
+		int n = inorder.size();
+        
+        for(int i= 0;i<n;i++){
+            mp[inorder[i]] = i;
+        }
+        
+        int Idx = n-1;             // postrder
+        return helper(inorder, postorder, Idx, 0, n-1);
+    }
+    
+    TreeNode* helper(vector<int>& inorder, vector<int>& postorder, int& Idx, int left, int right) {
+        if (left > right) return NULL;
+        int pivot = mp[postorder[Idx]];  // find the root from inorder
+          
+        
+        TreeNode* newNode = new TreeNode(inorder[pivot]); 
+        Idx--;
+        
+        newNode->right = helper(inorder, postorder, Idx, pivot+1, right);      // first right     
+        newNode->left = helper(inorder, postorder, Idx, left, pivot-1);       // then left
+
+        return newNode;
     }
 };
