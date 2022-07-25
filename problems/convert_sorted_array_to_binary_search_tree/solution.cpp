@@ -19,8 +19,7 @@ public:
         TreeNode* root = new TreeNode(nums[mid]);
         root->left = recur(nums, start, mid-1);
         root->right = recur(nums, mid+1,end);
-        
-        
+              
         return root;
         
     }
