@@ -1,12 +1,14 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
+
+// brute force is to write path from root to both nodes, https://www.interviewbit.com/problems/path-to-given-node/
+// then do 2 pointer matching
+// 2 traversal, TC = O(N) , SC = O(N)
+
+
+
+
+// optimised
+// TC: O(n) , SC :o(1)
+
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
