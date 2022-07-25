@@ -1,24 +1,40 @@
+// convert bst frpm preorder
+// also see: bst from inorder
 
 
-/*
+// approach 1: sort array you get inorder, now you have inorder and preorder
+// make tree like : https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+// TC: o(nlogn) + O(n)
 
 
-        O(n) Solution
-In the solution above, we are searching for a split point to divide the interval. Instead, we can pass the parent value to the recursive function to generate the left sub-tree. The generation will stop when the value in the preorder array exceeds the parent value. That will be our split point to start generating the right subtree.
+// approach 2: just sort and use : https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
+// bst from inorder
 
-    
-    */
+
+
+// approach 3: 
+// TC: o(n)
+// idea: https://leetcode.com/problems/validate-binary-search-tree/
+
 class Solution {
 public:
-
-int idx = 0;
-TreeNode* bstFromPreorder(vector<int>& preorder, int p_val = INT_MAX) {
-    if (idx >= preorder.size() || preorder[idx] > p_val)
-        return nullptr;
-    auto n = new TreeNode(preorder[idx++]);
-    n->left = bstFromPreorder(preorder, n->val);
-    n->right = bstFromPreorder(preorder, p_val);
-    return n;
-}
+    int idx = 0;  // shoudl be global or passed by reference bcz we will check on left and right both side, so there can be multiple cases for both sides, if we make copies of same index
     
+    TreeNode* buildTree(vector<int>&preorder , int ub){
+        if(idx==preorder.size() or preorder[idx]>ub)  return NULL;
+        
+        TreeNode* root = new TreeNode(preorder[idx]);
+        idx+=1;
+        
+        root->left = buildTree(preorder , root->val);  
+        root->right = buildTree(preorder , ub);
+            
+        return root;
+    }
+    
+    
+    TreeNode* bstFromPreorder(vector<int>& preorder, int ub = INT_MAX) {
+        if(preorder.size()==0) return NULL;
+        return buildTree(preorder, INT_MAX);   // preorder, upper bpund
+    }
 };
