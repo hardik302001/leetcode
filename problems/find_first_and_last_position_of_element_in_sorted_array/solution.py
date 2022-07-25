@@ -15,7 +15,7 @@ class Solution(object):
         low, high = 0, len(nums) #6
         if nums[low]==target: return low
         while low < high: #7
-            mid = low + (high - low)//2 #8
+            mid = low + (high - low)//2 #8.set 
 			
             if nums[mid] == target: #9
                 index = mid #10
