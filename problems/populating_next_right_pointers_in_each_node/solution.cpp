@@ -1,9 +1,35 @@
-// we just need to define the new pointer "next" for the given tree, so we just need to tell that for every nide x, what will be x->next !
+// we just need to define the new pointer "next" for the given tree, so we just need to tell that for every node x, what will be x->next !
 
 
-// read the O(1) space soln from discuss, i have not done it...
+// OPTMISED SOLN, we are using the next pointers o fprev nodes to build next pointers of cur node
+// idea: https://www.youtube.com/watch?v=U4hFQCa1Cq0
+// TC: o(N)
+// SC: o(1)
 
 
+
+class Solution {
+public:
+    Node* connect(Node* root) {        
+        if(root == NULL)
+            return NULL;
+
+        if(root->left != NULL) root->left->next = root->right;
+        if(root->right != NULL && root->next != NULL) root->right->next = root->next->left;
+
+
+        connect(root->left);
+        connect(root->right);
+        return root;
+    }
+};
+
+
+// --------------------------------------------------------------
+
+// TC, SC = O(N)
+// bfs normal soln
+/*
 class Solution {
 public:
     Node* connect(Node* root) {
@@ -32,3 +58,4 @@ public:
         return root;
     }
 };
+*/
