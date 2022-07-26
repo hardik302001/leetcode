@@ -4,7 +4,7 @@
 
 
 //COURTESY: CODINGMINUTES..
-//QUICKSELECT :KTH SMALLEST
+//QUICKSELECT : KTH SMALLEST
 //BUT HERE kth largest..so n-k smallest in reversed!!
 //thats all we did
 
@@ -33,14 +33,12 @@ public:
         reverse(nums.begin(),nums.end());
         int s = 0;
         int e = nums.size()-1;
-        int c = (e + 1) - k;              //kth smallest here in n-k in reversed
+        int c = (e + 1) - k;              // kth smallest here in n-k in reversed
         while(1){
             //rather than going recursive we went for while 1 ..bcz we did not had s and e as parameters in actual function findKthLargest
-            
             //and only thing varying was also s and e
             
-            int p = partition(nums,s,e);
-            cout<<p<<endl;
+            int p = partition(nums,s,e);    // p is pivot
             if(p==c){
                 return nums[p];
             }
@@ -79,7 +77,7 @@ public:
     }
 };
 
-//Time: In worst case, O(nlogk).
+
 */
 
 
@@ -107,7 +105,6 @@ public:
     }
 };
 
-//Time: In worst case, O(nlogk).
 */
 
 
