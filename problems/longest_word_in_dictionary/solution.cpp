@@ -53,10 +53,9 @@ public:
             {
                 return false;                      //not even reached at end of the word
             }            
-        
-
             if(curr->end) ++count;
         }
-        return count == s.size();            //impo step, we are conisdering only those which have, prev one charxter cndition satisfied
+        
+        return count == s.size();            // impo step, we are conisdering only those which have, prev one charxter cndition satisfied
     }
 };
