@@ -19,6 +19,8 @@ public:
 };
 */
 
+// i think bfs is better, idk
+
 // BFS
 /*
 
@@ -29,7 +31,7 @@ public:
             return NULL;
         }
         Node* copy = new Node(node -> val, {});
-        copies[node] = copy;                  // map , decalred in private scope
+        copies[node] = copy;                  // map , declared in private scope
         queue<Node*> todo;
         todo.push(node);
         while (!todo.empty()) {
@@ -39,7 +41,7 @@ public:
             
             
             // like i do in python while addding to dict
-                if (copies.find(neighbor) == copies.end()) {              // if not visited, make a copy for it, ad to queue
+                if (copies.find(neighbor) == copies.end()) {              // if not visited, make a copy for it, add to queue
                     copies[neighbor] = new Node(neighbor -> val, {});
                     todo.push(neighbor);
                 }
