@@ -50,7 +50,7 @@ class Solution:
                 print(mi[st[-1]] , arr[st[-1]], arr[k])
                 return True
             
-            st.append(k)
+            st.append(k)    # now push current element
             
         return False
     
