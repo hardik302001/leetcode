@@ -1,8 +1,12 @@
-//lazy increment : O(1)           : O(1) soln , most optmised
-//see pepcoding yt  video for the same
+
+// approach 1 : use 2 stacks
+// approach 2: use vector, we can do push and pop and update
+// approach 3: !
+// lazy increment : O(1)           : O(1) soln , most optmised
+// see pepcoding yt  video for the same
 
 
-// also see prev codes fro 2 stack soln and vector soln!
+
 
 class CustomStack {
 private:
@@ -17,6 +21,7 @@ public:
     void push(int x) {
         if (stack.size() == limit) return;
         stack.push(x);
+        map[stack.size()] = 0;   // initially 0
     }
 
     int pop() {
