@@ -13,8 +13,7 @@ class Solution:
                 pos.append(i)
         numrev = nums[::-1]
         m = 10000000
-        print(pos)
-        print(degree)
+
         for i in pos:
             f = nums.index(i)
             e = len(nums) - numrev.index(i) -1
