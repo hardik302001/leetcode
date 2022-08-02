@@ -2,10 +2,11 @@
 
 /*
 
+//Time: O(min(3^m, 3^n)), Space: O(N);
 // recursion
+
 class Solution {
 public:
-    //Time: O(min(3^m, 3^n)), Space: O(N);
     int minDistance(string word1, string word2) {
         int m = word1.length(), n = word2.length();
         return editDistance(word1, word2, m, n);
