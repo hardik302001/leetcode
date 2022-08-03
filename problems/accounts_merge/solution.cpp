@@ -72,11 +72,10 @@ public:
         unordered_map<int,vector<string>> unifiedSetIdToEmails;
 
         for (const pair<string, int>& p : emailToFirstAccountId) {
-            int unifiedSetId = uf.find(p.second);                     //find connections
-            unifiedSetIdToEmails[unifiedSetId].push_back(p.first);
+            int unifiedSetId = uf.find(p.second);                     // find connections
+            unifiedSetIdToEmails[unifiedSetId].push_back(p.first);    // user id : email address
         }
 
-        
         
         
         // Pass #3: Finalize the results by inserting the name of the account and sorting all emails.
