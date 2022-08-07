@@ -4,28 +4,28 @@
 
 // we used ind of prev(ascii)
 // prev = vertical bar ('|'), bcz it is next to 'z'
+
+
 class Solution {
 public:
-    int dp(vector <vector<int>>&cache,string &s,int i,char prev,int &k){
-        if(i==s.size()) return 0;
-		
-        if(prev=='*'){
-            return max(1+dp(cache,s,i+1,s[i],k),dp(cache,s,i+1,prev,k));
+    int dp[100001][30];
+    int solve(int i , char p , string &s , int k){
+        int n = s.size();
+        if(i==n) return 0;
+        if(dp[i][p-'a']!=-1) return dp[i][p-'a'];
+        
+        int not_inc = solve(i+1, p , s, k);
+        int inc = 0;
+        if(p=='|' or abs(s[i]-p)<=k){
+            inc = 1 + solve(i+1, s[i] , s, k);
         }
         
-        int &ans=cache[i][prev-'a'];
-        if(ans!=-1) return ans;
-        
-        if(abs(s[i]-prev)<=k){
-            ans=max(1+dp(cache,s,i+1,s[i],k),dp(cache,s,i+1,prev,k));
-        }
-        else ans=dp(cache,s,i+1,prev,k);
-        return ans;
+        return dp[i][p-'a'] = max(inc, not_inc);
     }
     
     int longestIdealString(string s, int k) {
-        int n=s.size();
-        vector <vector<int>> cache(n,vector <int>(26,-1));
-        return dp(cache,s,0,'*',k);
+        int n = s.size();
+        memset(dp, -1 , sizeof dp);
+        return solve(0, '|' , s, k);
     }
 };
