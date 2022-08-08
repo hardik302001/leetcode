@@ -14,7 +14,7 @@ class Solution:
         
         #   now our target is to remove min length subarray such that its sum is rem
         
-        min_len = n         #in worst  case we need to remove whole array
+        min_len = n         #   in worst case we need to remove whole array
         d = {}
         d[0] = -1
         summ = 0
@@ -29,7 +29,7 @@ class Solution:
                     min_len = sz
                     end = i
         
-            d[summ] = i        # adding key to map
+            d[summ] = i        # adding key to map, bcz we want shortest
         
         
         if min_len==n:
