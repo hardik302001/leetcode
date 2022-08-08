@@ -12,14 +12,12 @@ public:
 
             
             while(a>0 and b>0 and c>0){
-                ans = ans + (n-r);
-                if(s[l]=='a')a--;
+                ans = ans + (n-r);     // noice!
+                if(s[l]=='a')a--; 
                 else if(s[l]=='b')b--;
                 else c--;
                 l++;
-            }
-            
-            
+            }      
     
         }
         return ans;
