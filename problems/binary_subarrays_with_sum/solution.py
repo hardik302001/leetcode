@@ -1,5 +1,7 @@
 # exactly same problem: https://leetcode.com/problems/subarray-sum-equals-k/
-# exactly sameproblem: https://leetcode.com/problems/count-number-of-nice-subarrays/
+# exactly same problem: https://leetcode.com/problems/count-number-of-nice-subarrays/
+
+
 class Solution:
     def numSubarraysWithSum(self, p: List[int], k: int) -> int:
         n = len(p)
