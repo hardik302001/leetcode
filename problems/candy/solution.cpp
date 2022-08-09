@@ -13,7 +13,7 @@ public:
         
         int res = 0;
         for (int i =0;i<n;i++){
-            res+= max(l[i], r[i]);
+            res+= max(l[i], r[i]);    // bcz we need to satisfy both left and right side
         }
         return res;
     }
