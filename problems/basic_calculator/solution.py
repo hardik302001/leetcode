@@ -8,12 +8,6 @@ https://leetcode.com/problems/basic-calculator/discuss/1456850/Python-Basic-Calc
 '''
 
 
-# DBabichev's avatar
-# DBabichev
-# 25735
-# September 11, 2021 1:01 PM
-
-# 2.3K VIEWS
 
 # This algorithm works for Basic Calculator (BC I) problem, where we can have only + - ( ) operations, for Basic Calculator II (BC II), where we can have only + - * / operations and also for Basic Calculator III (BC III), where we can have all + - * / ( ) operations.
 
@@ -76,7 +70,6 @@ class Solution:
                 if op == "-": stack.append(-v)
                 if op == "*": stack.append(stack.pop() * v)
                 if op == "/": stack.append(int(stack.pop() / v))
-        
             num, stack, sign = 0, [], "+"
             
             while it < len(s):
@@ -87,12 +80,11 @@ class Solution:
                     num, sign = 0, s[it]
                 elif s[it] == "(":
                     num, j = calc(it + 1)
-                    it = j - 1
+                    it = j   # bcz we will do it+=1 at end anyways
                 elif s[it] == ")":
                     update(sign, num)
-                    return sum(stack), it + 1         #here we are returning 2 variables
+                    return sum(stack), it         #here we are returning 2 variables
                 it += 1
-            update(sign, num)
+            update(sign, num)    # what if there are no brackets
             return sum(stack)
-
         return calc(0)
