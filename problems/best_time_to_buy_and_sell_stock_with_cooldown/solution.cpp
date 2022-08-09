@@ -47,7 +47,7 @@ public:
         }
         else{
             sell = recur(prices, i+2, buying^1) + prices[i]; //if sell , then relative profit would be curr profit + (+price[i]) 
-            //i+2 for cooldown , mentioned in ques
+            //i+2 for cooldown , mentioned in ques, cooldown of one day
             wait = recur(prices, i+1, buying);   
             ans = max(wait, sell);
         }
