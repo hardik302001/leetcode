@@ -8,10 +8,10 @@ for table[i][j] such that i is prerequsite of j , make it true for current verte
 
 
 # if a is prerequisite for b, then all courses that are prerequiste of a are also prereq for b.
-
+# check from past pov
 */
 
-/*
+
 class Solution {
 public:
     vector<bool> checkIfPrerequisite(int n, vector<vector<int>>& prerequisites, vector<vector<int>>& queries) {
@@ -30,7 +30,7 @@ public:
         {
             int cur=q.front();
             q.pop();
-            for(auto &it:graph[cur])
+            for(auto &it :graph[cur])
             {
                 table[cur][it]=true;
                 for(int i=0;i<n;i++) if(table[i][cur]==true) table[i][it] = true;
@@ -43,7 +43,7 @@ public:
         return ans;
     }
 };
-*/
+
 
 // bfs
 /*
@@ -95,7 +95,7 @@ public:
 
 // floyd warshall
 // O(n^3)
-
+/*
 class Solution {
 public:
     vector<bool> checkIfPrerequisite(int n, vector<vector<int>>& prerequisites, vector<vector<int>>& queries) {
@@ -116,3 +116,4 @@ public:
         return result;
     }
 };
+*/
