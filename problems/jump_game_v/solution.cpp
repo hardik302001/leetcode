@@ -36,7 +36,7 @@ public:
     int maxJumps(vector<int>& arr, int d) {
         int n = arr.size();
         int res = 1;   // current position where i m standing
-        for(int i = 0;i<n;i++){
+        for(int i = 0;i<n;i++){   // start from any index
             res = max(res, recur(arr, d , i));
         }
         
