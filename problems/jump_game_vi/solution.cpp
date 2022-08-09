@@ -4,8 +4,8 @@ greedy wont work  (WA)
 [0,-1,-2,-3,1]
 2
 
-expected -1
-got -2
+expected -1 (-2 , 1)
+got -2 (-1 , -2 , 1)
 
 */
 
