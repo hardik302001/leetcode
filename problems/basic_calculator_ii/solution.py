@@ -17,12 +17,6 @@ class Solution:
                 elif s[it] in "+-*/":
                     update(sign, num)
                     num, sign = 0, s[it]
-                elif s[it] == "(":
-                    num, j = calc(it + 1)
-                    it = j - 1
-                elif s[it] == ")":
-                    update(sign, num)
-                    return sum(stack), it + 1
                 it += 1
             update(sign, num)
             return sum(stack)
