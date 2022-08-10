@@ -9,6 +9,9 @@ Courtesy : ideserve channel : youtube video SHORTEST PALINDROME
 */
 
 
+// similar to : https://www.codingninjas.com/codestudio/problems/893000?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=1
+
+
 class Solution {
 public:
     
@@ -35,9 +38,18 @@ public:
         string rev = string(s.rbegin(),s.rend()); 
         string check = s +"#"+ rev;               //check s in rev
         vector<int> pi = prefix_function(check);
-        int longest_palin = pi[(2*n+1)-1];     //redundant variable
+        
+//         cout<<check<<endl;
+//         for(auto i: pi){
+//             cout<<i;
+//         }
+        
+//         cout<<endl;
+        
+        
+        int longest_palin = pi[(2*n+1)-1];     //redundant variable, last index
         //longest_palin will give numberof common characters from beginning(prefix of s) and suffix(end of rev)
-        string front = string(rev.begin(), rev.begin()+n - longest_palin);  //left chaarcter that will come in front(or inserted ) are the unused chacrters from prefix (beginning ) of rev
+        string front = string(rev.begin(), rev.begin()+n - longest_palin);  //left character that will come in front(or inserted ) are the unused chacrters from prefix (beginning ) of rev
         string res = front + s;
         return res;
     }
