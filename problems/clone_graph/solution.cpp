@@ -37,9 +37,7 @@ public:
         while (!todo.empty()) {
             Node* cur = todo.front();
             todo.pop();
-            for (Node* neighbor : cur -> neighbors) {
-            
-            
+            for (Node* neighbor : cur -> neighbors) {     
             // like i do in python while addding to dict
                 if (copies.find(neighbor) == copies.end()) {              // if not visited, make a copy for it, add to queue
                     copies[neighbor] = new Node(neighbor -> val, {});
