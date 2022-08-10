@@ -1,3 +1,31 @@
+# just compare first and last, after sorting
+
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        if len(strs)==0:
+            return ""
+        if len(strs)==1:
+            return strs[0]
+        cp = ''
+        
+        strs.sort()
+        a = strs[0]
+        b = strs[-1]
+  
+        for i in range(len(a)):
+            if a[i]==b[i]:
+                cp = cp + a[i]
+            else:
+                return cp
+        return cp
+
+
+
+
+
+# no need to compare all
+
+'''
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         if len(strs)==0:
@@ -13,3 +41,5 @@ class Solution:
             else:
                 return cp
         return cp
+    
+'''
