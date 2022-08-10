@@ -15,7 +15,9 @@ class Solution:
                 elif dict[pre[j]] > dict[cur[j]]:
                     return False
                 
-            if not flag and len(pre) > len(cur):    #if strimg are  equal , but pre is of longer size than cur, return  false 
+            # if flag==1, then we dont have any issue , we check for further iterations
+                
+            if not flag and len(pre) > len(cur):    #if string are  equal , but pre is of longer size than cur, return  false 
                 return False
             
             #else we just continue for next words in words array
