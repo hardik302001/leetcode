@@ -1,3 +1,6 @@
+// pi[i] = largest k(length) for pref(s[:i])== suf(s[:i]) such that s[i:k]==s[i-k+1:] 
+
+
 class Solution {
 public:
     
