@@ -1,3 +1,5 @@
+// also see: https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/
+
 class Solution {
 public:
     int minimumObstacles(vector<vector<int>>& grid) {
@@ -5,6 +7,8 @@ public:
         
         // use pairs , i was using vector and it gave TLE
         priority_queue<pair<int , pair<int, int>> , vector<pair<int , pair<int , int>>> , greater<pair<int , pair<int , int>>>>q;  // min heap , minimum obstacle count explore first
+        // obstacle -> x, y
+        
         
         q.push({0 , {0 , 0}});
         
@@ -62,18 +66,11 @@ public:
                             obs[newx][newy] = o+1;
                             q.push({o+1, {newx, newy}});
                         }  
-                    }  
-
-                    
-                }
-                    
-            }
-            
+                    }     
+                }       
+            }   
         }
-    
         
         return ans;
-        
-        
     }
 };
