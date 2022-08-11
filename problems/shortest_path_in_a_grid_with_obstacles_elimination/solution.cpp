@@ -1,4 +1,6 @@
-/*Solution: 
+/*
+
+Solution: 
 	1. Since it talks about the shortest paths, we immediately think about BFS here.
 	2. We use the visited array in a different way to keep storing the number of obstacles 
 		that we can still remove after walking through that cell. (Basically BEST remaining K after reaching that cell)
@@ -27,7 +29,7 @@ public:
         // This vector stores the number of obstacles that we can still remove after walking through that cell
         vector<vector<int>> dis(M,vector<int>(N,-1));
         
-        //x, y , curdist, remaining k
+        // x, y , curdist, remaining k
         todo.push({0,0,0,k});
         
         while (!todo.empty()) {
@@ -64,7 +66,7 @@ public:
                 continue;             //we wont continue further as this path is not optimised
             }
             else{
-                dis[curx][cury] = remk;  //if cell is either unvisted or (if it is visted and dis[i][j] < remk, then it is good to choose this path, over the previou spath that uses more k  or faces more obstacles) then upadte dis[i][j]
+                dis[curx][cury] = remk;  //if cell is either unvisted or (if it is visted and dis[i][j] < remk, then it is good to choose this path, over the previous path that uses more k or faces more obstacles) then update dis[i][j]
             }
             
             
