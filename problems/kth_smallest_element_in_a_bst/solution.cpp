@@ -2,7 +2,7 @@
 
 /*
 what if we needed k th largest
-do on etraversal , count nodes
+do one traversal , count nodes
 
 kth largest = n - kth smallest
 or maybe right root left, opposite inorder
