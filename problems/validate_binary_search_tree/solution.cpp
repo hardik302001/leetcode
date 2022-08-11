@@ -1,6 +1,4 @@
-// also see : https://leetcode.com/problems/kth-smallest-element-in-a-bst/submissions/.
-
-
+// also see : https://leetcode.com/problems/kth-smallest-element-in-a-bst/
 
 // idea:  https://www.youtube.com/watch?v=f-sj7I5oXEI&list=PLgUwDviBIf0q8Hkd7bK2Bpryj2xVJk8Vk&index=47
 // no extra space
