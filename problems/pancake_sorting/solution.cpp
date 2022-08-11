@@ -19,7 +19,7 @@ public:
         for (int i = n-1; i >= 0; i--) {
             int x = findMaxIdx(A, i);
             res.push_back(x+1);
-            res.push_back(i+1);
+            res.push_back(i+1);                  // gg, babes
             reverse(A.begin(), A.begin()+x+1);
             reverse(A.begin(), A.begin()+i+1);
         }
