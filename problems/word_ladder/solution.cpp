@@ -23,7 +23,7 @@ public:
                 if(temp == endWord)
                     return result;
 
-                //comparing is done in O(26)*size of word here!
+                // comparing is done in O(26)*size of word here!
                 // see prev TLE pproachh there it was count of word of size(size of word)* size of word
                 for(int i = 0; i < temp.size(); i++) {
                     string current = temp;
