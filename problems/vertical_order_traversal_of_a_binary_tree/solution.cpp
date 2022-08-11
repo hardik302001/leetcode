@@ -22,7 +22,12 @@ public:
                 if (p.second->right) q.push(make_pair(p.first+1, p.second->right));
             }
 
-            for(auto p : tmp) m[p.first].push_back(p.second);
+            for(auto p : tmp) 
+            {
+                m[p.first].push_back(p.second);
+        
+            }
+            cout<<endl;
         }
 
         vector<vector<int> > res;
