@@ -28,8 +28,8 @@ public:
             smap[s[end]-'A']++; //add the freq of the char to smap 
             if(tmap[s[end]-'A']>=smap[s[end]-'A']) {   //no. of valid chrs from string t, that are occuring in string s! so we update c till freq of chars are less than equal to freq of char of string t
                 c++;
-                // cout<<end<<endl;
             }   
+            
             //cout<<s[end]<<" "<<c<<endl;
             
             //by this time, if we have reached the matching substring, we will start resizing. If not, then the window has been expanded on the right size and its proceeding
