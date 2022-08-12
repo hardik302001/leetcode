@@ -4,7 +4,8 @@
 
 // tc: O(nlogk)
 // sc: O(n)
-/*
+ 
+
 class compare {
 public: 
     bool operator()(const ListNode* l, const ListNode* r) {
@@ -28,16 +29,20 @@ public:
         
         ListNode* tail = result;            
         while(!q.empty()) {
-            tail->next = q.top();
+            auto topa = q.top();
             q.pop();
+            tail->next = topa;
             tail = tail->next;
-            if(tail->next) q.push(tail->next);
+            if(topa->next) q.push(topa->next);
         }
+        
         return result;
     }
 };
 
-*/
+
+
+// -----------------------------------------------------------------------------------
 
 
 /*
@@ -47,8 +52,9 @@ do this until you have only on list left in the vector
  tc : O(nk)
  sc: O(1)
 
-*/
+*/ 
 
+/*
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists){
@@ -88,7 +94,12 @@ public:
         return c;
     }    
 };
-
+*/
+    
+    
+// -----------------------------------------------------------------------------
+    
+    
 
 // check my c++ solution, without using push_back, erase, which is time consuming,
 // use only 34ms
