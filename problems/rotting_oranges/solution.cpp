@@ -53,10 +53,10 @@ public:
             }
             if(pushed){
                 ans++;
+            }else{
+                break;
             }
         }
-        
-        
         
         for (int i = 0; i < M; i++) {
             for (int j = 0; j < N; j++) {
@@ -64,7 +64,6 @@ public:
                     return -1;
             }
         }
-
 
         return ans;
         
@@ -117,7 +116,7 @@ public:
         while (true) {
             for (int i = 0; i < M; i++) {
                 for (int j = 0; j < N; j++) {
-                    if (mat[i][j] == 2 and vis[i][j]==-1) {
+                    if (mat[i][j] == 2 and vis[i][j]==-1) {  // very impo, vis shud be -1
                         cout<<i<<" "<<j<<endl;
                         if (inside(i + 1, j,M,N,mat) and mat[i + 1][j] == 1) {
                             vis[i+1][j] = 0;
@@ -161,7 +160,7 @@ public:
             changed = false;
             ans++;
        
-    }  
+        }  
         
         for (int i = 0; i < M; i++) {
             for (int j = 0; j < N; j++) {
