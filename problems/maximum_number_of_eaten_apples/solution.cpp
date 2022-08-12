@@ -29,9 +29,9 @@ public:
                     auto [day , apple ] = pq.top();
                     pq.pop();
                     apple--;
+                    ans++;
                     pq.push({day , apple});
 
-                    ans++;
                     break;         // bcz you can only eat only one apple in a day..
                 }
             }
