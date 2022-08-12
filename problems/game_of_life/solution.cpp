@@ -1,6 +1,5 @@
-
 // approach 2
-//  For this, we introduce two new states for a cell:
+// For this, we introduce two new states for a cell:
 // 2: newly alive and 3: newly dead
 
 // Now let's see how we will have to modify our neighbour checking function to accomodate these:
