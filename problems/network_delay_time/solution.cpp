@@ -3,7 +3,8 @@
 
 // o(n+elogn)
 // pure djisktra
-/*
+
+
 #define INF 1000000000000
 #define ll long long
 class Solution {
@@ -41,7 +42,7 @@ public:
     }
 };
 
-*/
+
 // Dijkstra's Algorithm takes O(ElogN). Finding the minimum time required in signalReceivedAt takes O(N).
 // tc : O(n+elogn)  
 
@@ -53,7 +54,7 @@ public:
 // bellman ford :  fucking constraints, giving TLE
 // hardly passed 
 
-
+/*
 #define INF 1000000000000
 #define ll long long
 class Solution {
@@ -76,3 +77,5 @@ public:
         return ma==INF?-1:ma;
     }
 };
+
+*/
