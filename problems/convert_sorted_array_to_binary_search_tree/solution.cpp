@@ -1,5 +1,7 @@
 // convert bst from inorder
 
+// TC: o(n)
+
 class Solution {
 public:
     TreeNode* recur(vector<int>&nums, int start, int end){
@@ -18,7 +20,6 @@ public:
     
     TreeNode* sortedArrayToBST(vector<int>& nums) {
         int n = nums.size();
-        
         return recur(nums, 0 , n-1);
     }
 };
