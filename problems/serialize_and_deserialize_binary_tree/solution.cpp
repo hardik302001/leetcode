@@ -1,5 +1,12 @@
 //  https://leetcode.com/problems/serialize-and-deserialize-binary-tree/discuss/1640923/C%2B%2B-Preorder-Traversal-or-just-25-lines-or-very-simple-code
 
+// --------------------------------------------------------------------
+
+
+
+
+// preorder
+
 class Codec {
 public:
     string serialize(TreeNode* root) {
@@ -27,7 +34,11 @@ public:
         return deserialize_helper(q);
     }
 
+    
+    
     TreeNode* deserialize_helper(queue<string> &q) {
+        if(!q.size()) return NULL;
+        
         string s=q.front();
         q.pop();
         if(s=="NULL")return NULL;
