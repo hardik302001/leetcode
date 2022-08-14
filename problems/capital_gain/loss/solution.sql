@@ -3,7 +3,7 @@ Let's say all buy/sell pairs are represented as (b1, s1), (b2, s2), ... (bn, sn)
 
 */
 
-SELECT Distinct(stock_name), SUM(
+SELECT stock_name, SUM(
     CASE
         WHEN operation = 'Buy' THEN -price
         ELSE price
