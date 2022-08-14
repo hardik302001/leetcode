@@ -1,4 +1,5 @@
-# Write your MySQL query statement below
+
+
 
 SELECT 
     sell_date,
@@ -6,3 +7,5 @@ SELECT
     GROUP_CONCAT(DISTINCT product ORDER BY product) AS products
 FROM Activities
 GROUP BY sell_date;
+
+-- order by bcz we need sorted
