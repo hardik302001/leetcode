@@ -13,7 +13,7 @@ public:
         int ans = INT_MAX;
         for(int floorId = lo+1; floorId<=hi ; floorId++){
             
-            // +1 bcz we do onemove for current floor , and rest part for future moves
+            // +1 bcz we do one move for current floor, and rest part for future moves
             int movesIfFirstEggBreaks = 1 + (floorId-lo-1);
             int movesIfFirstEggDontBreaks = 1 + recur(floorId, hi);
             
