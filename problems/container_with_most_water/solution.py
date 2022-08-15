@@ -10,10 +10,10 @@ class Solution:
             m = max(m, (r-l)*min(height[l], height[r]))
             # print((r-l)*min(height[l],height[r]))
             if height[l]==height[r]:
-                l = l+1
-                r = r -1
-            elif height[l]>height[r]:  #bcz dec l is not efficient , bcz its already higher
-                r = r -1
-            elif height[l]<height[r]:      #bcz decreasing r is not efficient, bcz its already higher
-                l = l+1
+                l = l + 1
+                r = r - 1
+            elif height[l]>height[r]:   # bcz dec l is not efficient , bcz its already higher
+                r = r - 1
+            elif height[l]<height[r]:   # bcz decreasing r is not efficient, bcz its already higher
+                l = l + 1
         return m
