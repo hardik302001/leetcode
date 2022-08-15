@@ -1,10 +1,44 @@
 
+# TC: O(n)
+# SC: O(1)
+
+
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        n = len(height)
+        l = 0
+        r = n-1
+        lmax = 0
+        rmax = 0
+        ans = 0
+        
+        while l<=r:
+            if height[l]<=height[r]:
+                if height[l]<=lmax:
+                    ans += lmax - height[l]
+                else:
+                    lmax = height[l]
+                l+=1
+            else:
+                if height[r]<=rmax:
+                    ans += rmax - height[r]
+                else:
+                    rmax = height[r]                               
+                r-=1
+        return ans
+        
+
+
+
+
+# ----------------------------------------------------------------------
+
+'''
 # see cpp for O(1) pace solution , more optimised
 
 
 # TC: O(n)
 # SC: O(n)
-
 
 
 class Solution:
@@ -29,7 +63,9 @@ class Solution:
             
         return s
 
-            
+'''
+    
+# ----------------------------------------------------------------------
 
         
         
