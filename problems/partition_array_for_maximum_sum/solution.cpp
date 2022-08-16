@@ -5,16 +5,16 @@ public:
         if(start==arr.size()) return 0;
         if(dp[start]!=-1) return dp[start];
         
-        int mi = INT_MIN;
+        int ans = INT_MIN;
         int ma = INT_MIN;
         int len = 0;
         for(int i = start ; i<min(int(arr.size()) ,start+k ); i++){
             len++;
             ma = max( ma, arr[i]);
             int res = len*ma + recur(i+1, arr, k);
-            mi = max(mi , res);
+            ans = max(ans , res);
         }
-        return dp[start] = mi;
+        return dp[start] = ans;
         
     }
     
