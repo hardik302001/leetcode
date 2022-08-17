@@ -27,8 +27,9 @@ class Solution:
                 stack2.pop()
             stack2.append(i)
             
-        print(prev_smaller_element)    
-        print(next_smaller_element)
+        # print(prev_smaller_element)    
+        # print(next_smaller_element)
+        
         ans = 0
         for i in range(n):
             if prev_smaller_element[i]== -1:
@@ -41,7 +42,7 @@ class Solution:
             else:
                 right_diff = (next_smaller_element[i] - i) - 1
             
-            # current element is minimim, bcz we conisder minimum height
+            # current element is minimim, bcz we consider minimum height
             
             m = arr[i]* (left_diff +  right_diff+1)
             ans = max(ans ,m)
