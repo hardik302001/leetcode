@@ -1,5 +1,6 @@
 //THE CODE IS QUITE SIMILAR TO SAME TREE QUESTION(EASY) : https://leetcode.com/problems/same-tree/
-// there we were chceking for every left we traversed left and for every right we traversed //right..but here it is opposite bcz its mirror image ...so for evry left we will check right and //for evry right we will check left
+// there we were chceking for every left we traversed left and for every right we traversed 
+//right..but here it is opposite bcz its mirror image ...so for evry left we will check right and //for evry right we will check left
 
 class Solution {
 public:
