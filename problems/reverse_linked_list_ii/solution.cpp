@@ -34,6 +34,7 @@ public:
 			if(i == n){
 				revend = curr;
 				revend_next = curr->next;
+                break;
 			}
 			curr = curr->next;
 			i++;
@@ -49,7 +50,7 @@ public:
 			head = revend;
 		}
 
-		rev->next = revend_next;   // bcz list ahs been reversed
+		rev->next = revend_next;   // bcz list has been reversed
 		return head;
 	}
 };
