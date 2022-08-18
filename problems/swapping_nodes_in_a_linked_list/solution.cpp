@@ -11,6 +11,7 @@ public:
             ptr1 = ptr1->next;
         
         kth = ptr1;
+        
         ptr1 = ptr1->next;
         
         while (ptr1) {
