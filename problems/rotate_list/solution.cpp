@@ -19,7 +19,7 @@ public:
             tmp = tmp->next;
         }
         k = k%l;//step 1
-        tmp->next = head;//step2
+        tmp->next = head;//step2 , to make cycle
         int pos = l-k;
         
         for(int i = 0;i<pos;i++){
