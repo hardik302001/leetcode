@@ -22,12 +22,12 @@ public:
         }
         if(q.empty())  return NULL;
 
-        ListNode* result = q.top();
+        ListNode* result = q.top();   // initialise result with first value, cz we shud not initialise it with NULL ,and then elements after it. That will give TLE.
         q.pop();
         
         if(result->next) q.push(result->next);   //next of head
         
-        ListNode* tail = result;            
+        ListNode* tail = result; // to point to head of result           
         while(!q.empty()) {
             auto topa = q.top();
             q.pop();
