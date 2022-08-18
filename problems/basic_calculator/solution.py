@@ -83,7 +83,7 @@ class Solution:
                     it = j   # bcz we will do it+=1 at end anyways
                 elif s[it] == ")":
                     update(sign, num)
-                    return sum(stack), it         #here we are returning 2 variables
+                    return sum(stack), it         # here we are returning 2 variables
                 it += 1
             update(sign, num)    # what if there are no brackets
             return sum(stack)
