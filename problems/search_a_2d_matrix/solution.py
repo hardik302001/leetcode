@@ -1,23 +1,33 @@
-# same as : https://leetcode.com/problems/binary-search/   
-# TC: O(logn(m*n))
+#                       |
+#                       |
+# we can also do this, \|/
+
+
+# with binary search, we were able to do binary search bcz, if we open the matrix it will be a single sorted list
 
 
 class Solution:
-    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        if not matrix or not matrix[0]:
-            return False
-
-        l, r = 0, len(matrix)*len(matrix[0])-1
-
-        while l<r:
-            mid = (l+r)//2
-            i, j = mid//len(matrix[0]), mid%len(matrix[0])
-
-            if matrix[i][j]>=target:          # greater and equal for r = mid
-                r = mid
-            else:
-                l = mid + 1
-        # print(l)
-        
-        x, y = l//len(matrix[0]), l%len(matrix[0])
-        return matrix[x][y]==target
+    def searchMatrix(self, mat: List[List[int]], x: int) -> bool:
+        if mat:
+            m, n = len(mat) , len(mat[0])
+            r, c = 0,  len(mat[0]) - 1             
+            
+            '''
+            
+                 *  *  *  * (*)  <--start frm this elemenet checking in both directions
+                 *  *  *  *  *
+                 *  *  *  *  *
+                 *  *  *  *  *
+                 *  *  *  *  *
+            
+            
+            '''
+            
+            while r<m and c>=0:
+                if mat[r][c]==x:
+                    return True
+                if mat[r][c]<x:
+                    r+=1
+                else:
+                    c-=1
+        return False
