@@ -1,12 +1,12 @@
 // we just need to define the new pointer "next" for the given tree, so we just need to tell that for every node x, what will be x->next !
 
 
-// OPTMISED SOLN, we are using the next pointers o fprev nodes to build next pointers of cur node
+// OPTMISED SOLN, we are using the next pointers of prev nodes to build next pointers of cur node
 // idea: https://www.youtube.com/watch?v=U4hFQCa1Cq0
 // TC: o(N)
 // SC: o(1)
 
-
+// this thing works bcz it is a perfect binary tree
 
 class Solution {
 public:
@@ -14,9 +14,8 @@ public:
         if(root == NULL)
             return NULL;
 
-        if(root->left != NULL) root->left->next = root->right;
-        if(root->right != NULL && root->next != NULL) root->right->next = root->next->left;
-
+        if(root->left != NULL)                         root->left->next = root->right;
+        if(root->right != NULL and root->next != NULL) root->right->next = root->next->left;
 
         connect(root->left);
         connect(root->right);
@@ -25,7 +24,7 @@ public:
 };
 
 
-// --------------------------------------------------------------
+// --------------------------------------------------------------------
 
 // TC, SC = O(N)
 // bfs normal soln
