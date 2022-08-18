@@ -1,3 +1,6 @@
+# we cant do binary search here , bcz if we open matrix in form of one single list, it wont be in increasing order
+
+
 class Solution:
     def searchMatrix(self, mat: List[List[int]], x: int) -> bool:
         if mat:
