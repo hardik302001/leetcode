@@ -50,6 +50,6 @@ public:
         }
         
         
-        return a;    //after while loop a == b , so we are returning a
+        return a;    // after while loop a == b , so we are returning a
     }
 };
