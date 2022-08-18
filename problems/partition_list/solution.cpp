@@ -35,4 +35,4 @@ public:
 };
 
 // TC : O(N) , one traversal
-// SC : O(1),bcz  we are just chnaging pointers
+// SC : O(1), bcz  we are just chnaging pointers-----------------------
