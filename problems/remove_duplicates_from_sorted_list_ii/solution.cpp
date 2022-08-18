@@ -1,4 +1,8 @@
 // https://www.youtube.com/watch?v=R6-PnHODewY
+// maybe u shud delete nodes also to avoid memory leaks
+
+
+// here we need dummy node, bcz we need to play one step ahead, we cant even consider cur node
 
 class Solution {
 public:
