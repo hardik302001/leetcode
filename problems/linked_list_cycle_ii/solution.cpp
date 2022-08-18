@@ -1,7 +1,7 @@
 /*
 see below code ..that show use of hashmap in linklist quetsions!
 this is approach 2 that is having space compelxtiy O(1)
-approach 1 in comment below using hash  map
+approach 1 in comment below using hash map
 
 Step 1: Determine whether there is a cycle
 
