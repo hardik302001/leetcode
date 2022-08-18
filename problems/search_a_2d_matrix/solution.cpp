@@ -1,3 +1,8 @@
+// see py soln, 
+
+
+// we can also do it like : https://leetcode.com/problems/search-a-2d-matrix-ii/submissions/
+
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
@@ -23,8 +28,6 @@ public:
         }
         
         return matrix[l/n][l%n]==target;
-        
-        
-        
+
     }
 };
