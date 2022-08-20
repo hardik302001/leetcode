@@ -78,7 +78,7 @@ public:
     }
 };
 
-
+// --------------------------------------------------------------------------------
 
 /*
     
@@ -95,7 +95,7 @@ public:
     
     Rest all logic is same!
     
-    GFG did this same thing using avariable no = 2, and changing the logic, A bit weird!
+    GFG did this same thing using a variable no = 2, and changing the logic, A bit weird!
 
 */
 
@@ -117,7 +117,7 @@ public:
             for (int i = 0; i < M; i++) {
                 for (int j = 0; j < N; j++) {
                     if (mat[i][j] == 2 and vis[i][j]==-1) {  // very impo, vis shud be -1
-                        cout<<i<<" "<<j<<endl;
+                       
                         if (inside(i + 1, j,M,N,mat) and mat[i + 1][j] == 1) {
                             vis[i+1][j] = 0;
                             mat[i + 1][j] = 2;
