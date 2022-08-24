@@ -5,7 +5,7 @@ class Solution:
         for i in range(n):
             p.append([nums[i],i])
         p.sort(key = lambda x: (-x[0],x[1]))
-        # print(p)
+    
         q = []
         for i in range(k):
             q.append(p[i])
