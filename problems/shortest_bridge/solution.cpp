@@ -4,6 +4,7 @@ class Solution {
     int x[4]={-1,0,1,0};
     int y[4]={0,1,0,-1};
     queue<pair<int,int> > que;
+    
 public:
     void dfs(int i,int j, vector<vector<int>>&mat){
         vis[i][j]=1;
@@ -18,6 +19,7 @@ public:
             }
         }
     }
+    
     int shortestBridge(vector<vector<int>>& mat) {
         m=mat.size();
         if(m==0) return 0;
@@ -41,6 +43,7 @@ public:
         
         //now start exploring from all lands of that island towrads another island
         int l=0;
+        
         while(!que.empty()){
             int len=que.size();
             while(len--){
@@ -49,7 +52,7 @@ public:
                 
                 for(int dir=0;dir<4;dir++){
                     int xd = poi.first + x[dir];
-                    int yd = poi.second+ y[dir];
+                    int yd = poi.second + y[dir];
                     if(xd>=0 && yd>=0 && xd<=m-1 && yd<=n-1 and !vis[xd][yd]){
                         if(mat[xd][yd]==0){
                            que.push({xd,yd});
