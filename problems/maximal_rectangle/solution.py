@@ -6,8 +6,8 @@
 class Solution:
     def largestRectangleArea(self, arr):
         n = len(arr)
-        next_smaller_element = [-1]*n      #monotonic inc stack, left to right
-        prev_smaller_element = [-1]*n      #monotonic inc stack, right to left
+        next_smaller_element = [-1]*n      # monotonic inc stack, left to right
+        prev_smaller_element = [-1]*n      # monotonic inc stack, right to left
     
         stack1 = []
         for i in range(n):
@@ -26,6 +26,7 @@ class Solution:
             
         # print(prev_smaller_element)    
         # print(next_smaller_element)
+        
         ans = 0
         for i in range(n):
             if prev_smaller_element[i]== -1:
@@ -64,7 +65,7 @@ class Solution:
 
         ma = 0
         for row in m:
-            # print(row) #this row is itself a histogram
+            # print(row) # this row is itself a histogram
             x = self.largestRectangleArea(row)
             ma = max(ma,x)
             
