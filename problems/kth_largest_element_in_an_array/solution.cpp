@@ -9,7 +9,7 @@
 //thats all we did
 
 
-//other method is priority queue also..see prev code for minhesp and max heap implementation!
+//other method is priority queue also..see prev code for minheap and max heap implementation!
 // quicksort
 
 // TC : 200ms
