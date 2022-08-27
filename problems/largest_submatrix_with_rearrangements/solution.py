@@ -1,5 +1,6 @@
 # similar to https://leetcode.com/problems/maximal-rectangle/
-# but here we can choose a bunch of bars and sort them
+# but here we can choose a bunch of bars and sort them for every level of histogram
+
 
 class Solution:
     def largestSubmatrix(self, matrix: List[List[int]]) -> int:
