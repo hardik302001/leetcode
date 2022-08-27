@@ -6,18 +6,18 @@ public:
 
     int rob(TreeNode* root) 
     {
-        pair<int,int> ans = sub(root);
+        pair<int,int> ans = solve(root);
         return max(ans.first , ans.second);
     }
     
     
-    pair<int,int> sub(TreeNode *root)
+    pair<int,int> solve(TreeNode *root)
     {
         if(!root)
             return {0,0};
         
-        pair<int,int> leftChildAnswer = sub(root->left);
-        pair<int,int> rightChildAnswer= sub(root->right);
+        pair<int,int> leftChildAnswer = solve(root->left);
+        pair<int,int> rightChildAnswer= solve(root->right);
         
         int best_If_ParentValueIncluded    =  root->val + leftChildAnswer.second + rightChildAnswer.second;
 
