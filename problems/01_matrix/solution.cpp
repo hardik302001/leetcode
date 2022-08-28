@@ -41,14 +41,10 @@ public:
             }   
             
         }
-        
-        
+   
         return dis;
             
     }
-
-
-
 
 
      bool inside(int x, int y, int &M, int &N) {
