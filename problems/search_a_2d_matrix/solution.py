@@ -1,8 +1,6 @@
 #                       |
 #                       |
 # we can also do this, \|/
-
-
 # with binary search, we were able to do binary search bcz, if we open the matrix it will be a single sorted list
 
 
@@ -14,7 +12,7 @@ class Solution:
             
             '''
             
-                 *  *  *  * (*)  <--start frm this elemenet checking in both directions
+                 *  *  *  * (*)  <--start frm this element checking in both directions
                  *  *  *  *  *
                  *  *  *  *  *
                  *  *  *  *  *
