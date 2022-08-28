@@ -1,3 +1,5 @@
+// also see: https://leetcode.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/
+
 
 // Recursive Approach(C++):
 // Intuition: Basically we start from Idx 0 & find preorder[Idx] from inorder, let's call it as index pivot.
@@ -47,7 +49,7 @@ public:
             mp[inorder[i]] = i;
         }
         
-        int Idx = n-1;             // postrder
+        int Idx = n-1;             // postorder
         return helper(inorder, postorder, Idx, 0, n-1);
     }
     
@@ -59,7 +61,7 @@ public:
         TreeNode* newNode = new TreeNode(inorder[pivot]); 
         Idx--;
         
-        newNode->right = helper(inorder, postorder, Idx, pivot+1, right);      // first right     
+        newNode->right = helper(inorder, postorder, Idx, pivot+1, right);      // first right, bcz Idx is passed by reference     
         newNode->left = helper(inorder, postorder, Idx, left, pivot-1);       // then left
 
         return newNode;
