@@ -11,7 +11,7 @@ class Solution:
         for i in range(len(s)):        
             odd  = palindromeAt(s, i, i)
             even = palindromeAt(s, i, i+1)
-            res = max(res, odd, even, key=len)   #or update start and end according to lengthof odd and even...and then print final res as substring withs tart and end as corner indexes
+            res = max(res, odd, even, key=len)   # or update start and end according to length of odd and even...and then print final res as substring withs tart and end as corner indexes
         return res
 
  
