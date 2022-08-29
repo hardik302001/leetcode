@@ -26,6 +26,7 @@ public:
         
         vector<vector<int>> vis(M,vector<int>(N,-1));
         for(int i=0;i<M;i++)
+        {
             for(int j=0;j<N;j++)
             {   
                 if(i==0 or j==0 or i==M-1 or j==N-1)
@@ -37,7 +38,8 @@ public:
                     }
                 }
             }
-        
+        }
+
         while (!todo.empty()) {
             int curx = todo.front().first;
             int cury = todo.front().second;
@@ -67,11 +69,8 @@ public:
         }
         
         
-        //return mat;
-            
+        //return mat;       
     }
-
-
 
      bool inside(int x, int y, int &M, int &N, vector<vector<char> > &mat) {
         if ((x < 0 || x >= M || y < 0 || y >= N )) {
