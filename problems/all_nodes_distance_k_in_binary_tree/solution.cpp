@@ -72,7 +72,8 @@ public:
         unordered_map<TreeNode*, TreeNode*> parent_track; // node -> parent
         queue<TreeNode*> queue;
         queue.push(root);
-        while(!queue.empty()) { // First BFS to get a track of parent nodes 
+
+        while(!queue.empty()) {  // First BFS to get a track of parent nodes 
             TreeNode* current = queue.front(); queue.pop();
             if(current->left) {
                 parent_track[current->left] = current;
