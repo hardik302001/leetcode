@@ -9,6 +9,13 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+
+
+
+
+
+
 class Solution {
 public:
 
@@ -20,7 +27,7 @@ public:
         
         ans.push_back(root->val);
         preorder(root->left);
-       preorder(root->right);
+        preorder(root->right);
     }
     
     
@@ -30,3 +37,4 @@ public:
         
     }
 };
+
