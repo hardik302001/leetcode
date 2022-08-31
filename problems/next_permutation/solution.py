@@ -1,6 +1,9 @@
-#see question next greater element = iii
+# see question next greater element = iii
 # https://leetcode.com/problems/next-greater-element-iii/
 # logic is written in soln of that ques...
+
+
+# TC: O(n)
 
 '''
 A bit of an explanation, with an example, just to help myself:
@@ -62,7 +65,7 @@ class Solution:
             if n[x]>p:              # start from right side and check for first greater element than p ,  check for *next possible strictly greater element* bcz now array is in dec order 
                 swap=x
                 break
-#                 
+                 
                 
         # print(pos, swap)
         n[pos],n[swap]=n[swap],n[pos]
