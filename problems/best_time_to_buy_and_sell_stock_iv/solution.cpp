@@ -1,10 +1,7 @@
 // (SAME AS BEST TIME TO BUY AND SELL STOCK 3)
 // there is some other soln also , with 2 state only , see striver video ...do that also later on..
 
-
-
 // TC: O(nk)
-
 
 class Solution {
 public:
