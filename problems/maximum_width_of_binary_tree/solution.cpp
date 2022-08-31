@@ -5,6 +5,12 @@
 
 
 // see striver video for idea: https://www.youtube.com/watch?v=ZbybYvcVLks&list=PLgUwDviBIf0q8Hkd7bK2Bpryj2xVJk8Vk&index=29
+
+// Time Complexity O(N)
+// Space Comlexity O(N)
+
+
+
 class Solution {
 public:
 	int widthOfBinaryTree(TreeNode* root) {
