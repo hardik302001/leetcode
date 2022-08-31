@@ -1,3 +1,8 @@
+// also see: https://leetcode.com/problems/intersection-of-two-linked-lists/
+
+
+
+
 /*
 see below code ..that show use of hashmap in linklist quetsions!
 this is approach 2 that is having space compelxtiy O(1)
@@ -23,29 +28,39 @@ Step 2: If there is a cycle, whenever u get slow and fast pointer equal, it mean
 
 return the entry location of the cycle
 
-2.1) L1 is defined as the distance between the head point and entry point
 
-2.2) L2 is defined as the distance between the entry point and the meeting point
+// ---------------------------------------------------------------------------------------
 
-2.3) C is defined as the length of the cycle
+PROOF:
 
-2.4) n is defined as the travel times of the fast pointer around the cycle When the first encounter of the slow pointer and the fast pointer
 
-According to the definition of L1, L2 and C, we can obtain:
+https://leetcode.com/problems/linked-list-cycle-ii/discuss/44781/Concise-O(n)-solution-by-using-C++-with-Detailed-Alogrithm-Description/739544
 
-the total distance of the slow pointer traveled when encounter is L1 + L2
+To understand this solution, you just need to ask yourself this question.
+Assume the distance from head to the start of the loop is x1
+the distance from the start of the loop to the point fast and slow meet is x2
+the distance from the point fast and slow meet to the start of the loop is x3
 
-the total distance of the fast pointer traveled when encounter is L1 + L2 + n * C
+What is the distance fast moved? What is the distance slow moved? And their relationship?
 
-Because the total distance the fast pointer traveled is twice as the slow pointer, Thus:
+x1 + x2 + x3 + x2
+x1 + x2
+x1 + x2 + x3 + x2 = 2 (x1 + x2)
+Q: Why x1 + x2 + x3 + x2 = 2 (x1 + x2)?
 
-2 * (L1+L2) = L1 + L2 + n * C => L1 + L2 = n * C => L1 = (n - 1) C + (C - L2)
+Ans: Its just the relationship between the distance travelled by fast ptr and the distance travelled by the slow ptr.
+As fast ptr, runs twice the speed of slow ptr. Therefore, when they meet, distance travelled by fast ptr will be 2*(distance travelled by slow ptr).
+
+Therefore, x1 = x3.
+
+
+
 
 It can be concluded that the distance between the head location and entry location is equal to the distance between the meeting location and the entry location along the direction of forward movement.
 
 So, when the slow pointer and the fast pointer encounter in the cycle, we can define a pointer "entry" that point to the head, this "entry" pointer moves one step each time so as the slow pointer. When this "entry" pointer and the slow pointer both point to the same location, this location is the node where the cycle begins.
 
-================================================================
+==========================================================================================
 
 Here is the code:
 */
