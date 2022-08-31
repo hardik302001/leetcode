@@ -9,6 +9,12 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+
+// TC - O(num of nodes) as we are traversing all the nodes of the tree
+// SC - O(max depth of the tree)
+
+
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
