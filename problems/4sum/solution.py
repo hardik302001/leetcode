@@ -5,7 +5,6 @@ class Solution:
 
         res = []
         i = 0
-        j = i+1
         while i< n-3:
             j = i+1
             while j<n-2:
@@ -21,9 +20,11 @@ class Solution:
                         # repetition check only on start and end 
                         while start < end and nums[start] == nums[start+1]:   
                             start += 1
-                        start+=1
+
                         while start < end and nums[end] == nums[end-1]:
                             end -= 1
+                            
+                        start+=1
                         end-=1
                         
                     elif cur > target:
