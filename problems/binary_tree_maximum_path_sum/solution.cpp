@@ -1,4 +1,9 @@
 
+// very very important
+// ans tells us path sum of non empty path
+// maxSum returns the branch sum fincluding that node, so that we can use it for nodes connected with current node(parent node)
+
+
 class Solution {
 public:    
     int maxSum(TreeNode* root, int& ans) {
@@ -11,8 +16,8 @@ public:
         }
 
         //Recursive Case 
-        int leftBS = maxSum( root->left , ans );     // left maximum path sum
-        int rightBS = maxSum( root->right , ans );   // right maximum path sum
+        int leftBS  = maxSum( root->left  , ans );     // left maximum path sum
+        int rightBS = maxSum( root->right , ans );     // right maximum path sum
 
         
         // for answer , we will consider all cases..
@@ -24,7 +29,7 @@ public:
                     leftBS + rightBS + root->val //may be the answer contains root and left and right
                 });
 
-        //Return the max branch Sum
+        // Return the max branch Sum
         // our function return the maximum path sum between nodes
         // so either we will only have root, or root+left or root + right , [ not both ]
         // bcz if we have both, then it will be our answer and we cant go any further to explore more possiblities
@@ -40,6 +45,8 @@ public:
         then it would be like x - z - r  , so there will not be unidirectional path ...
                                   |s 
      */  
+        
+        // maximum branch sum including root
         return max({ leftBS + root->val, rightBS +root->val, root->val });   // very important
     }
     
@@ -99,10 +106,19 @@ void changeTree(BinaryTreeNode<int> *root) {
             root->right->data += difference;
         }
     }
+    
+    // we are updating child values before recursion, so that we dont get short of value , when we solve for the childrens
+    
+    
 
     // Call this function again for the left and right subtree.
     changeTree(root->left);
     changeTree(root->right);
+
+    // and now we update the root value to sum of childrens, after updating all the childrens, 
+
+
+
 
     // Update root with the sum of the left and right child's data.
     root->data =  ((root->left ? root->left->data : 0) + (root->right ? root->right->data : 0));
