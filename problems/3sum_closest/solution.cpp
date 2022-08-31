@@ -23,7 +23,7 @@ public:
             high = nums.size() - 1;
             
             // Modified Binary Search: Runtime O(n)
-            //  [NOTE: value not guranteed to be in array, therefore runtime is O(n), not O(log n)]
+            // [NOTE: value not guranteed to be in array, therefore runtime is O(n), not O(log n)]
             while(low < high) {
                 // Calculate current sum
                 sum = nums[i] + nums[low] + nums[high];
