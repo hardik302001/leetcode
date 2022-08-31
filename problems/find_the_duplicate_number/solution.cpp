@@ -1,9 +1,36 @@
+// also see: https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/submissions/
+// also see: https://www.interviewbit.com/problems/repeat-and-missing-number-array/
+// also see: https://leetcode.com/problems/first-missing-positive/
+
+
+
 /*
 
-Time Complexity: O(n)
-Space Complexity: O(1)
+First of all, where does the cycle come from? Let's use the function f(x) = nums[x] to construct the sequence: x, nums[x], nums[nums[x]], nums[nums[nums[x]]], ....
+
+Each new element in the sequence is an element in nums at the index of the previous element.
+
+If one starts from x = nums[0], such a sequence will produce a linked list with a cycle.
+
+The cycle appears because nums contains duplicates. The duplicate node is a cycle
+
+The cycle appears because nums contains duplicates. The duplicate node is a cycle entrance
+So we need to find entry point of cycle.
 
 */
+
+
+
+
+// idea :  https://leetcode.com/problems/linked-list-cycle-ii/
+// also see solution section! 
+
+
+
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+
 
 class Solution{
 public:
