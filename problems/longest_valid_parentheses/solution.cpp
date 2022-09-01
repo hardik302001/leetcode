@@ -18,13 +18,13 @@ public:
                     
                     int lastPos = -1;           //suppose stack is empty now, we have 0 based indexing, len = i +1 [ == i - (-1) ] 
                                                 //else len = i - (start of subarray or top of stack)
-                    if (!stack.empty())
-                        lastPos = stack.top();
+                    if (!stack.empty())   lastPos = stack.top();
                     int curLen = i - lastPos;
                     maxLen = (maxLen < curLen) ? curLen : maxLen;
                 } else
                     stack.push(i);
             }
+            
         }
         return maxLen;
     }
