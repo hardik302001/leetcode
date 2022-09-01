@@ -1,5 +1,4 @@
 // binary search wont work , bcz only 2 choices
-
 // DP , TC = O(n^2)
 
 class Solution {
@@ -14,7 +13,7 @@ public:
         for(int floorId = lo+1; floorId<=hi ; floorId++){
             
             // +1 bcz we do one move for current floor, and rest part for future moves
-            int movesIfFirstEggBreaks = 1 + (floorId-lo-1);
+            int movesIfFirstEggBreaks     = 1 + (floorId-lo-1);
             int movesIfFirstEggDontBreaks = 1 + recur(floorId, hi);
             
             ans = min(ans , max(movesIfFirstEggBreaks , movesIfFirstEggDontBreaks));
