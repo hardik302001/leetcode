@@ -2,69 +2,75 @@
 
 // void return type
 
-// class Solution {
-// public:
-//     int maxi = 0;
-//     void recur(int i , int z , int o , int m , int n , int c , vector<string>& strs){
-//         if(z<=m and o<=n){
-//              maxi = max( maxi , c);
-//         }
-//         if(i==strs.size()) return; 
+/*
+class Solution {
+public:
+    int maxi = 0;
+    void recur(int i , int z , int o , int m , int n , int c , vector<string>& strs){
+        if(z<=m and o<=n){
+             maxi = max( maxi , c);
+        }
+        if(i==strs.size()) return; 
         
-//         int x = 0;
-//         int y = 0;
-//         for(auto ele: strs[i]){
-//             if(ele== '0') x++;
-//             else         y++;
-//         }
+        int x = 0;
+        int y = 0;
+        for(auto ele: strs[i]){
+            if(ele== '0') x++;
+            else         y++;
+        }
         
-//         recur(i+1 , z, o , m ,n , c, strs);
+        recur(i+1 , z, o , m ,n , c, strs);
         
-//         if(z+x<= m and o+y<=n) {
-//             recur(i+1 , z+x , o+y , m , n , c+1 , strs); 
-//         }
+        if(z+x<= m and o+y<=n) {
+            recur(i+1 , z+x , o+y , m , n , c+1 , strs); 
+        }
 
-//     }
+    }
     
     
-//     int findMaxForm(vector<string>& strs, int m, int n) {
-//         recur(0 , 0 , 0 , m , n , 0 , strs );
-//         return maxi;
-//     }
-// };
+    int findMaxForm(vector<string>& strs, int m, int n) {
+        recur(0 , 0 , 0 , m , n , 0 , strs );
+        return maxi;
+    }
+};
+*/
+
 
 
 /* -------------------------------------------------------------------------------- */ 
 
 // int return type recursion
 
-// class Solution {
-// public:
-    
-//     int recur(int i , int z , int o , int m , int n , vector<string>& strs){
+/*
 
-//         if(i==strs.size()) return 0; 
-        
-//         int x = 0;
-//         int y = 0;
-//         for(auto ele: strs[i]){
-//             if(ele== '0') x++;
-//             else          y++;
-//         }
-        
+class Solution {
+public:
+    
+    int recur(int i , int z , int o , int m , int n , vector<string>& strs){
 
-//         if(z+x<= m and o+y<=n) {
-//             return max(1 + recur(i+1 , z+x , o+y , m , n , strs) ,  recur(i+1 , z, o , m ,n , strs)); 
-//         }else{
-//             return  recur(i+1 , z, o , m ,n, strs);
-//         }
-//     }
+        if(i==strs.size()) return 0; 
+        
+        int x = 0;
+        int y = 0;
+        for(auto ele: strs[i]){
+            if(ele== '0') x++;
+            else          y++;
+        }        
+
+        if(z+x<= m and o+y<=n) {
+            return max(1 + recur(i+1 , z+x , o+y , m , n , strs) ,  recur(i+1 , z, o , m ,n , strs)); 
+        }else{
+            return  recur(i+1 , z, o , m ,n, strs);
+        }
+    }
     
     
-//     int findMaxForm(vector<string>& strs, int m, int n) {
-//         return recur(0 , 0 , 0 , m , n , strs );
-//     }
-// };
+    int findMaxForm(vector<string>& strs, int m, int n) {
+        return recur(0 , 0 , 0 , m , n , strs );
+    }
+};
+
+*/
 
 
 
@@ -85,17 +91,15 @@ public:
         int x = 0;
         int y = 0;
         for(auto ele: strs[i]){
-            if(ele== '0') x++;
+            if(ele == '0') x++;
             else          y++;
         }
         
         if(z+x<= m and o+y<=n) {
             return dp[i][z][o] = max(1 + recur(i+1 , z+x , o+y , m , n , strs) ,  recur(i+1 , z, o , m ,n , strs)); 
         }else{
-            return dp[i][z][o] =   recur(i+1 , z, o , m ,n, strs);
+            return dp[i][z][o] = recur(i+1 , z, o , m ,n, strs);
         }
-        
-        
     }
     
     
