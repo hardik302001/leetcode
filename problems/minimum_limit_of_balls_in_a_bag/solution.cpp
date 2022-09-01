@@ -1,79 +1,37 @@
-//  count steps to get maximum "m"...
-
 class Solution {
 public:
-    long long  minimumSize(vector<int>& nums, long long maxop) {
+    
+    bool check(vector<int>&nums, int m , int maxOperations){
+        int c = 0;
+        int n = nums.size();
+        for(int i = 0;i<n;i++){
+            c += ((nums[i]+m-1)/m)-1;
+        }
+        return c<=maxOperations;
+        
+    }
+    
+    int minimumSize(vector<int>& nums, int maxOperations) {
+        int n = nums.size();
+        int l = 1 ;
+        int r = *max_element(nums.begin(), nums.end());
         sort(nums.begin(), nums.end());
-        long long l = 1;
-        long long r = *max_element(nums.begin(), nums.end());
+        if(maxOperations==1){
+            return (nums[0]+1)/2;
+        }
+        
+        int ans = nums[n-1];
         while(l<r){
-            long long m = l + (r-l)/2;
-            if(check(nums ,maxop , m )){
+            int m = l + (r-l)/2;
+            if(check(nums, m, maxOperations)){
+                ans = m;
                 r = m;
             }else{
                 l = m + 1;
             }
         }
-        return l;
-    }
-    
-    bool check(vector<int>& nums, long long maxop , long long m){
-        int steps = 0;
-        for(auto i: nums){
-            if(i>m) steps += (i+m-1)/m - 1;
-        }
         
-        return steps<=maxop;
+        return ans;
+        
     }
 };
-    
-
-
-
-
-//TLE , bcz i m changing vector every time to see if i can get $$$ maximum "m" $$$ in maxop steps.
-// i was finding maximum...
-/*
-class Solution {
-public:
-    long long  minimumSize(vector<int>& nums, long long maxop) {
-        sort(nums.begin(), nums.end());
-        long long l = 1;
-        long long r = *max_element(nums.begin(), nums.end());
-        while(l<r){
-            long long m = l + (r-l)/2;
-            if(check(nums ,maxop , m )){
-                r = m;
-            }else{
-                l = m + 1;
-            }
-        }
-        return l;
-    }
-    
-    bool check(vector<int>& nums, long long maxop , long long m){
-        priority_queue<long long>pq(nums.begin(), nums.end());
-        while(maxop--){
-            long long top = pq.top();
-            pq.pop();
-            if(top<=m){
-                continue;
-            }else{
-                pq.push(m);
-                pq.push(top- m);
-            }
-        }
-        
-        
-        long long maxi = 0;
-        while(pq.size()){
-            maxi = max(maxi , pq.top());
-            pq.pop();
-        }
-        return maxi<=m;
-    }
-};
-    
-*/
-    
-    
