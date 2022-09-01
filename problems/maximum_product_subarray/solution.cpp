@@ -29,9 +29,7 @@ public:
                 p = p*nums[i];
                 ans = max(ans, p);
             }
-            
-        }
-        
+        }   
         
         //backward traversal
         p =  1;
