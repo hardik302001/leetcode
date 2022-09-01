@@ -4,6 +4,7 @@
 
 // approach 2, set + traversal
 // TC:  O(N)  SC: O(N) 
+
 /*
 class Solution {
 public:
@@ -23,7 +24,8 @@ public:
 
 // approach 3 : idea of https://leetcode.com/problems/binary-search-tree-iterator
 // introduce concept of before , from https://leetcode.com/problems/binary-search-tree-iterator-ii/
-
+// we are doing 2 pointers, so array need to be sorted, it means it shud be in n order fashion
+// for inorder we did , bstiterator to get next element in O(h)
 // easily get both left and right pointers and do usual 2 pointer 2 sum
 // TC: O(N) , SC= 2*O(H)  : this is optimissation
 
