@@ -24,4 +24,4 @@ class Solution:
         return ans
         
         
-#left tome, right to me
+#  left to me, right to me
