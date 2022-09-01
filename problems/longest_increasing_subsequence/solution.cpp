@@ -90,10 +90,12 @@ public:
 
 
 // O(nlogn)
+// if u want to print lis, use dp n^2, you can print it usingbinary search. 
+// BS only gives the length
 // striver bhai ne accha smjhaya h babes!
 // https://www.youtube.com/watch?v=on2hvxBXJH4&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=44
 
-// use lower_bound = gives arr[i]  pos , if exists, else first index greater than arr[i] 
+// use lower_bound = gives arr[i]  pos , if exists, else first index greater than equal to arr[i] 
 
 class Solution {
 public:
@@ -105,13 +107,14 @@ public:
             if(arr[i]>temp.back()){
                 temp.push_back(arr[i]);
             }else{
-                int idx = lower_bound(temp.begin(), temp.end(), arr[i]) - temp.begin(); // idx will always be less than / = to current temp size
+                int idx = lower_bound(temp.begin(), temp.end(), arr[i]) - temp.begin(); // idx will always be less than / = to current temp size, bcz we want tp updtae the equal ones, not conisder them again and again
                 temp[idx] = arr[i];
                 
                 
             }
         }
-    
+
+        
         return temp.size();
     }
 };
