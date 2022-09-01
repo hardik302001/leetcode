@@ -15,10 +15,12 @@
 // approach 3: 
 // TC: o(n)
 // idea: https://leetcode.com/problems/validate-binary-search-tree/
+// https://www.youtube.com/watch?v=UmJT3j26t1I
+
 
 class Solution {
 public:
-    int idx = 0;  // shoudl be global or passed by reference bcz we will check on left and right both side, so there can be multiple cases for both sides, if we make copies of same index
+    int idx = 0;  // should be global or passed by reference bcz we will check on left and right both side, so there can be multiple cases for both sides, if we make copies of same index
     
     TreeNode* buildTree(vector<int>&preorder , int ub){
         if(idx==preorder.size() or preorder[idx]>ub)  return NULL;
