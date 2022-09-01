@@ -1,14 +1,4 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
+
 
 // backtracking
 /*
@@ -26,17 +16,19 @@ public:
     void recur(TreeNode* root, vector<int>&cur, int target){
         if(root==NULL) return ;
         cur.push_back(root->val);
+        target-= root->val;
         if(root->left ==NULL and root->right==NULL){   // now i m not leaf node, and only left with leaf node value
-            if(target==root->val){             // conisder the leaf node value
+            if(target==0){             // conisder the leaf node value
                 ans.push_back(cur);
             }
             // we wont return here bcz we have added current node, and we need to pop it also , bcz else it will forever
         }
         
     
-        recur(root->left, cur,  target-root->val);
-        recur(root->right, cur, target-root->val);
+        recur(root->left, cur,  target);
+        recur(root->right, cur, target);
         cur.pop_back();
+        target += root->val;
         
     }
     
