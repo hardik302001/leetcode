@@ -31,7 +31,10 @@ public:
     {
         if(idx>n) return 0;
         if(cur>sum) return 0;
-        if(idx==n) return (cur==sum)? 1 :0;
+        if(idx==n){
+            if(cur==sum) return 1;
+            else         return 0;
+        }
         if(dp[idx][cur]!=-1) return dp[idx][cur];
         bool ans =  isSubsetSum(idx+1, cur , nums , n , sum) or isSubsetSum(idx+1 , cur + nums[idx] , nums, n,  sum);
         
