@@ -1,40 +1,40 @@
 // all perm + sort + kth
-
-// class Solution {
-// public:
+/*
+class Solution {
+public:
     
-//     vector<string>ans;
+    vector<string>ans;
     
-//     void permutate(string &l , int ind , int n){
-//         if(ind==n){
-//             ans.push_back(l);
-//             return ;
-//         }
+    void permutate(string &l , int ind , int n){
+        if(ind==n){
+            ans.push_back(l);
+            return ;
+        }
     
-//         for(int i = ind; i<n ; i++){
-//             swap(l[ind], l[i]);
-//             permutate(l , ind+1, n);
-//             swap(l[ind], l[i]);
-//         }       
-//     }
+        for(int i = ind; i<n ; i++){
+            swap(l[ind], l[i]);
+            permutate(l , ind+1, n);
+            swap(l[ind], l[i]);
+        }       
+    }
     
     
     
-//     string getPermutation(int n, int k) {
-//         string l;
-//         for(int i = 1;i<=n;i++){
-//             l+=(to_string(i));
-//         }
+    string getPermutation(int n, int k) {
+        string l;
+        for(int i = 1;i<=n;i++){
+            l+=(to_string(i));
+        }
         
-//         permutate(l ,0 , n);
+        permutate(l ,0 , n);
         
-//         sort(ans.begin(), ans.end());
-//         return ans[k-1];
-//     }
-// };
+        sort(ans.begin(), ans.end());
+        return ans[k-1];
+    }
+};
 
 
-
+*/
 
 /*
 Time complexity: O(N! * N) +O(N! Log N!)
@@ -47,6 +47,8 @@ Reason: Result stored in a vector, we are auxiliary space taken by recursion
 
 */
 
+
+// -----------------------------------------------------------------------------------
 
 
 // credits:  https://takeuforward.org/data-structure/find-k-th-permutation-sequence/
