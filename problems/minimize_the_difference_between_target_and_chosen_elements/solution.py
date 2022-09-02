@@ -17,3 +17,27 @@ class Solution:
             vals = new_vals
         
         return min(abs(target - v) for v in vals)
+    
+    
+    
+    
+    
+    
+# =================================================================================
+
+# brute force soln
+'''
+
+class Solution:
+    def minimizeTheDifference(self, mat: List[List[int]], target: int) -> int:
+        s = {0}
+        for row in mat:
+            new = set()
+            s = { r + el for r in row for el in s}
+        
+        
+        m = 1000000000
+        for i in s:
+            m = min(m, abs(i-target))
+        return m
+'''
