@@ -22,6 +22,8 @@ cnt : maxumum length of output substring that have totalUnique characters!
 
 */
 
+// TC  = O(26*n)
+
 class Solution {
 public:
 
