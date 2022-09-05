@@ -1,4 +1,41 @@
+class Solution{
+public:
 
+    string reorganizeString(string S) {
+        vector<int> cnt(26);
+        int mostFreq = 0, i = 0;
+
+        for(char c : S)
+            if(++cnt[c - 'a'] > cnt[mostFreq])
+                mostFreq = (c - 'a');
+
+        if(2 * cnt[mostFreq] - 1 > S.size()) return "";
+
+        while(cnt[mostFreq]) {
+            S[i] = ('a' + mostFreq);
+            i += 2;
+            cnt[mostFreq]--;
+        }
+
+        for(int j = 0; j < 26; j++) {
+            while(cnt[j]) {
+                if(i >= S.size()) i = 1;
+                S[i] = ('a' + j);
+                cnt[j]--;
+                i += 2;
+            }
+        }
+
+        return S;
+    }
+
+};
+
+// ------------------------------------------------------------------------------
+
+// O(nlogn)
+
+/*
 class compare {
 public:
     bool operator() (pair<char , int> &a, pair<char , int> &b) {
@@ -25,13 +62,12 @@ public:
         }
         
         for(auto &pr:m ){
-            // cout<<pr.first<<" "<<pr.second<<endl;
             pq.push(pr);
         }
         
         string ans = "";
         auto p = pq.top();
-        // cout<<p.first <<" "<<p.second;
+        // corner case
         if (p.second>(n+1)/2){
             return "";
         }
@@ -58,3 +94,5 @@ public:
         return ans;
     }
 };
+
+*/
