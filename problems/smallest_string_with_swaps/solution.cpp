@@ -1,3 +1,11 @@
+// DFS SOLUTION IS MUCH BETTER
+
+
+
+
+
+
+
 /*
 Observation
 When there are multiple indices that overlap each other eg: [1,2] and [2,3] we can always get the characters at those indices (1,2,3) at any of the indice we like by swapping in some permutation.
@@ -20,33 +28,34 @@ Repeat this for all the groups and you get your sorted string.
 class UnionFind {
     public:  
         vector<int> parent;
-        int count = 0;
+        int count;
 	    vector<int>size;
-        UnionFind(int n){                  //constructor
+        UnionFind(int n){                      //constructor
             count = n;
             parent = vector<int>(n,-1);
-	    size = vector<int>(n , 1);
+	        size = vector<int>(n , 1);
         }
 
-        int find(int x){                         // O(logn)
+        int find(int x){                       // O(logn)
             if(parent[x]==-1) return x;
-            return parent[x] =  find(parent[x]);        // path compression   
+            return parent[x] = find(parent[x]);        // path compression   
         }
 
         bool Union(int x,int y){               // O(logn)
             int X = find(x);
             int Y = find(y);
 
-            if(X==Y) return true;              // cycle found
-            
+            if(X==Y) return true;              // cycle found     
 
-	    if (size[X] < size[Y])
+	        if (size[X] < size[Y])
             	swap(X, Y);
+            
             parent[Y] = X;
             size[X] += size[Y];          
 	   
             count--;
-	    return false;
+	        return false;
+            
         }
 
         int getCount(){
@@ -128,6 +137,7 @@ public:
             if(!visited[i])
                dfs(s,i);
     }
+    
     string smallestStringWithSwaps(string s, vector<vector<int>>& pairs) 
     {
         adjList.resize(s.length());
