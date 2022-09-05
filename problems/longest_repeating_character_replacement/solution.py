@@ -1,4 +1,4 @@
-# O(n)
+# O(26*n)
 
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
@@ -13,10 +13,12 @@ class Solution:
                 m = d[s[r]]
             
             if (r-l+1 - m>k):
-                if(d[s[l]]==m): m-=1   # updating maxi..
                 d[s[l]]-=1
                 l+=1
 
+            # even if you dont update m, it will have no issue , bcz at start of next iteration , it will be updated automatically
+            # for i in d:
+            #     m = max( m , d[i])
             ans = max(ans, r-l+1)
         return ans
         
