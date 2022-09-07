@@ -12,6 +12,7 @@
 class Solution {
 public:
     string tree2str(TreeNode* root) {
+        if(root==NULL) return "";
         string sub = to_string(root->val);
         if (root->left) //left check
             sub += "(" + tree2str(root->left) + ")";
