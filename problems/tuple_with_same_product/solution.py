@@ -14,4 +14,4 @@ class Solution:
         for i in d:
             ans = ans + d[i]*(d[i]-1)
         
-        return ans*4
+        return ans*4   # 4 possible permutations
