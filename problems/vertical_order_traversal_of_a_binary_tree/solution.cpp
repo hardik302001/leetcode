@@ -120,3 +120,58 @@ class Solution
 
 };
 */
+
+
+// ----------------------------------------------
+
+// diagonal view of a binary tree
+// Tc, SC = O(n)
+
+/*
+
+ 
+vector <vector <int>> result;
+void diagonalPrint(Node* root)
+{
+    if(root == NULL)
+        return;
+ 
+    queue <Node*> q;
+    q.push(root);
+ 
+    while(!q.empty())
+    {
+        int size = q.size();
+        vector <int> answer;
+ 
+        while(size--)
+        {
+            Node* temp = q.front();
+            q.pop();
+ 
+            // traversing each component;
+            while(temp)
+            {
+                answer.push_back(temp->data);
+ 
+                if(temp->left)
+                    q.push(temp->left);
+ 
+                temp = temp->right;
+            }
+        }
+        result.push_back(answer);
+    }
+}
+
+*/
+
+
+
+// -----------------------------------------------------------------------
+
+
+// bottom right view = diagonal view ke last elements
+// https://www.codingninjas.com/codestudio/problems/bottom-right-view-of-binary-tree_1081489?leftPanelTab=2
+// see this approach also
+
