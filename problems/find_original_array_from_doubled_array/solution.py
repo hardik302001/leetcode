@@ -1,6 +1,6 @@
 class Solution:
     def findOriginalArray(self, l: List[int]) -> List[int]:
-        l.sort()
+        l.sort()   # needed to easily keep track of big and small elements
         n = len(l)
         d = {}
         ans = []
@@ -22,12 +22,5 @@ class Solution:
                     d[i]+=1
                 else:
                     d[i] = 1
-           
-        if n%2==1:
-            return []
-        if len(ans)==(n//2):
-            return ans
-        else:
-            return []
-                
-        
+
+        return ans if len(ans)==len(l)//2 and len(l)%2==0 else []
