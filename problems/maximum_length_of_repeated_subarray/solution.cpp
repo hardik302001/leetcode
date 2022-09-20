@@ -35,6 +35,8 @@ public:
         
         int rese = res;
         vector<int>ansx,ansy;
+        
+        // bcz subarray, so it will be continuous 
         while(rese--){
             ansx.push_back(x[--mi]);         
         }
