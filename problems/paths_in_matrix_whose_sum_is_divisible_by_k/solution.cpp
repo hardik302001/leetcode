@@ -1,15 +1,32 @@
+// 3d dp
+// i , j , ( sum till mat[i][j] from (0 , 0) )%k
+
+   
+
 class Solution {
 public:
-    int mod = 1e9 + 7, m, n, K;
-    int numberOfPaths(vector<vector<int>>& grid, int k) {
-        m = grid.size(), n = grid[0].size(), K = k;
-        vector<vector<vector<int>>> dp(m + 1, vector<vector<int>>(n + 1, vector<int>(k + 1, -1)));
-        return dfs(0, 0, 0, grid, dp);
+    // use vetor, array giving MLE
+    vector<vector<vector<int>>> dp;
+
+    const long long mod = 1e9 + 7;
+    int recur(int x, int y, int s , int n , int m , int k, vector<vector<int>>& grid){
+        if(x>=n or y>=m) return 0;
+        
+        s = s + grid[x][y];
+        s = s%k;
+        
+        if(x==n-1 and y==m-1) return ( s==0 );
+        
+        if(dp[x][y][s]!=-1) return dp[x][y][s]%mod;
+        
+        return dp[x][y][s] = (recur(x+1, y , s , n , m , k , grid)%mod + recur(x , y+1, s, n , m , k, grid)%mod)%mod;
+              
     }
-    int dfs(int i, int j, int s, vector<vector<int>>& grid, vector<vector<vector<int>>>& dp) {
-        if (i == m || j == n) return 0;
-        if (i == m - 1 && j == n - 1) return ((s + grid[i][j]) % K) == 0;
-        if (dp[i][j][s] != -1) return dp[i][j][s];
-        return dp[i][j][s] = (dfs(i + 1, j, (s + grid[i][j]) % K, grid, dp) + dfs(i, j + 1, (s + grid[i][j]) % K, grid, dp)) % mod;
+    
+    int numberOfPaths(vector<vector<int>>& grid, int k) {
+        int n = grid.size() , m = grid[0].size();
+        dp = vector<vector<vector<int>>>(n+1,vector<vector<int>>(m+1,vector<int>(k+1,-1)));
+
+        return recur(0 , 0 , 0 , n , m , k , grid);     
     }
 };
