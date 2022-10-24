@@ -34,7 +34,7 @@ public:
         }  
         if(self(arr[i]) && checkunique(s,arr[i])){
                 
-          for(auto c:arr[i])s.insert(c);
+          for(auto c:arr[i]) s.insert(c);
           concatenation(arr,s,i+1,ans);
                 
           if(s.size()>ans){
@@ -44,7 +44,7 @@ public:
         } 
         
         
-        concatenation(arr,s,i+1,ans);          //ignore the prev arr[i], and now continue with arr[i+1]     
+        concatenation(arr,s,i+1,ans);          // ignore the prev arr[i], and now continue with arr[i+1]     
     }    
     
         
@@ -53,6 +53,6 @@ public:
         unordered_set<char> s;
         concatenation(arr,s,0,ans); 
             
-     return ans;       
+        return ans;       
     }
 };
