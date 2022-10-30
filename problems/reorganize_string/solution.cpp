@@ -19,10 +19,10 @@ public:
 
         for(int j = 0; j < 26; j++) {
             while(cnt[j]) {
-                if(i >= S.size()) i = 1;
+                if(i >= S.size()) i = 1; // now it will follow odd indexes, i = 1, 3, 5 ...
                 S[i] = ('a' + j);
                 cnt[j]--;
-                i += 2;
+                i += 2;   // initially , this i will be continued from mostfreq charcter filling only, i = 0,2, 4 ...
             }
         }
 
