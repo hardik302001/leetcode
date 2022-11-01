@@ -1,31 +1,30 @@
 class Solution {
 public:
-    vector<int> findBall(vector<vector<int>>& grid) {
-        int m = grid.size();
-        int n = grid[0].size();
-        vector<int> ans;
-        for (int j = 0; j < n; j++) {
-            int row = 0, col = j;
-            while (row < m) {
-                if (grid[row][col] == 1) {
-                    if (col+1 >= n || grid[row][col+1] == -1) {
-                        ans.push_back(-1);
-                        break;
-                    }
-                    col++;
-                } else if (grid[row][col] == -1) {
-                    if (col-1 < 0 || grid[row][col-1] == 1) {
-                        ans.push_back(-1);
-                        break;
-                    }
-                    col--;
+    bool valid(int rsize,int csize,int r,int c){
+        if(rsize<=r||csize<=c||c<0||r<0)return false;
+        return true;
+    }
+    int DFS(vector<vector<int>>& grid,int r,int c){
+        if(r==grid.size())return c;
+        if(valid(grid.size(),grid[0].size(),r,c)){
+            if(grid[r][c]==1){
+                if(valid(grid.size(),grid[0].size(),r,c+1)&&grid[r][c+1]==1){
+                    return DFS(grid,r+1,c+1);
                 }
-				row++;
-            }
-            if (row == m) {
-                ans.push_back(col);
+            }else{
+                if(valid(grid.size(),grid[0].size(),r,c-1)&&grid[r][c-1]==-1){
+                    return DFS(grid,r+1,c-1);
+                }
             }
         }
-        return ans;
+        return -1;
+    }
+    vector<int> findBall(vector<vector<int>>& grid){
+        int row = grid.size(),col = grid[0].size();
+        vector<int>ans(col,0);
+        for(int c = 0;c<col;c++){
+            ans[c] = DFS(grid,0,c);
+        }
+    return ans;
     }
 };
