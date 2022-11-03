@@ -53,7 +53,7 @@ public:
                     // we have used all the x, so reduce the frequency
                     mp[x] = 0;
                 }
-            }
+            } 
                 
         }
         
