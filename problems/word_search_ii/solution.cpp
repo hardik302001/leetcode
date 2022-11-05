@@ -4,136 +4,120 @@
 
 class TrieNode{
 public:
-    bool end;
+    
     TrieNode* children[26];
-    TrieNode(){
-        end = false;
-        for(int i = 0;i<26;i++){
-            children[i] = NULL;
-        }
+    bool isEndOfWord;
+    int count;
+    
+    TrieNode()
+    {
+        memset(children, 0, 26*sizeof(TrieNode*));
+        isEndOfWord = false;
+        count = 0;
     }
 };
 
+class Trie{
 
+    TrieNode* root;
     
+public:
+    
+    Trie()
+    {
+        root = new TrieNode();
+    }
+    
+    TrieNode* getRoot()
+    {
+        return root;
+    }
+    
+    void addWord(string word)
+    {
+        TrieNode* curr = root;
+        
+        for(auto const& letter : word)
+        {
+            int index = letter - 'a';
+            if(curr->children[index] == NULL)
+                curr->children[index] = new TrieNode();
+            curr = curr->children[index];
+            curr->count++;
+        }
+        curr->isEndOfWord = true;
+    }
+    
+    void removeWord(string &word)
+    {
+        TrieNode* curr = root;
+        for(auto const& letter : word)
+        {
+            int index = letter - 'a';
+            if(curr->children[index] == NULL)
+                return;
+            curr = curr->children[index];
+            curr->count--;
+        }
+        curr->isEndOfWord = false;
+    }
+};
 
 class Solution {
+    
+    void DFS(int x, int y, vector<vector<char>>& board, Trie* &trie, TrieNode* root, vector<string> &ans, string &path)
+    {
+        int ind = board[x][y] - 'a';
+        if(ind >= 0 && ind < 26 && root->children[ind] != NULL && root->children[ind]->count > 0)
+        {
+            path.push_back(board[x][y]);
+            char cell = board[x][y];
+            board[x][y] = '*';
+            
+            if(root->children[ind]->isEndOfWord)
+            {
+                ans.push_back(path);
+                trie->removeWord(path);
+            }
+                
+            
+            int directions[4][2] = { {1,0}, {-1,0}, {0,1}, {0,-1} };
+            
+            for(auto const& d : directions)
+            {
+                int x1 = x + d[0];
+                int y1 = y + d[1];
+                
+                if(x1 < 0 || x1 >= board.size() || y1 < 0 || y1 >= board[0].size())
+                    continue;
+                
+                DFS(x1, y1, board, trie, root->children[ind], ans, path);
+            }
+            board[x][y] = cell;
+            path.pop_back();
+        }
+    }
+    
 public:
     vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
         
-        //build trie
-        TrieNode* root = new TrieNode;          
-        /*
-        //here no constructor, so we declare it likr object..
-        //if there was some constructor like below, so instantiate it like this 
-        
-                Trie() {
-                    root = new TrieNode();
-                }
-                
-                private:
-                    TrieNode root;    
-        
-        */
-        
-        
-        /* INSERT FUNCTION  */ 
-        for(string word:words){
-            TrieNode* cur = root;
-            for(char c : word){
-                if(cur->children[c-'a'] == NULL) cur->children[c-'a'] = new TrieNode;
-                cur = cur->children[c-'a'];
-            }
-            cur->end = true;
-        }
-        
-        
-        int n=board.size();
-        if(n==0)
-        {
-            return {};
-        }
-        int m=board[0].size();
+        Trie* trie = new Trie();
         
         vector<string> ans;
-        for(int i=0;i<n;i++)
+        string path = "";
+        
+        for(auto const& word : words)
+            trie->addWord(word);
+        
+        for(int i = 0; i < board.size(); i++)
         {
-            for(int j=0;j<m;j++)
+            for(int j = 0; j < board[0].size(); j++)
             {
-                search(board,i,j,ans, root);       //we need to explicityly pass root, bcz root is declared inside this function, it is not glovbal
+                DFS(i, j, board, trie, trie->getRoot(), ans, path);
             }
         }
         
-        clear(root);
+        
         return ans;
-        
     }
-    
-    
-    
-    
-    
-    void clear(TrieNode* root)
-    {
-        for(int i = 0; i<26; i++)
-        {
-            if(root->children[i] != NULL)
-            {
-                clear(root->children[i]);
-            }
-        }
-        
-        delete root;
-    }
-    
-    
-    
-    void helper(vector<vector<char>>& board,int x,int y,TrieNode* curr,vector<string>&ans,string temp)
-    {
-        int n=board.size();
-        int m=board[0].size();
-        
-        if(x<0 || y<0 || x>=n ||y>=m || board[x][y]=='#')
-        {
-            return;
-        }
-        
-        if(curr->children[board[x][y]-'a']==NULL)             //most impo step, we traverse if , children[board[x][y]- 'a']!=NULL
-        {
-            return ;
-        }
-        
-        temp+=board[x][y];
-        curr=curr->children[board[x][y]-'a'];       //it is not NULL, so we will traverse
-        if(curr->end)
-        {
-            ans.push_back(temp);
-            curr->end=false;
-        }
-        char c = board[x][y];
-        board[x][y] = '#';
-        helper(board,x+1,y,curr,ans,temp);
-        helper(board,x,y+1,curr,ans,temp);
-        helper(board,x-1,y,curr,ans,temp);
-        helper(board,x,y-1,curr,ans,temp);
-        board[x][y]=c;                        //backtrack
-    }
-    
-    
-    
-    
-    void search(vector<vector<char>>& board,int x,int y,vector<string>&ans, TrieNode* root)
-    {
-        TrieNode* curr = root;
-        return helper(board,x,y,root,ans,"");
-    } 
 };
-
-
-
-
-
-
-
-
-
