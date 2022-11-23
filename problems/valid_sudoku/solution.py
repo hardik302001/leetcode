@@ -1,3 +1,5 @@
+# transapose for checking of column, in same way as row
+
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         T = zip(*board)   
