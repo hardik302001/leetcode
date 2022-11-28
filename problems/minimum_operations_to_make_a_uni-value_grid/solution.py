@@ -9,7 +9,7 @@ class Solution:
         n = len(grid[0])
         l.sort()
         p = l.copy()
-        # print(l)
+       
         sz = m*n
        
         mid = l[sz//2]
