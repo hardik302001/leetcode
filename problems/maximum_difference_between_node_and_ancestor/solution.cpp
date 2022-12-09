@@ -1,55 +1,21 @@
-// class Solution {
-// public:
-    
-//     int diff = INT_MIN;
-    
-//     void getMax(TreeNode *root, int &mx, int &mi){
-        
-//         if(root == NULL) return;
-       
-//         mx = max(mx, root->val);
-//         mi = min(mi, root->val);
-        
-//         diff = max(diff, mx - mi);
-        
-//         getMax(root->left,mx,mi);
-//         getMax(root->right,mx,mi);
-//     }
-    
-//     int maxAncestorDiff(TreeNode* root) {
-        
-//         if(!root) return 0;
-        
-//         int mx = INT_MIN, mi = INT_MAX;
-
-//         getMax(root,mx,mi);
-        
-//         return diff;
-//     }
-// };
-
-
-//backtracking solution
-
+// also see: https://leetcode.com/submissions/detail/610242445/
+// also see: https://leetcode.com/submissions/detail/610195891/
 class Solution {
 public:
-    int res=INT_MIN;
-    void fun(TreeNode* root, vector<int>& ancestors){
-        if(root==NULL){
-            return;
-        }
-        int n=ancestors.size();
-        for(int i=0;i<n;i++){
-            res=max(res,abs(root->val-ancestors[i]));
-        }
-        ancestors.push_back(root->val);
-        fun(root->left,ancestors);
-        fun(root->right,ancestors);
-        ancestors.pop_back();
+    int ans = 0;
+    void recur(TreeNode* root , int ma, int mi){
+        if(root==NULL) return ;
+        ans = max(ans , abs(root->val - ma));
+        ans = max(ans , abs(root->val - mi));
+        int maa = max( ma , root->val);
+        int mii = min(mi , root->val);
+        recur(root->left , maa , mii);
+        recur(root->right, maa , mii);
+        
     }
+    
     int maxAncestorDiff(TreeNode* root) {
-        vector<int> ancestors;
-        fun(root,ancestors);
-        return res;
+        recur(root , root->val, root->val);
+        return ans;
     }
 };
