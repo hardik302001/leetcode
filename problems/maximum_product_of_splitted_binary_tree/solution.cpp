@@ -1,39 +1,30 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
-
-static int MOD=1e9+7;
+// tot - for every subarray (post order)
 class Solution {
 public:
-    long long totalTreeSum=0,result=0;
-    void getTotalTreeSum(TreeNode* root)    //Get total sum of the tree.
-    {
-        if(!root)
-            return;
-        totalTreeSum+=root->val;
-        getTotalTreeSum(root->left);
-        getTotalTreeSum(root->right);
+    int mod = 1000000007;
+    long long tot = 0;
+    long long ma = 0;
+    long long recur(TreeNode* root){
+        if(root==NULL) return 0;
+        long long ls = recur(root->left);
+        long long rs = recur(root->right);
+        return root->val + ls + rs;
     }
-    int SumUnder(TreeNode* root)             //Get the totalSum under the node `root` including root.
-    {
-       if(!root)
-            return 0;
-       int sumUnderLeft=SumUnder(root->left),sumUnderRight=SumUnder(root->right); //Get the sum of left and right subtree under node 'root'
-       result=max({result,(totalTreeSum-sumUnderLeft)*sumUnderLeft,(totalTreeSum-sumUnderRight)*sumUnderRight});    //Get the max product after making left or right subtrees as seprarate tree.
-       return sumUnderLeft+sumUnderRight+root->val;
+    
+    long long subsum(TreeNode* root){
+        if(root==NULL) return 0;
+        long long ls = subsum(root->left);
+        long long rs = subsum(root->right);
+        ma = max(ma , (tot - ls)*ls);
+        ma = max(ma , (tot - rs)*rs);
+
+        return root->val + ls + rs;
     }
-    int maxProduct(TreeNode* root) 
-    {
-        getTotalTreeSum(root);
-        SumUnder(root);
-        return result%MOD;
+    
+    int maxProduct(TreeNode* root) {
+        tot = recur(root);
+        subsum(root);
+        return ma%mod;
+        
     }
 };
