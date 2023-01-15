@@ -1,7 +1,8 @@
 // we cant do normal bfs/dfs for brute soln bcz , we have to explore in all directions, but we cant go in up direction, in parent direction with normal bfs
-// brute force : O(N^2) 
-// https://leetcode.com/problems/sum-of-distances-in-tree/discuss/1308366/C%2B%2B-solution-using-dfs-with-explanation-O(N)-time-complexity
+// brute force : O(N^2)
 
+// https://leetcode.com/problems/sum-of-distances-in-tree/discuss/1308366/C%2B%2B-solution-using-dfs-with-explanation-O(N)-time-complexity
+// O(n)
 // optimised soln: see SOLUTION SECTION
 
 
