@@ -1,47 +1,21 @@
 class Solution {
-
 public:
-
-    set<string> s;
-
-    bool checkConcatenate(string word) {
-
-        for(int i = 1; i < word.length(); i++) {
-
-            string prefixWord = word.substr(0, i);
-
-            string suffixWord = word.substr(i, word.length()-i);
-
-            if(s.find(prefixWord) != s.end() && ((s.find(suffixWord) != s.end() || checkConcatenate(suffixWord))))
-
-                return true;
-
-        }
-
-        return false;
-
-    }
-
     vector<string> findAllConcatenatedWordsInADict(vector<string>& words) {
-
-        vector<string> concatenateWords;
-
-        for(string word : words)
-
-            s.insert(word);
-
-        for(string word : words) {
-
-            if(checkConcatenate(word) == true)
-
-                concatenateWords.push_back(word);
-
+        unordered_set<string> dictionary(words.begin(), words.end());
+        vector<string> answer;
+        for (const string& word : words) {
+            const int length = word.length();
+            vector<bool> dp(length + 1);
+            dp[0] = true;
+            for (int i = 1; i <= length; ++i) {
+                for (int j = (i == length ? 1 : 0); !dp[i] && j < i; ++j) {
+                    dp[i] = dp[j] && dictionary.count(word.substr(j, i - j));
+                }
+            }
+            if (dp[length]) {
+                answer.push_back(word);
+            }
         }
-
-        return concatenateWords;
-
+        return answer;
     }
-
 };
-        
-    
