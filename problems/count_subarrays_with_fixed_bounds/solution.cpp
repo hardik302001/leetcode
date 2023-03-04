@@ -10,7 +10,7 @@ using sliding window(three pointers).
 EXPLANATION
 
 We maintain a maximum sliding window
-with alll elements in range [minK, maxK],
+with all elements in range [minK, maxK],
 j is the index of leftmost element of the subarray.
 i is the index of rightmost element of the subarray.
 
@@ -18,7 +18,7 @@ And we record the index jmin and jmax, where:
 jmin is index of last seen A[jmin] = mink
 jmax is index of last seen A[jmax] = maxk
 
-Itearte the A[i],
+Iterate the A[i],
 if A[i] == minK, update jmin = i
 if A[i] == maxK, update jmax = i
 
