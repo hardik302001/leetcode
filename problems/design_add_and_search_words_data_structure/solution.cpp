@@ -36,7 +36,7 @@ public:
         return searchHelper(word, 0, root);
     }
     
-    bool searchHelper(string word, int index, TrieNode* cur) {
+    bool searchHelper(string &word, int index, TrieNode* cur) {
         // BASE CASE
         if (index == word.length()) {
             return cur->endOfWord;
