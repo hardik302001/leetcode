@@ -3,6 +3,9 @@ Time Complexity : O(n)
 Space Complexity : O(n)
 */
 // https://leetcode.com/problems/longest-cycle-in-a-graph/discuss/2357750/Simple-Traversal-or-C%2B%2B
+
+// https://leetcode.com/problems/longest-cycle-in-a-graph/discuss/2357750/Simple-DFS-Traversal-or-Easy-Explanation-or-C++/1518004
+
 // this thing works because, there is atmost one outgoing edge, 
 
 class Solution {
