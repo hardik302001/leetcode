@@ -17,15 +17,6 @@ class Solution:
             res=max(maxi,res)
         return res
 
-
-
-
-
-
-
-
-
-
 # ----------------------------------------------------------
 
 # binary search
