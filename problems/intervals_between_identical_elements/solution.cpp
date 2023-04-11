@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/intervals-between-identical-elements/discuss/1647454/C%2B%2B-or-prefix-and-suffix-array-or-with-explanation
+// same as leetcode 2615
 
 
 class Solution {
