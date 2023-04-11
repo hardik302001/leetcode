@@ -1,3 +1,5 @@
+# same as lc 2121
+
 class Solution:
     def distance(self, nums: List[int]) -> List[int]:
         d = defaultdict(list)
